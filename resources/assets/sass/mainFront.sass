@@ -1,0 +1,71 @@
+@import "lib/settings"
+@import "lib/general"
+@import "lib/grid"
+@import "lib/font"
+@import "theme/header"
+@import "theme/footer"
+
+body
+  font-family: 'Roboto Condensed', sans-serif
+  overflow-x: hidden
+main
+  max-width: $widthContent
+  padding: 0 rem(20)
+  @include respond-to(middle)
+    padding: 0
+
+.Register-header
+  border-top: solid rem(4) $red
+  text-align: center
+  margin: rem(20) 0
+  h1
+    background: $red
+    color: white
+    font-size: rem(17)
+    margin: auto
+    padding: rem(3) rem(20)
+    @include respond-to(medium)
+      display: inline
+
+.Register-form
+  border: solid $red rem(2)
+  margin: rem(50) 0
+  h2
+    background: $red
+    color: white
+    font-size: rem(16)
+    padding: rem(5) rem(20)
+  label
+    padding: rem(15) 0 rem(15) rem(30)
+    display: block
+    max-width: 90%
+  input
+    border: #d3d3d3 solid rem(1)
+    display: block
+    max-width: 100%
+    height: rem(30)
+    padding: 0 rem(8)
+    margin: rem(4) 0 0
+    width: 100%
+    &[type="file"]
+      opacity: 0
+      margin: 0
+
+.Register-contentLabel
+  padding: rem(15) 0
+
+.Register-file
+  border: #d3d3d3 solid rem(1)
+  margin: rem(4) 0 0
+  height: rem(30)
+  position: relative
+.Register-addFile
+  position: absolute
+  right: rem(-1)
+  background: #df2826
+  color: white
+  font-size: 0.75rem
+  top: rem(-1)
+  line-height: 1.875rem
+  padding: 0 rem(8)
+  cursor: pointer
