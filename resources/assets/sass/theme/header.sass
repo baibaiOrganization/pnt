@@ -2,13 +2,21 @@
   max-width: $widthContent
   margin: auto
   position: relative
-  padding: rem(40) 0  rem(12)
+  padding: rem(72) 0  rem(12)
   figure
     max-width: rem(250)
+    margin: auto
+    @include respond-to(medium)
+      margin: 0
 .Header-figure
   top: -8.4375rem
-  right: -2rem
-  max-width: 35rem
+  right: 0
+  max-width: 100%
   position: absolute
+  @include respond-to(small)
+    right: -2rem
+    max-width: 35rem
 .Header svg
   max-width: 100%
+
+

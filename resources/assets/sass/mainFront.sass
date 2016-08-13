@@ -35,11 +35,33 @@ main
     color: white
     font-size: rem(16)
     padding: rem(5) rem(20)
+  h3
+    margin: rem(16) 1.75rem rem(4);
+    font-size: rem(17)
+    color: $red
+  button
+    padding: rem(10) 0
+    background: #df2826
+    color: white
+    font-size: 1rem
+    margin: rem(42) auto rem(60)
+    max-width: 12rem
+    width: 100%
+    cursor: pointer
+    @include respond-to(medium)
+      max-width: rem(300)
+    &:hover
+      box-shadow: 0 rem(2) rem(3) #8b403f
+
+  p
+    margin: 0 rem(28) rem(12)
+    font-size: rem(14)
+    color: grey
   label
     padding: rem(15) 0 rem(15) rem(30)
     display: block
     max-width: 90%
-  input
+  input, select
     border: #d3d3d3 solid rem(1)
     display: block
     max-width: 100%
@@ -50,7 +72,15 @@ main
     &[type="file"]
       opacity: 0
       margin: 0
-
+      cursor: pointer
+  select
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    background: white
 .Register-contentLabel
   padding: rem(15) 0
 
@@ -68,4 +98,26 @@ main
   top: rem(-1)
   line-height: 1.875rem
   padding: 0 rem(8)
+.Register-tooltip
+  position: absolute
+  top: rem(-1)
+  line-height: 1.875rem
+  padding: 0 rem(8)
+  font-size: 0.75rem
+  left: 0
   cursor: pointer
+  color: #767676
+  text-overflow: ellipsis
+  white-space: nowrap
+  overflow: hidden
+  max-width: calc(100% - 80px)
+.Register-contentSelect
+  position: relative
+.Register-arrowSelect
+  position: absolute
+  right: 0
+  color: white
+  background: #df2826
+  font-size: rem(12)
+  padding: rem(9) rem(9) rem(6)
+  top: rem(23)
