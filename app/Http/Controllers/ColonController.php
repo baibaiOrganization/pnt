@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use Directory\Http\Requests;
 
-class HomeController extends Controller
+class ColonController extends Controller
 {
 
     public function __construct()
@@ -17,9 +17,7 @@ class HomeController extends Controller
     }
 
     function index(){
-        return view('front.home');
-    }
-    function chooseForm(){
-        return view('front.formsMenu');
+
+        return view('front.colon');
     }
 }

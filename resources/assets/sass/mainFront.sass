@@ -14,6 +14,14 @@ main
   @include respond-to(middle)
     padding: 0
 
+.Form-home
+  h2
+    background: $red
+    color: white
+    font-size: rem(17)
+    margin: auto
+    padding: rem(3) rem(20)
+    text-align: center
 .Register-header
   border-top: solid rem(4) $red
   text-align: center
@@ -26,6 +34,32 @@ main
     padding: rem(3) rem(20)
     @include respond-to(medium)
       display: inline
+.Register-header.Colon
+  border-top: solid rem(4) $yellow
+  h1
+    background: $yellow
+    color: black
+
+
+
+.Register-form.Colon-form
+  border: solid $yellow
+  h2
+    background: $yellow
+    color: black
+  h3
+    color: $yellow
+
+  button
+    background: $yellow
+    &:hover
+      box-shadow: 0 rem(2) rem(3) #8a8b2b
+  .Register-addFile
+    background: $yellow
+    color: black
+  .Register-arrowSelect
+    color: black
+    background: $yellow
 
 .Register-form
   border: solid $red rem(2)
@@ -36,7 +70,7 @@ main
     font-size: rem(16)
     padding: rem(5) rem(20)
   h3
-    margin: rem(16) 1.75rem rem(4);
+    margin: rem(16) 1.75rem rem(4)
     font-size: rem(17)
     color: $red
   button
@@ -61,7 +95,7 @@ main
     padding: rem(15) 0 rem(15) rem(30)
     display: block
     max-width: 90%
-  input, select
+  input, select, textarea
     border: #d3d3d3 solid rem(1)
     display: block
     max-width: 100%
@@ -121,3 +155,47 @@ main
   font-size: rem(12)
   padding: rem(9) rem(9) rem(6)
   top: rem(23)
+
+.Choose
+  article
+    text-align: center
+    margin-top: rem(20)
+    @include respond-to(medium)
+      margin-top: rem(72)
+  a
+    display: block
+    color: white
+    font-size: rem(20)
+    background: #df2826
+    padding: rem(42)
+    text-transform: uppercase
+    &:hover
+      box-shadow: 0 rem(2) rem(3) #8b403f
+
+  p
+    font-size: rem(20)
+    padding: rem(42)
+.Menu-profile
+  padding: 0 rem(20)
+  font-size: rem(18)
+  text-align: center
+  margin: rem(20) 0 0
+  @include respond-to(medium)
+    text-align: right
+    margin: 0
+  a
+    color: #7f7f7f
+    text-decoration: underline
+
+.Colon-social
+  span
+    display: block
+    margin: 0 0 rem(6)
+  input
+    margin: rem(12) 0
+    @include respond-to(medium)
+      max-width: 30.5%
+      display: inline-block
+      margin: 0
+textarea
+  min-height: rem(40)

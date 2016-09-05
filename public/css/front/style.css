@@ -545,6 +545,14 @@ main {
   max-width: 65rem;
   padding: 0 1.25rem; }
 
+.Form-home h2 {
+  background: #df2826;
+  color: white;
+  font-size: 1.0625rem;
+  margin: auto;
+  padding: 0.1875rem 1.25rem;
+  text-align: center; }
+
 .Register-header {
   border-top: solid 0.25rem #df2826;
   text-align: center;
@@ -558,6 +566,30 @@ main {
     @media (min-width: 48.5rem) {
       .Register-header h1 {
         display: inline; } }
+
+.Register-header.Colon {
+  border-top: solid 0.25rem #FFED00; }
+  .Register-header.Colon h1 {
+    background: #FFED00;
+    color: black; }
+
+.Register-form.Colon-form {
+  border: solid #FFED00; }
+  .Register-form.Colon-form h2 {
+    background: #FFED00;
+    color: black; }
+  .Register-form.Colon-form h3 {
+    color: #FFED00; }
+  .Register-form.Colon-form button {
+    background: #FFED00; }
+    .Register-form.Colon-form button:hover {
+      box-shadow: 0 0.125rem 0.1875rem #8a8b2b; }
+  .Register-form.Colon-form .Register-addFile {
+    background: #FFED00;
+    color: black; }
+  .Register-form.Colon-form .Register-arrowSelect {
+    color: black;
+    background: #FFED00; }
 
 .Register-form {
   border: solid #df2826 0.125rem;
@@ -593,7 +625,7 @@ main {
     padding: 0.9375rem 0 0.9375rem 1.875rem;
     display: block;
     max-width: 90%; }
-  .Register-form input, .Register-form select {
+  .Register-form input, .Register-form select, .Register-form textarea {
     border: #d3d3d3 solid 0.0625rem;
     display: block;
     max-width: 100%;
@@ -601,7 +633,7 @@ main {
     padding: 0 0.5rem;
     margin: 0.25rem 0 0;
     width: 100%; }
-    .Register-form input[type="file"], .Register-form select[type="file"] {
+    .Register-form input[type="file"], .Register-form select[type="file"], .Register-form textarea[type="file"] {
       opacity: 0;
       margin: 0;
       cursor: pointer; }
@@ -656,5 +688,54 @@ main {
   font-size: 0.75rem;
   padding: 0.5625rem 0.5625rem 0.375rem;
   top: 1.4375rem; }
+
+.Choose article {
+  text-align: center;
+  margin-top: 1.25rem; }
+  @media (min-width: 48.5rem) {
+    .Choose article {
+      margin-top: 4.5rem; } }
+
+.Choose a {
+  display: block;
+  color: white;
+  font-size: 1.25rem;
+  background: #df2826;
+  padding: 2.625rem;
+  text-transform: uppercase; }
+  .Choose a:hover {
+    box-shadow: 0 0.125rem 0.1875rem #8b403f; }
+
+.Choose p {
+  font-size: 1.25rem;
+  padding: 2.625rem; }
+
+.Menu-profile {
+  padding: 0 1.25rem;
+  font-size: 1.125rem;
+  text-align: center;
+  margin: 1.25rem 0 0; }
+  @media (min-width: 48.5rem) {
+    .Menu-profile {
+      text-align: right;
+      margin: 0; } }
+  .Menu-profile a {
+    color: #7f7f7f;
+    text-decoration: underline; }
+
+.Colon-social span {
+  display: block;
+  margin: 0 0 0.375rem; }
+
+.Colon-social input {
+  margin: 0.75rem 0; }
+  @media (min-width: 48.5rem) {
+    .Colon-social input {
+      max-width: 30.5%;
+      display: inline-block;
+      margin: 0; } }
+
+textarea {
+  min-height: 2.5rem; }
 
 /*# sourceMappingURL=style.css.map */

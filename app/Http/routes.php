@@ -16,9 +16,26 @@ Route::get('/', [
     ]
 );
 
-Route::get('lang/{lang}', function ($lang) {
+Route::get('elegir-premio', [
+        'uses' => 'HomeController@chooseForm',
+        'as' => 'choose'
+    ]
+);
+
+Route::get('premio-semana', [
+        'uses' => 'SemanaController@index',
+        'as' => 'semana'
+    ]
+);
+Route::get('premio-colon', [
+        'uses' => 'ColonController@index',
+        'as' => 'colon'
+    ]
+);
+
+/*Route::get('lang/{lang}', function ($lang) {
     session(['lang' => $lang]);
     return Redirect::back();
 })->where([
     'lang' => 'en|es|pt'
-]);
+]);*/
