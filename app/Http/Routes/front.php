@@ -16,6 +16,7 @@ Route::get('semana', [
         'as' => 'semana'
     ]
 );
+
 Route::get('colon', [
         'uses' => 'ColonController@index',
         'as' => 'colon'
