@@ -8,7 +8,7 @@
 
     <div class="row around  ">
         <form action="" class=" col-5 small-12 Form-home Register-form">
-            <h2>FORMULARIO DE REGISTRO</h2>
+            <h2>FORMULARIO DE INICIO DE SESIÓN</h2>
             <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
                 <span>Correo electrónico</span>
                 <input type="email" name="email" id="email">
@@ -20,7 +20,7 @@
             <div class="center row"><button> INGRESAR</button></div>
         </form>
         <form action="" class="col-5 small-12  Form-home Register-form">
-            <h2>FORMULARIO INICIO DE SESIÓN</h2>
+            <h2>FORMULARIO DE REGISTRO</h2>
             <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
                 <span>Correo electrónico</span>
                 <input type="email" name="email" id="email">
