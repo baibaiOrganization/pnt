@@ -3,6 +3,7 @@
 namespace Theater;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Theater\Entities\Organization;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function organization(){
+        return $this->hasOne(Organization::class);
+    }
 }
