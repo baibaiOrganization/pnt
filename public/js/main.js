@@ -1,5 +1,5 @@
 $(function() {
-    if($()){
-
-    }
+    $(".close").click(function(){
+        $(this).parent().addClass("closed");
+    })
 });

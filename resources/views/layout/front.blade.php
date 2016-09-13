@@ -43,7 +43,9 @@
         <figure><img src="{{asset('images/premio-nacional-de-teatro.png')}}" alt="Premio Nacional de Teatro"></figure>
     </div>
     <div class="Menu-profile small-12 col-6">
-        Bienvenido Juan Ramos - <a href="">Cerrar sesión</a>
+        @if(Auth::check())
+        Bienvenido Juan Ramos - <a href="{{route('logout')}}">Cerrar sesión</a>
+        @endif
     </div>
 </header>
 <main>

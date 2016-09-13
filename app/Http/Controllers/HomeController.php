@@ -10,15 +10,10 @@ use Directory\Http\Requests;
 
 class HomeController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
     function index(){
         return view('front.home');
     }
+
     function chooseForm(){
         return view('front.formsMenu');
     }

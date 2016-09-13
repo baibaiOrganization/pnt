@@ -7,6 +7,8 @@ use Validator;
 use Theater\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -49,7 +51,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            //'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -61,12 +63,36 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
+
+    public function createUser(Request $request){
+        $validate = $this->validator($request->all());
+        if($validate->fails())
+            return redirect()->back()->withErrors($validate)->withInput();
+
+        $user = $this->create($request->all());
+        auth()->login($user, true);
+        return redirect()->route('choose');
+    }
+    
+    public function loginUser(Request $request){
+        $inputs = $request->all();
+        $user = User::where('email', $inputs['email'])->first();
+        $check = $user ? Hash::check($inputs['password'], $user->password) : false;
+        if(!$check)
+            return redirect()->back()->with(['Error' => 'El usuario o contraseña son incorrectos']);
+
+        auth()->login($user, true);
+        if(auth()->user()->role_id == 1)
+            return redirect('admin');
+        return redirect()->route('choose');
+    }
+
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role_id' => 2,
         ]);
     }
 }

@@ -6,8 +6,17 @@
         <h1>INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
     </div>
 
-    <div class="row around  ">
-        <form action="" class=" col-5 small-12 Form-home Register-form">
+    @if(session('Error'))
+    <section class="Message">
+        <div class="notification error">
+            <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{session('Error')}}<span class="close">X</span>
+        </div>
+    </section>
+    @endif
+
+    <div class="row around">
+        <form method="POST" action="{{route('login')}}" class=" col-5 small-12 Form-home Register-form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <h2>FORMULARIO DE INICIO DE SESIÓN</h2>
             <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
                 <span>Correo electrónico</span>
@@ -19,7 +28,8 @@
             </label>
             <div class="center row"><button> INGRESAR</button></div>
         </form>
-        <form action="" class="col-5 small-12  Form-home Register-form">
+        <form method="POST" action="{{route('register')}}" class="col-5 small-12  Form-home Register-form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <h2>FORMULARIO DE REGISTRO</h2>
             <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
                 <span>Correo electrónico</span>
@@ -32,7 +42,7 @@
 
             <label class="col-10 small-10" for="password">
                 <span>Repetir contraseña</span>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password_confirmation" id="password">
             </label>
             <div class="center row"><button> REGISTRARSE</button></div>
         </form>

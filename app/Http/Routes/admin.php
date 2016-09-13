@@ -2,7 +2,10 @@
 
 Route::group(['namespace' => 'Admin'], function () {
 
-    Route::get('/', ['as'=>'admin','uses' => 'UserController@index']);
+    //Route::get('/', ['as'=>'admin','uses' => 'UserController@index']);
+    Route::get('/', function(){
+        dd('Dashboard');
+    });
 
     Route::get('cliente/{id}', [
         'uses' => 'UserController@showClient',

@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - premionacionaldeteatro@localhost" uuid="48eb657b-4d0a-4ec6-8a9f-40d49dafa101">
+    <data-source name="MySQL - pnt@localhost" uuid="95dc5783-e017-45aa-8d24-844327d4c65e">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>premionacionaldeteatro.*</schema-pattern>
-      <default-schemas>premionacionaldeteatro.*</default-schemas>
-      <ssh-properties>
-        <enabled>true</enabled>
-        <proxy-host>192.168.10.10</proxy-host>
-        <proxy-port>22</proxy-port>
-        <secret-storage>master_key</secret-storage>
-        <user>vagrant</user>
-        <use-password>false</use-password>
-        <private-key-path>$USER_HOME$/.ssh/id_rsa</private-key-path>
-      </ssh-properties>
+      <schema-pattern>pnt.*</schema-pattern>
+      <default-schemas>pnt.*</default-schemas>
     </data-source>
   </component>
 </project>

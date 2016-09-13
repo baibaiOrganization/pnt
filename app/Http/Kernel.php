@@ -49,5 +49,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \Theater\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'userAuth' => \Theater\Http\Middleware\UserAuth::class,
+        'userLogged' => \Theater\Http\Middleware\UserLogged::class,
     ];
 }

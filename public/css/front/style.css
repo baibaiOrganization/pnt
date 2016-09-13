@@ -486,6 +486,74 @@ main {
 .columns div:nth-child(odd) {
   padding-left: 0.625rem; }
 
+.Message {
+  width: 100%;
+  overflow: hidden; }
+
+.Message .notification {
+  width: 60vw;
+  height: 40px;
+  border-radius: 0 0 5px 5px;
+  margin: 0 auto;
+  box-shadow: #95a5a6 0 0 6px 2px;
+  color: white;
+  line-height: 40px;
+  overflow: hidden;
+  animation: reveal 1 2s; }
+
+.Message .notification .title {
+  margin-right: 15px;
+  padding: 0 15px;
+  line-height: 40px;
+  display: inline-block; }
+
+.Message .notification .close {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0 15px;
+  float: right;
+  line-height: 40px;
+  display: inline-block;
+  color: white; }
+
+.Message .notification .close:hover {
+  cursor: pointer; }
+
+.Message .notification.closed {
+  transform: translate(0px, -50px);
+  transition: 0.7s; }
+
+@keyframes reveal {
+  0% {
+    transform: translate(0px, -50px); }
+  50% {
+    transform: translate(0px, -50px); }
+  100% {
+    transform: translate(0px, 0px); } }
+
+.Message .notification.success {
+  background: #2ecc71; }
+
+.Message .notification.success .title {
+  background: #27ae60; }
+
+.Message .notification.error {
+  background: #e74c3c; }
+
+.Message .notification.error .title {
+  background: #c0392b; }
+
+.Message .notification.warning {
+  background: #f1c40f; }
+
+.Message .notification.warning .title {
+  background: #f39c12; }
+
+.Message .notification.normal {
+  background: #3498db; }
+
+.Message .notification.normal .title {
+  background: #2980b9; }
+
 .Header {
   max-width: 65rem;
   margin: auto;

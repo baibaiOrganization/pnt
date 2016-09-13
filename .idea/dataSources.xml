@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2648188276">
-    <data-source source="LOCAL" name="MySQL - premionacionaldeteatro@localhost" uuid="48eb657b-4d0a-4ec6-8a9f-40d49dafa101">
+  <component name="DataSourceManagerImpl" format="xml" hash="2550328890">
+    <data-source source="LOCAL" name="MySQL - pnt@localhost" uuid="95dc5783-e017-45aa-8d24-844327d4c65e">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/premionacionaldeteatro</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/pnt</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
