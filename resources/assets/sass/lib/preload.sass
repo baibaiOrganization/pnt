@@ -1,0 +1,65 @@
+.preload
+  position: fixed
+  z-index: 50
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(0, 0, 0, 0.83)
+  display: flex
+  justify-content: center
+  align-items: center
+
+  .loader
+    position: relative
+    width: 120px
+    margin: 100px auto 0
+
+    & > div:nth-child(1)
+      border-radius: 50%
+      margin: 0 auto
+      width: 100px
+      height: 100px
+      animation: outer 1s infinite linear
+
+    & > div:nth-child(2)
+      border-radius: 50%
+      margin: 0 auto
+      width: 60px
+      height: 60px
+      animation: inner 1s infinite linear
+      position: relative
+      top: -80px
+
+  &.yellow .loader
+    & > div:nth-child(1), & > div:nth-child(2)
+      border: 10px solid rgba(255, 237, 0, 0.9)
+      box-shadow: 0 0 30px #ffed00
+      border-right: 10px solid rgba(0, 0, 0, 0)
+      border-left: 10px solid rgba(0, 0, 0, 0)
+
+  &.red .loader
+    & > div:nth-child(1), & > div:nth-child(2)
+      border: 10px solid rgba(178, 34, 34, 0.9)
+      border-right: 10px solid rgba(0, 0, 0, 0)
+      border-left: 10px solid rgba(0, 0, 0, 0)
+      box-shadow: 0 0 30px #b22222
+  &.hidden
+    display: none
+
+@keyframes outer
+  0%
+    transform: rotate(160deg)
+    opacity: 0
+  50%
+    transform: rotate(120deg)
+    opacity: 1
+  100%
+    transform: rotate(-320deg)
+    opacity: 0
+
+@keyframes inner
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

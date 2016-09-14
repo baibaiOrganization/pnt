@@ -5,6 +5,15 @@
     <div class="Register-header">
         <h1>ELIGE FORMULARIO DE INSCRIPCIÓN</h1>
     </div>
+
+    @if(session('Success'))
+        <section class="Message">
+            <div class="notification success">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Exitoso</span> {{session('Success')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
     <section class="row around Choose">
         <article class="col-4 small-12">
             <a href="{{route('semana')}}"> Inscripción <br> Premio Semana </a>

@@ -10,7 +10,7 @@ class Organization extends Model
     protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
     public function files(){

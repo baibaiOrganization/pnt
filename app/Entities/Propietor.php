@@ -12,10 +12,6 @@ class Propietor extends Model
         return $this->belongsTo(Organization::class);
     }
 
-    public function files(){
-        return $this->hasMany(File::class);
-    }
-
     public function documentType(){
         return $this->belongsTo(DocumentType::class);
     }

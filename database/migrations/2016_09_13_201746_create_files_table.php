@@ -18,13 +18,9 @@ class CreateFilesTable extends Migration
 
             $table->integer('file_type_id')->unsigned();
             $table->integer('organization_id')->unsigned();
-            $table->integer('production_id')->unsigned();
-            $table->integer('propietor_id')->unsigned();
 
             $table->foreign('file_type_id')->references('id')->on('file_types');
             $table->foreign('organization_id')->references('id')->on('organizations');
-            $table->foreign('production_id')->references('id')->on('productions');
-            $table->foreign('propietor_id')->references('id')->on('propietors');
 
             $table->timestamps();
         });

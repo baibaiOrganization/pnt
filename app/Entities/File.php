@@ -15,12 +15,4 @@ class File extends Model
     public function fileType(){
         return $this->belongsTo(FileType::class);
     }
-
-    public function propietor(){
-        return $this->belongsTo(Propietor::class);
-    }
-
-    public function production(){
-        return $this->belongsTo(Production::class);
-    }
 }
