@@ -592,10 +592,10 @@ main {
     border-right: 10px solid transparent;
     border-left: 10px solid transparent; }
   .preload.red .loader > div:nth-child(1), .preload.red .loader > div:nth-child(2) {
-    border: 10px solid rgba(178, 34, 34, 0.9);
+    border: 10px solid rgba(223, 40, 38, 0.9);
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    box-shadow: 0 0 30px #b22222; }
+    box-shadow: 0 0 30px #df2826; }
   .preload.hidden {
     display: none; }
 
@@ -836,7 +836,8 @@ main {
   .Choose a:hover {
     box-shadow: 0 0.125rem 0.1875rem #8b403f; }
   .Choose a.disabled {
-    background: #dfdfdf !important; }
+    background: #dfdfdf !important;
+    color: #000 !important; }
     .Choose a.disabled:hover {
       box-shadow: 0 0 0 #fff !important;
       cursor: default; }

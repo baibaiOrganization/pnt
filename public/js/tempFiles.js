@@ -3,8 +3,15 @@ $('input[type="file"]').on('change', function(){
     var element = document.getElementById($(this).attr('id'));
     var data = element.files;
     var file = new FormData();
+    var flag = false;
+    var regex;
 
-    if(data[0].type == 'application/pdf'){
+    if($(this).attr('id') == 'type8')
+        regex = new RegExp("(.*?)\.(jpg|jpeg|bmp|png)$");
+    else
+        regex = new RegExp("(.*?)\.(docx|doc|pdf)$");
+
+    if(regex.test(data[0].type)){
         file.append('file', data[0]);
         file.append('_token', $('#token').val());
 
@@ -33,6 +40,6 @@ $('input[type="file"]').on('change', function(){
         });
     }
     else{
-        alert('Tipo de archivo no permitido. Debe subir un PDF');
+        alert('Tipo de archivo no permitido.');
     }
 });

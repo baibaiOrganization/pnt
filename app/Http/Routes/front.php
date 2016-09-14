@@ -16,7 +16,7 @@ Route::get('semana', [
 ]);
 
 Route::post('semana', [
-    'uses' => 'OrganizationController@create',
+    'uses' => 'SemanaController@create',
     'as' => 'semanaPost'
 ]);
 
