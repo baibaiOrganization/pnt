@@ -13,10 +13,6 @@ class Organization extends Model
         return $this->hasOne(User::class);
     }
 
-    public function files(){
-        return $this->hasMany(File::class);
-    }
-
     public function propietor(){
         return $this->hasOne(Propietor::class);
     }

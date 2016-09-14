@@ -835,6 +835,11 @@ main {
   text-transform: uppercase; }
   .Choose a:hover {
     box-shadow: 0 0.125rem 0.1875rem #8b403f; }
+  .Choose a.disabled {
+    background: #dfdfdf !important; }
+    .Choose a.disabled:hover {
+      box-shadow: 0 0 0 #fff !important;
+      cursor: default; }
 
 .Choose p {
   font-size: 1.25rem;

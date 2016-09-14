@@ -19,4 +19,8 @@ class Award extends Model
     public function awardType(){
         return $this->belongsTo(AwardType::class);
     }
+
+    public function files(){
+        return $this->hasMany(File::class);
+    }
 }

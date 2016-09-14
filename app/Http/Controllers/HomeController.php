@@ -15,6 +15,16 @@ class HomeController extends Controller
     }
 
     function chooseForm(){
-        return view('front.formsMenu');
+        $awards = auth()->user()->organization->awards;
+        $event = [0 , 0];
+
+        foreach ($awards as $award){
+            if($award['award_type_id'] == 1)
+                $event[0] = 1;
+            else
+                $event[1] = 1;
+        }
+
+        return view('front.formsMenu', compact('event'));
     }
 }

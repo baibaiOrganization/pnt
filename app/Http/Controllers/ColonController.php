@@ -18,6 +18,13 @@ class ColonController extends Controller
     }
     
     public function index(){
+        $awards = auth()->user()->organization->awards;
+
+        foreach ($awards as $award){
+            if($award['award_type_id'] == 1)
+                return redirect()->route('choose');
+        }
+
         return view('front.colon');
     }
     
@@ -64,10 +71,12 @@ class ColonController extends Controller
             'email2' => $inputs['rep_email2'],
         ]);
 
-        Award::create([
+        $awd = Award::create([
             'award_type_id' => 1,
             'production_id' => $prd->id
         ]);
+
+        $org->awards()->attach($awd->id);
 
         foreach ($inputs as $key => $file){
             if(strpos($key, 'type') !== false){
@@ -78,7 +87,7 @@ class ColonController extends Controller
                 File::create([
                     'name' => $fileName,
                     'file_type_id' => $type,
-                    'organization_id' => $org->id
+                    'award_id' => $awd->id
                 ]);
             }
         }
@@ -92,7 +101,6 @@ class ColonController extends Controller
             'org_phone' => 'required|numeric',
             'org_mobile' => 'required|numeric',
             'org_email' => 'required|email',
-            'org_website' => 'required',
 
             'prd_name' => 'required',
             'prd_date' => 'required',

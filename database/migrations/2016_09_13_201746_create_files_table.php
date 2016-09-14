@@ -17,10 +17,10 @@ class CreateFilesTable extends Migration
             $table->string('name');
 
             $table->integer('file_type_id')->unsigned();
-            $table->integer('organization_id')->unsigned();
+            $table->integer('award_id')->unsigned();
 
             $table->foreign('file_type_id')->references('id')->on('file_types');
-            $table->foreign('organization_id')->references('id')->on('organizations');
+            $table->foreign('award_id')->references('id')->on('awards');
 
             $table->timestamps();
         });

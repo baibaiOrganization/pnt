@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    protected $fillable = ['name', 'file_type_id', 'organization_id', 'production_id', 'propietor_id'];
+    protected $fillable = ['name', 'file_type_id', 'award_id'];
 
-    public function organization(){
-        return $this->belongsTo(Organization::class);
+    public function award(){
+        return $this->belongsTo(Award::class);
     }
 
     public function fileType(){
