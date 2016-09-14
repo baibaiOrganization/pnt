@@ -44,7 +44,7 @@
     </div>
     <div class="Menu-profile small-12 col-6">
         @if(Auth::check())
-        Bienvenido Juan Ramos - <a href="{{route('logout')}}">Cerrar sesión</a>
+        Bienvenido {{explode('@', Auth::user()->email)[0]}} - <a href="{{route('logout')}}">Cerrar sesión</a>
         @endif
     </div>
 </header>

@@ -33,16 +33,25 @@
             <h2>FORMULARIO DE REGISTRO</h2>
             <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
                 <span>Correo electrónico</span>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" value="{{old('email')}}">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('email')}}</span>
+                @endif
             </label>
             <label class="col-10 small-10" for="password">
                 <span>Contraseña</span>
                 <input type="password" name="password" id="password">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('password')}}</span>
+                @endif
             </label>
 
             <label class="col-10 small-10" for="password">
                 <span>Repetir contraseña</span>
                 <input type="password" name="password_confirmation" id="password">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('password_confirmation')}}</span>
+                @endif
             </label>
             <div class="center row"><button> REGISTRARSE</button></div>
         </form>
