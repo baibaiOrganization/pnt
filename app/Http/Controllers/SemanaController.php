@@ -3,6 +3,7 @@
 namespace Theater\Http\Controllers;
 
 
+use Theater\Http\Services\UserManagement;
 use Validator;
 use Illuminate\Http\Request;
 use Theater\Http\Services\Validation;
@@ -32,7 +33,7 @@ class SemanaController extends Controller
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput();
 
-        $this->sendSemana($inputs);
+        UserManagement::insertSemana(auth()->user()->organization, $inputs);
         return redirect()->route('choose')->with(['Success' => 'Se ha inscrito al PREMIO SEMANA con exito.']);
     }
 

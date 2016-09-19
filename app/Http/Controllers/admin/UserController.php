@@ -3,10 +3,8 @@
 namespace Theater\Http\Controllers\admin;
 
 use Validator;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
-use phpDocumentor\Reflection\Types\Integer;
 use Theater\Entities\Organization;
 use Theater\Http\Requests;
 use Theater\Http\Controllers\Controller;
