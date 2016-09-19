@@ -18,6 +18,11 @@ class UserController extends Controller
         return view('back.choose');
     }
 
+    public function generateExcel($type){
+        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] . "; cd ..; php artisan download:excel " . $type . " > /dev/null &");
+        return redirect()->back()->with(['Success' => 'El Excel está siendo generado, se enviará el link a su email.']);
+    }
+
     public function colonUsers(){
         $users = $this->getUsers(1);
         return view('back.colonUsers', compact('users'));

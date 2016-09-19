@@ -163,6 +163,8 @@ return [
         Theater\Providers\EventServiceProvider::class,
         Theater\Providers\RouteServiceProvider::class,
 
+        // Aditional Services
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -209,6 +211,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //Adicional services
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

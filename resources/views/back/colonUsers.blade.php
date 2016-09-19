@@ -15,7 +15,7 @@
     @endif
 
     <section class="ToolBar">
-        <a href="#" class="Download-Excel" style="display: block; width: 50px">
+        <a href="{{route('generateExcel', 1)}}" class="Download-Excel" style="display: block; width: 50px">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" width="100%" height="auto">
                 <g fill="#FFED00">
                     <path d="M25.162,3H16v2.984h3.031v2.031H16V10h3v2h-3v2h3v2h-3v2h3v2h-3v3h9.162   C25.623,23,26,22.609,26,22.13V3.87C26,3.391,25.623,3,25.162,3z M24,20h-4v-2h4V20z M24,16h-4v-2h4V16z M24,12h-4v-2h4V12z M24,8   h-4V6h4V8z"/>

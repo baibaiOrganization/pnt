@@ -1,0 +1,1 @@
+<p style="font-size: 18px">Has click <a href="{{route('colonExcel')}}">AQUI</a> para descargar el Excel.</p>

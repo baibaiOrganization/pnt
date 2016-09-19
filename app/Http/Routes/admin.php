@@ -2,34 +2,23 @@
 
 Route::group(['namespace' => 'admin'], function () {
 
-    //Route::get('/', ['as'=>'admin','uses' => 'UserController@index']);
     Route::get('/', [
         'uses' => 'UserController@index',
         'as' => 'users.index'
     ]);
 
-    Route::get('cliente/{id}', [
-        'uses' => 'UserController@showClient',
-        'as' => 'clientDetail'
+    Route::get('generateExcel/{type}', [
+        'uses' => 'UserController@generateExcel',
+        'as' => 'generateExcel'
     ]);
 
-    Route::post('updatePayClient', [
-        'uses' => 'UserController@updatePayClient',
-        'as' => 'updatePayClient'
-    ]);
-    Route::post('/', [
-        'uses' => 'UserController@searchClient',
-        'as' => 'UserSearch'
-    ]);
-    Route::post('updateClient', [
-        'uses' => 'UserController@updateClient',
-        'as' => 'updateClient'
-    ]);
+    Route::get('semanaExcel', function(){
+        return redirect()->to('/exports/semana.xls');
+    });
 
-    Route::get('usersExcel', [
-        'uses' => 'ReportController@usersExcel',
-        'as' => 'usersExcel'
-    ]);
+    Route::get('colonExcel', function(){
+        return redirect()->to('/exports/colon.xls');
+    });
 
     Route::get('usuarios/colon', [
         'uses' => 'UserController@colonUsers',
@@ -61,5 +50,29 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'semanaUpdate'
     ]);
 
+    /*
+    Route::get('cliente/{id}', [
+        'uses' => 'UserController@showClient',
+        'as' => 'clientDetail'
+    ]);
+
+    Route::post('updatePayClient', [
+        'uses' => 'UserController@updatePayClient',
+        'as' => 'updatePayClient'
+    ]);
+
+    Route::post('/', [
+        'uses' => 'UserController@searchClient',
+        'as' => 'UserSearch'
+    ]);
+    Route::post('updateClient', [
+        'uses' => 'UserController@updateClient',
+        'as' => 'updateClient'
+    ]);
+
+    Route::get('usersExcel', [
+        'uses' => 'ReportController@usersExcel',
+        'as' => 'usersExcel'
+    ]);*/
 });
 
