@@ -501,7 +501,7 @@ span.red .pagination a {
   width: 100%;
   text-align: center;
   border-spacing: inherit;
-  margin: 3.125rem 0;
+  margin: 0.9375rem 0;
   border: solid 0.125rem; }
   .Table thead {
     font-weight: bold;
@@ -917,5 +917,36 @@ main {
 
 textarea {
   min-height: 2.5rem; }
+
+.ToolBar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center; }
+  .ToolBar .search {
+    position: relative; }
+    .ToolBar .search .icon {
+      position: absolute;
+      right: 0;
+      width: 2.1875rem;
+      height: 2.1875rem;
+      cursor: pointer;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .ToolBar .search .icon.red {
+        background: #df2826; }
+      .ToolBar .search .icon.yellow {
+        background: #FFED00; }
+    .ToolBar .search input#search {
+      height: 2.1875rem;
+      width: 12.5rem;
+      padding: 0 2.1875rem 0 0.625rem;
+      font-size: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

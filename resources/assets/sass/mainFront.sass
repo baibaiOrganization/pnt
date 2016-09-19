@@ -214,3 +214,30 @@ main
       margin: 0
 textarea
   min-height: rem(40)
+
+.ToolBar
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  .search
+    position: relative
+    .icon
+      position: absolute
+      right: 0
+      width: rem(35)
+      height: rem(35)
+      cursor: pointer
+      display: flex
+      justify-content: center
+      align-items: center
+      &.red
+        background: #df2826
+      &.yellow
+        background: $yellow
+
+    input#search
+      height: rem(35)
+      width: rem(200)
+      padding: 0 rem(35) 0 rem(10)
+      font-size: 1rem
