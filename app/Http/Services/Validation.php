@@ -67,7 +67,6 @@ class Validation {
             'type1' => 'required',
             'type2' => 'required',
             'type3' => 'required',
-            'type4' => 'required',
             'type5' => 'required',
             'type6' => 'required',
             'type7' => 'required',

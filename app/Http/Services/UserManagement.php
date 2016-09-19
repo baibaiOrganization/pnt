@@ -87,11 +87,6 @@ class UserManagement{
                 'socials' => ',,',
             ],
 
-            'award' => [
-                'award_type_id' => 1,
-                //'production_id' => $prd->id
-            ],
-
             'production' => [
                 'name' => $inputs['prd_name'],
                 'genre' => $inputs['prd_genre'],
@@ -105,7 +100,6 @@ class UserManagement{
                 'mobile' => $inputs['rep_mobile'],
                 'email1' => $inputs['rep_email'],
                 'email2' => $inputs['rep_email2'],
-                //'organization_id' => $org->id
             ],
         ];
     }
@@ -123,11 +117,6 @@ class UserManagement{
                 'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
             ],
 
-            'award' => [
-                'award_type_id' => 1,
-                //'production_id' => $prd->id
-            ],
-
             'production' => [
                 'name' => $inputs['prd_name'],
                 'release_date' => $inputs['prd_date'],
@@ -143,7 +132,6 @@ class UserManagement{
                 'mobile' => $inputs['rep_mobile'],
                 'email1' => $inputs['rep_email1'],
                 'email2' => $inputs['rep_email2'],
-                //'organization_id' => $org->id
             ],
         ];
     }
