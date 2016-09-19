@@ -66,6 +66,9 @@ main {
     background: #EEE;
     color: #C1C1C1; }
 
+span.red .pagination a {
+  background: #df2826 !important; }
+
 .Button {
   line-height: 2.75rem;
   background: #C5D257;
@@ -150,6 +153,14 @@ main {
 
 .MessagePlatform-error {
   border-left: 1.5rem solid #ff5b65; }
+
+.icon {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  display: block;
+  margin: auto; }
+  .icon svg {
+    fill: red; }
 
 .row {
   display: -ms-flexbox;

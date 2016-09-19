@@ -120,7 +120,9 @@
             <label class="col-5 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip">@if(old('type1')) {{old('type1')}} @else Máximo 20 lineas @endif</span>
                     <input type="file" id="type1">
                     <input type="hidden" name="type1" value="{{old('type1')}}">
@@ -133,7 +135,9 @@
             <label class="col-5 small-10" for="type2">
                 <span>Texto o libreto (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip">@if(old('type1')) {{old('type1')}} @else Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores. @endif </span>
                     <input type="file" id="type2">
                     <input type="hidden" name="type2" value="{{old('type2')}}">
@@ -146,7 +150,9 @@
             <label class="col-5 small-10" for="type3">
                 <span>Certificado de registro de Derechos de Autor</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip"> @if(old('type1')) {{old('type1')}} @else Autorización de uso de la obra (.pdf) @endif </span>
                     <input type="file" id="type3">
                     <input type="hidden" name="type3" value="{{old('type3')}}">
@@ -159,7 +165,9 @@
             <label class="col-5 small-10" for="type4">
                 <span>Certificación de música original en caso de tenerla</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip"> @if(old('type1')) {{old('type1')}} @else autorización de uso de las piezas musicales @endif </span>
                     <input type="file" id="type4">
                     <input type="hidden" name="type4" value="{{old('type4')}}">
@@ -172,7 +180,9 @@
             <label class="col-5 small-10" for="type5">
                 <span>Dossier del espectáculo (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip">@if(old('type1')) {{old('type1')}} @endif </span>
                     <input type="file" id="type5">
                     <input type="hidden" name="type5" value="{{old('type5')}}">
@@ -185,7 +195,9 @@
             <label class="col-5 small-10" for="type6">
                 <span>Soporte de 5 presentaciones realizadas hasta el 30 de Sept</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip">@if(old('type1')) {{old('type1')}} @else Afiches, certificaciones, prensa, programas de mano, etc.) (.pdf) @endif </span>
                     <input type="file" id="type6">
                     <input type="hidden" name="type6" value="{{old('type6')}}">
@@ -198,7 +210,9 @@
             <label class="col-5 small-10" for="type7">
                 <span>Hoja de Vida de c/u de los integrantes</span>
                 <div class="Register-file">
-                    <span class="Register-addFile">Añadir archivo</span>
+                    <span class="Register-actions">
+                        <span class="Register-addFile">Añadir archivo</span>
+                    </span>
                     <span class="Register-tooltip" >@if(old('type1')) {{old('type1')}} @else del equipo artístico y creativo (.pdf) @endif </span>
                     <input type="file" id="type7">
                     <input type="hidden" name="type7" value="{{old('type7')}}">

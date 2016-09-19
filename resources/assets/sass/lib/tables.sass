@@ -1,0 +1,28 @@
+.Table
+  width: 100%
+  text-align: center
+  border-spacing: inherit
+  margin: 3.125rem 0
+  border: solid 0.125rem
+
+  thead
+    font-weight: bold
+    color: #fff
+    line-height: rem(20)
+  tbody tr
+    line-height: rem(40)
+
+  &.red
+    border-color: #df2826
+    thead
+      background: #df2826
+    .icon svg g
+      fill: #df2826
+
+  &.yellow
+    border-color: $yellow
+    thead
+      background: $yellow
+      color: #000
+    .icon svg g
+      fill: $yellow

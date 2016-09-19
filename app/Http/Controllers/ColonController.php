@@ -40,7 +40,8 @@ class ColonController extends Controller
     }
 
 
-    private function sendColon($inputs){
+    private function sendColon($inputs)
+    {
 
         $org = auth()->user()->organization;
         $org->update([
@@ -61,7 +62,7 @@ class ColonController extends Controller
             'link_video' => $inputs['prd_video'],
         ]);
 
-        Propietor::create([
+        $propietor = [
             'name' => $inputs['rep_name'],
             'last_name' => $inputs['rep_last_name'],
             'document_type_id' => $inputs['rep_doc_typ'],
@@ -69,8 +70,11 @@ class ColonController extends Controller
             'mobile' => $inputs['rep_mobile'],
             'email1' => $inputs['rep_email1'],
             'email2' => $inputs['rep_email2'],
-        ]);
-
+            'organization_id' => $org->id
+        ];
+        
+        $org->propietor ? $org->propietor->update($propietor) : Propietor::create($propietor);
+        
         $awd = Award::create([
             'award_type_id' => 1,
             'production_id' => $prd->id

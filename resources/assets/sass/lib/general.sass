@@ -32,6 +32,7 @@ main
   width: 100%
 *:focus
   outline: none
+
 .pagination
   width: 100%
   text-align: center
@@ -59,6 +60,8 @@ main
     background: #EEE
     color: #C1C1C1
 
+span.red .pagination a
+  background: #df2826 !important
 
 //Variables Generales
 
@@ -143,6 +146,13 @@ $widthContent: 71.25rem
   border-left: rem(24) solid #fff961
 .MessagePlatform-error
   border-left: rem(24) solid #ff5b65
+.icon
+  width: rem(35)
+  height: rem(35)
+  display: block
+  margin: auto
+  svg
+    fill: red
 
 $widthContent: 65rem
 $red: #df2826

@@ -3,9 +3,9 @@
 @section('content')
 
     <div class="Register-header">
-        <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
+        <h1>USUARIO INSCRITO AL PREMIO SEMANA</h1>
     </div>
-    <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="POST" class=" Register-form">
+    <form action="{{ route('semanaUpdate', $user->id) }}" enctype="multipart/form-data" method="POST" class=" Register-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
 
@@ -22,9 +22,7 @@
             <label class="col-5 small-10" for="type8">
                 <span>Logo, foto o imagen identificativa</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip">@if(old('type8')) {{old('type8')}} @else '(.jpg, .jpeg, .png) @endif</span>
                     <input type="file" id="type8">
                     <input type="hidden" name="type8" value="{{old('type8')}}">
@@ -36,9 +34,7 @@
             <label class="col-5  small-10" for="type9">
                 <span>Cámara de comercio (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip">@if(old('type9')) {{old('type9')}} @else Solo para grupos constituídos @endif </span>
                     <input type="file" id="type9">
                     <input type="hidden" name="type9" value="{{old('type9')}}">
@@ -50,9 +46,7 @@
             <label class="col-10 small-10" for="type5">
                 <span>Dossier del grupo o compañía (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type5')) {{old('type5')}} @else Trayectoria de la compañía, reseña de su director, integrantes y repertorio @endif </span>
                     <input type="file" id="type5">
                     <input type="hidden" name="type5" value="{{old('type5')}}">
@@ -116,9 +110,7 @@
             <label class="col-10 small-10" for="type16">
                 <span>Hoja de vida de la agrupación, grupo constituido o de los integrantes de la unión temporal (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type16')) {{old('type16')}} @else Mínimo 3 años de experiencia verificable. @endif </span>
                     <input type="file" id="type16">
                     <input type="hidden" name="type16" value="{{old('type16')}}">
@@ -141,9 +133,7 @@
             <label class="col-5 small-10" for="type10">
                 <span>Reseña Corta en Español (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip">@if(old('type10')) {{old('type10')}} @else 400 caracteres máx @endif </span>
                     <input type="file" id="type10">
                     <input type="hidden" name="type10" value="{{old('type10')}}">
@@ -172,9 +162,7 @@
             <label class="col-10 small-10" for="type3">
                 <span>Certificado de Registro de derechos de Autor o Autorización de uso de la obra (pdf.)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type3')) {{old('type3')}} @else Si la obra contiene piezas musicales deben ser originales para la producción. @endif </span>
                     <input type="file" id="type3">
                     <input type="hidden" name="type3" value="{{old('type3')}}">
@@ -189,9 +177,7 @@
             <label class="col-10 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type1')) {{old('type1')}} @else Máximo 20 lineas @endif </span>
                     <input type="file" id="type1">
                     <input type="hidden" name="type1" value="{{old('type1')}}">
@@ -204,9 +190,7 @@
             <label class="col-10 small-10" for="type2">
                 <span>Texto o libreto (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type2')) {{old('type2')}} @else Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores. @endif </span>
                     <input type="file" id="type2">
                     <input type="hidden" name="type2" value="{{old('type2')}}">
@@ -219,9 +203,7 @@
             <label class="col-10 small-10" for="type11">
                 <span>Propuesta de dirección (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type11')) {{old('type11')}} @else Puesta en escena, metodología de trabajo y proceso de creación. 2 pag. Máx. @endif </span>
                     <input type="file" id="type11">
                     <input type="hidden" name="type11" value="{{old('type11')}}">
@@ -234,9 +216,7 @@
             <label class="col-10 small-10" for="type12">
                 <span>Propuesta Estética (.pdf) <em>Enlace a condiciones y equipamiento técnico del Teatro Colón</em></span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip" style="font-size: 11px"> @if(old('type12')) {{old('type12')}} @else Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos @endif </span>
                     <input type="file" id="type12">
                     <input type="hidden" name="type12" value="{{old('type12')}}">
@@ -249,9 +229,7 @@
             <label class="col-10 small-10" for="type13">
                 <span>Cronograma (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type13')) {{old('type13')}} @else Fases de desarrollo de la propuesta, los tiempos estimados para cada una de ellas y sus responsables. @endif </span>
                     <input type="file" id="type13">
                     <input type="hidden" name="type13" value="{{old('type13')}}">
@@ -264,9 +242,7 @@
             <label class="col-10 small-10" for="type14">
                 <span>Presupuesto (.pdf) <em>Honorarios, servicios a contratar y actividades a realizar.</em></span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip" style="font-size: 10px"> @if(old('type14')) {{old('type14')}} @else Para montajes de compañías o uniones que vivan por fuera de Bogotá, incluir los costos de estadía, transporte y viáticos necesarios para montaje de la obra en el Teatro Colón @endif </span>
                     <input type="file" id="type14">
                     <input type="hidden" name="type14" value="{{old('type14')}}">
@@ -279,9 +255,7 @@
             <label class="col-10 small-10" for="type15">
                 <span>Propuesta de Financiación (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip" > @if(old('type15')) {{old('type15')}} @else Si el valor total excede el monto de la cofinanciación explique las otras fuentes de financiación. @endif </span>
                     <input type="file" id="type15">
                     <input type="hidden" name="type15" value="{{old('type15')}}">
@@ -294,9 +268,7 @@
             <label class="col-10 small-10" for="type7">
                 <span>Hoja de Vida de c/u de los integrantes (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip" > @if(old('type7')) {{old('type7')}} @else Actores, diseñadores, escenógrafos, etc. @endif</span>
                     <input type="file" id="type7">
                     <input type="hidden" name="type7" value="{{old('type7')}}">
@@ -379,9 +351,7 @@
             <label class="col-10 small-10" for="type18">
                 <span>Documento de delegación de representación (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type18')) {{old('type18')}} @else Firmado por todos los miembros de la unión temporal, en el que delegan su representación a un integrante del grupo. @endif </span>
                     <input type="file" id="type18">
                     <input type="hidden" name="type18" id="type18" value="{{old('type18')}}">
@@ -394,9 +364,7 @@
             <label class="col-10 small-10" for="type17">
                 <span>Carta de Compromiso</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip"> @if(old('type17')) {{old('type17')}} @else Aceptación de las reglas del contrato de coproducción con El Teatro Colón. @endif </span>
                     <input type="file" id="type17">
                     <input type="hidden" name="type17" value="{{old('type17')}}">
@@ -408,9 +376,7 @@
             <label class="col-10 small-10" for="type19">
                 <span>Fotocopia de la Cédula Representante Legal (.pdf)</span>
                 <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
+                    <span class="Register-addFile">Añadir archivo</span>
                     <span class="Register-tooltip">{{old('type19')}}</span>
                     <input type="file" id="type19">
                     <input type="hidden" name="type19" value="{{old('type19')}}">
@@ -421,7 +387,7 @@
             </label>
         </div>
 
-        <div class="center row"><button> ENVIAR</button></div>
+        <div class="center row"><button> ACTUALIZAR</button></div>
 
     </form>
     <div class="preload red hidden">

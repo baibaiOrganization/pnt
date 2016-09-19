@@ -7,7 +7,7 @@ use Theater\User;
 
 class Organization extends Model
 {
-    protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website'];
+    protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website', 'socials'];
 
     public function user(){
         return $this->hasOne(User::class);

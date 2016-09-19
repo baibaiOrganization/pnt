@@ -66,6 +66,9 @@ main {
     background: #EEE;
     color: #C1C1C1; }
 
+span.red .pagination a {
+  background: #df2826 !important; }
+
 .Button {
   line-height: 2.75rem;
   background: #C5D257;
@@ -150,6 +153,14 @@ main {
 
 .MessagePlatform-error {
   border-left: 1.5rem solid #ff5b65; }
+
+.icon {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  display: block;
+  margin: auto; }
+  .icon svg {
+    fill: red; }
 
 .row {
   display: -ms-flexbox;
@@ -486,6 +497,32 @@ main {
 .columns div:nth-child(odd) {
   padding-left: 0.625rem; }
 
+.Table {
+  width: 100%;
+  text-align: center;
+  border-spacing: inherit;
+  margin: 3.125rem 0;
+  border: solid 0.125rem; }
+  .Table thead {
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.25rem; }
+  .Table tbody tr {
+    line-height: 2.5rem; }
+  .Table.red {
+    border-color: #df2826; }
+    .Table.red thead {
+      background: #df2826; }
+    .Table.red .icon svg g {
+      fill: #df2826; }
+  .Table.yellow {
+    border-color: #FFED00; }
+    .Table.yellow thead {
+      background: #FFED00;
+      color: #000; }
+    .Table.yellow .icon svg g {
+      fill: #FFED00; }
+
 .Message {
   width: 100%;
   overflow: hidden; }
@@ -714,9 +751,11 @@ main {
     background: #FFED00; }
     .Register-form.Colon-form button:hover {
       box-shadow: 0 0.125rem 0.1875rem #8a8b2b; }
-  .Register-form.Colon-form .Register-addFile {
+  .Register-form.Colon-form .Register-addFile,
+  .Register-form.Colon-form .Register-openFile {
     background: #FFED00;
-    color: black; }
+    color: black;
+    cursor: pointer; }
   .Register-form.Colon-form .Register-arrowSelect {
     color: black;
     background: #FFED00; }
@@ -783,15 +822,20 @@ main {
   height: 1.875rem;
   position: relative; }
 
-.Register-addFile {
-  position: absolute;
-  right: -0.0625rem;
+.Register-actions {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+  justify-content: flex-end; }
+
+.Register-addFile,
+.Register-openFile {
   background: #df2826;
   color: white;
   font-size: 0.75rem;
-  top: -0.0625rem;
   line-height: 1.875rem;
-  padding: 0 0.5rem; }
+  padding: 0 0.5rem;
+  cursor: pointer; }
 
 .Register-tooltip {
   position: absolute;

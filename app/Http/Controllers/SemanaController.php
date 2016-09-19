@@ -50,6 +50,7 @@ class SemanaController extends Controller
             'mobile' => $inputs['org_mobile'],
             'email' => $inputs['org_email'],
             'website' => $inputs['org_website'],
+            'socials' => ',,',
         ]);
 
         $prd = Production::create([
@@ -57,7 +58,7 @@ class SemanaController extends Controller
             'genre' => $inputs['prd_genre'],
         ]);
 
-        Propietor::create([
+        $propietor = [
             'name' => $inputs['rep_name'],
             'last_name' => $inputs['rep_last_name'],
             'document_type_id' => $inputs['rep_doc_typ'],
@@ -65,7 +66,8 @@ class SemanaController extends Controller
             'mobile' => $inputs['rep_mobile'],
             'email1' => $inputs['rep_email'],
             'email2' => $inputs['rep_email2'],
-        ]);
+            'organization_id' => $org->id
+        ];
 
         $awd = Award::create([
             'award_type_id' => 2,
@@ -73,6 +75,7 @@ class SemanaController extends Controller
         ]);
 
         $org->awards()->attach($awd->id);
+        $org->propietor ? $org->propietor->update($propietor) : Propietor::create($propietor);
 
         foreach ($inputs as $key => $file){
             if(strpos($key, 'type') !== false){

@@ -13,7 +13,7 @@ class Award extends Model
     }
 
     public function production(){
-        return $this->hasOne(Production::class);
+        return $this->belongsTo(Production::class);
     }
 
     public function awardType(){
