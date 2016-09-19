@@ -20,4 +20,12 @@ class Organization extends Model
     public function awards(){
         return $this->belongsToMany(Award::class);
     }
+
+    public function awardColon(){
+        return $this->awards()->where('award_type_id', 1)->first();
+    }
+    
+    public function awardSemana(){
+        return $this->awards()->where('award_type_id', 2)->first();
+    }
 }

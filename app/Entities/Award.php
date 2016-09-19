@@ -23,4 +23,8 @@ class Award extends Model
     public function files(){
         return $this->hasMany(File::class);
     }
+
+    public function file($type){
+        return $this->files()->where('file_type_id', $type)->first();
+    }
 }

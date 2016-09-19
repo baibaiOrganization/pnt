@@ -6,6 +6,14 @@
         <h1>USUARIOS INSCRITOS AL PREMIO SEMANA</h1>
     </div>
 
+    @if(session('Success'))
+        <section class="Message">
+            <div class="notification success">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Exitoso</span> {{session('Success')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
     <table class="Table red">
         <thead>
             <tr>

@@ -5,6 +5,7 @@ namespace Theater\Http\Controllers;
 
 use Validator;
 use Illuminate\Http\Request;
+use Theater\Http\Services\Validation;
 
 use Theater\Entities\Production;
 use Theater\Entities\Propietor;
@@ -13,10 +14,6 @@ use Theater\Entities\File;
 
 class SemanaController extends Controller
 {
-    private function validator($inputs, $rules){
-        return Validator::make($inputs, $rules);
-    }
-
     public function index(){
         $awards = auth()->user()->organization->awards;
 
@@ -30,7 +27,7 @@ class SemanaController extends Controller
 
     public function create(Request $request){
         $inputs = $request->all();
-        $validate = $this->validator($inputs, $this->getColonRules());
+        $validate = Validator::make($inputs, Validation::getSemanaRules());
 
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput();
@@ -90,45 +87,5 @@ class SemanaController extends Controller
                 ]);
             }
         }
-
-    }
-
-    private function getColonRules(){
-        return [
-            'org_name' => 'required',
-            'org_city' => 'required',
-            'org_address' => 'required',
-            'org_phone' => 'required|numeric',
-            'org_mobile' => 'required|numeric',
-            'org_email' => 'required|email',
-
-            'prd_name' => 'required',
-            'prd_genre' => 'required',
-
-            'rep_name' => 'required',
-            'rep_last_name' => 'required',
-            'rep_doc_typ' => 'required',
-            'rep_doc_number' => 'required',
-            'rep_mobile' => 'required',
-            'rep_email' => 'required',
-
-            'type1' => 'required',
-            'type2' => 'required',
-            'type3' => 'required',
-            'type5' => 'required',
-            'type7' => 'required',
-            'type8' => 'required',
-            'type9' => 'required',
-            'type10' => 'required',
-            'type11' => 'required',
-            'type12' => 'required',
-            'type13' => 'required',
-            'type14' => 'required',
-            'type15' => 'required',
-            'type16' => 'required',
-            'type17' => 'required',
-            'type18' => 'required',
-            'type19' => 'required',
-        ];
     }
 }

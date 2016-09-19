@@ -3,6 +3,7 @@
 namespace Theater\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Theater\Http\Services\Validation;
 use Validator;
 
 use Theater\Entities\Award;
@@ -12,11 +13,6 @@ use Theater\Entities\Propietor;
 
 class ColonController extends Controller
 {
-
-    private function validator($inputs, $rules){
-        return Validator::make($inputs, $rules);
-    }
-    
     public function index(){
         $awards = auth()->user()->organization->awards;
 
@@ -30,7 +26,7 @@ class ColonController extends Controller
     
     public function create(Request $request){
         $inputs = $request->all();
-        $validate = $this->validator($inputs, $this->getColonRules());
+        $validate = Validator::make($inputs, Validation::getColonRules());
 
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput();
@@ -38,7 +34,6 @@ class ColonController extends Controller
         $this->sendColon($inputs);   
         return redirect()->route('choose')->with(['Success' => 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.']);
     }
-
 
     private function sendColon($inputs)
     {
@@ -95,36 +90,5 @@ class ColonController extends Controller
                 ]);
             }
         }
-    }
-
-    private function getColonRules(){
-        return [
-            'org_name' => 'required',
-            'org_city' => 'required',
-            'org_address' => 'required',
-            'org_phone' => 'required|numeric',
-            'org_mobile' => 'required|numeric',
-            'org_email' => 'required|email',
-
-            'prd_name' => 'required',
-            'prd_date' => 'required',
-            'prd_genre' => 'required',
-            'prd_video' => 'required',
-
-            'rep_name' => 'required',
-            'rep_last_name' => 'required',
-            'rep_doc_typ' => 'required',
-            'rep_doc_number' => 'required',
-            'rep_mobile' => 'required',
-            'rep_email1' => 'required',
-
-            'type1' => 'required',
-            'type2' => 'required',
-            'type3' => 'required',
-            'type4' => 'required',
-            'type5' => 'required',
-            'type6' => 'required',
-            'type7' => 'required',
-        ];
     }
 }
