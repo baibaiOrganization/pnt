@@ -5,6 +5,15 @@
     <div class="Register-header Colon">
         <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO TEATRO COlÓN</h1>
     </div>
+
+    @if(session('Error'))
+        <section class="Message">
+            <div class="notification error">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{session('Error')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
     <form action="{{ route('colonPost') }}" enctype="multipart/form-data" method="post" class=" Register-form Colon-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">

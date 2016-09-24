@@ -16,24 +16,33 @@ use Theater\Entities\File;
 class SemanaController extends Controller
 {
     public function index(){
-        $awards = auth()->user()->organization->awards;
+        $organization = auth()->user()->organization;
 
-        foreach ($awards as $award){
-            if($award['award_type_id'] == 2 && $award['state'] == 1)
-                return redirect()->route('choose');
+        foreach ($organization->awards as $awd){
+            if($awd['award_type_id'] == 2){
+                if($awd['state'] == 1)
+                    return redirect()->route('choose');
+                else
+                    $award = $awd;
+            }
         }
 
-        return view('front.semana');
+        $propietor = $organization->propietor;
+        $production = isset($award) ? $award->production : null;
+        return view('front.semana', compact('organization', 'award', 'propietor', 'production'));
     }
 
     public function create(Request $request){
         $inputs = $request->all();
         $validate = Validator::make($inputs, Validation::getSemanaRules());
+        $message = isset($inputs['isUpdate'])
+            ? 'El formulario se ha guardado con exito'
+            : 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.';
 
         if($validate->fails() && !isset($inputs['isUpdate']))
-            return redirect()->back()->withErrors($validate)->withInput();
+            return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
 
         UserManagement::insertSemana(auth()->user()->organization, $inputs);
-        return redirect()->route('choose')->with(['Success' => 'Se ha inscrito al PREMIO SEMANA con exito.']);
+        return redirect()->route('choose')->with(['Success' => $message]);
     }
 }

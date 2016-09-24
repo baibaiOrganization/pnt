@@ -273,9 +273,9 @@
                     <span>Tipo de Documento de Identidad:</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="rep_doc_typ" id="rep_doc_typ">
-                        <option value="1">Cédula</option>
-                        <option value="2" @if($user->propietor->document_type_id == 2) selected @endif >Cédula de Extranjería</option>
-                        <option value="3" @if($user->propietor->document_type_id == 3) selected @endif >Pasaporte</option>
+                        <option value="2">Cédula</option>
+                        <option value="3" @if($user->propietor->document_type_id == 2) selected @endif >Cédula de Extranjería</option>
+                        <option value="4" @if($user->propietor->document_type_id == 3) selected @endif >Pasaporte</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)

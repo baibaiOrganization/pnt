@@ -5,15 +5,32 @@
     <div class="Register-header">
         <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
     </div>
+
+    @if(session('Error'))
+        <section class="Message">
+            <div class="notification error">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{session('Error')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
     <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="POST" class=" Register-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
+
 
         <h2 class="col-12">DATOS BÁSICOS DE LA ORGANIZACIÓN</h2>
         <div class=" row Register-contentLabel">
             <label class="col-10 small-10" for="org_name">
                 <span>Nombre de la agrupación, grupo constituído o unión temporal</span>
-                <input type="text" name="org_name" id="org_name" value="{{old('org_name')}}">
+
+                <input type="text" name="org_name" id="org_name"
+                       @if(session('Error'))
+                           value="{{old('org_name')}}"
+                       @else
+                           value="{{$organization->name}}"
+                       @endif>
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_name')}}</span>
                 @endif
@@ -25,9 +42,25 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip">@if(old('type8')) {{old('type8')}} @else '(.jpg, .jpeg, .png) @endif</span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type8')) || (isset($award) && $award->file(8)))
+                            @if(session('Error'))
+                                {{old('type8')}}
+                            @else
+                                {{$award->file(8)->name}}
+                            @endif
+                        @else
+                            '(.jpg, .jpeg, .png)
+                        @endif
+                    </span>
+
                     <input type="file" id="type8">
-                    <input type="hidden" name="type8" value="{{old('type8')}}">
+                    <input type="hidden" name="type8"
+                           @if(session('Error'))
+                               value="{{old('org_name')}}"
+                           @elseif(isset($award) && $award->file(8))
+                               value="{{$award->file(8)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type8')}}</span>
@@ -39,9 +72,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip">@if(old('type9')) {{old('type9')}} @else Solo para grupos constituídos @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type9')) || (isset($award) && $award->file(9)))
+                            @if(session('Error'))
+                                {{old('type9')}}
+                            @elseif($award->file(9))
+                                {{$award->file(9)->name}}
+                            @endif
+                        @else
+                            Solo para grupos constituídos
+                        @endif
+                    </span>
                     <input type="file" id="type9">
-                    <input type="hidden" name="type9" value="{{old('type9')}}">
+                    <input type="hidden" name="type9"
+                           @if(session('Error'))
+                               value="{{old('type9')}}"
+                           @elseif(isset($award) && $award->file(9))
+                               value="{{$award->file(9)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type9')}}</span>
@@ -53,9 +101,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type5')) {{old('type5')}} @else Trayectoria de la compañía, reseña de su director, integrantes y repertorio @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
+                            @if(session('Error'))
+                                {{old('type5')}}
+                            @else
+                                {{$award->file(5)->name}}
+                            @endif
+                        @else
+                            Trayectoria de la compañía, reseña de su director, integrantes y repertorio
+                        @endif
+                    </span>
                     <input type="file" id="type5">
-                    <input type="hidden" name="type5" value="{{old('type5')}}">
+                    <input type="hidden" name="type5"
+                           @if(session('Error'))
+                               value="{{old('type5')}}"
+                           @elseif(isset($award) && $award->file(5))
+                               value="{{$award->file(5)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
@@ -67,8 +130,9 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option value="">Selecciona una ciudad</option>
-                        <option value="Bogotá">Bógota</option>
-                        <option value="Medellín">Medellín</option>                    </select>
+                        <option value="Bogotá" @if(old('org_city') == 'Bogotá') selected @endif >Bógota</option>
+                        <option value="Medellín" @if(old('org_city') == 'Medellín') selected @endif>Medellín</option>
+                    </select>
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
@@ -76,7 +140,12 @@
             </label>
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
-                <input type="text" name="org_address" id="org_address" value="{{old('org_address')}}">
+                <input type="text" name="org_address" id="org_address"
+                       @if(session('Error'))
+                           value="{{old('org_address')}}"
+                       @else
+                           value="{{$organization->address}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_address')}}</span>
                 @endif
@@ -84,14 +153,24 @@
 
             <label class="col-5 small-10" for="org_phone">
                 <span>Teléfono fijo</span>
-                <input type="text" name="org_phone" id="org_phone" value="{{old('org_phone')}}">
+                <input type="text" name="org_phone" id="org_phone"
+                       @if(session('Error'))
+                           value="{{old('org_phone')}}"
+                       @else
+                           value="{{$organization->phone}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_phone')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="org_mobile">
                 <span>Teléfono Celular</span>
-                <input type="text" name="org_mobile" id="org_mobile" value="{{old('org_mobile')}}">
+                <input type="text" name="org_mobile" id="org_mobile"
+                       @if(session('Error'))
+                           value="{{old('org_mobile')}}"
+                       @else
+                           value="{{$organization->mobile}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_mobile')}}</span>
                 @endif
@@ -99,7 +178,12 @@
 
             <label class="col-5 small-10" for="org_email">
                 <span>Correo principal</span>
-                <input type="email" name="org_email" id="org_email" value="{{old('org_email')}}">
+                <input type="email" name="org_email" id="org_email"
+                       @if(session('Error'))
+                           value="{{old('org_email')}}"
+                       @else
+                           value="{{$organization->email}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_email')}}</span>
                 @endif
@@ -107,7 +191,12 @@
 
             <label class="col-5 small-10" for="org_website">
                 <span>Sitio Web</span>
-                <input type="text" name="org_website" id="org_website" value="{{old('org_website')}}">
+                <input type="text" name="org_website" id="org_website"
+                       @if(session('Error'))
+                           value="{{old('org_website')}}"
+                       @else
+                           value="{{$organization->website}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_website')}}</span>
                 @endif
@@ -119,9 +208,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type16')) {{old('type16')}} @else Mínimo 3 años de experiencia verificable. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type16')) || (isset($award) && $award->file(16)))
+                            @if(session('Error'))
+                                {{old('type16')}}
+                            @else
+                                {{$award->file(16)->name}}
+                            @endif
+                        @else
+                            Mínimo 3 años de experiencia verificable.
+                        @endif
+                    </span>
                     <input type="file" id="type16">
-                    <input type="hidden" name="type16" value="{{old('type16')}}">
+                    <input type="hidden" name="type16"
+                           @if(session('Error'))
+                               value="{{old('type16')}}"
+                           @elseif(isset($award) && $award->file(16))
+                               value="{{$award->file(16)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type16')}}</span>
@@ -133,7 +237,12 @@
 
             <label class="col-10 small-10" for="prd_name">
                 <span>Nombre del espectáculo</span>
-                <input type="text" name="prd_name" id="prd_name" value="{{old('prd_name')}}">
+                <input type="text" name="prd_name" id="prd_name"
+                       @if(session('Error'))
+                           value="{{old('prd_name')}}"
+                       @elseif($production)
+                           value="{{$production->name}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_name')}}</span>
                 @endif
@@ -144,9 +253,25 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip">@if(old('type10')) {{old('type10')}} @else 400 caracteres máx @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type10')) || (isset($award) && $award->file(10)))
+                            @if(session('Error'))
+                                {{old('type10')}}
+                            @else
+                                {{$award->file(10)->name}}
+                            @endif
+                        @else
+                            400 caracteres máx
+                        @endif
+                    </span>
                     <input type="file" id="type10">
-                    <input type="hidden" name="type10" value="{{old('type10')}}">
+                    <input type="hidden" name="type10"
+                           @if(session('Error'))
+                               value="{{old('type10')}}"
+                           @elseif(isset($award) && $award->file(10))
+                               value="{{$award->file(10)->name}}"
+                           @endif >
+
                     @if (count($errors) > 0)
                         <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type10')}}</span>
                     @endif
@@ -158,10 +283,10 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="prd_genre" id="prd_genre">
                         <option value="">Selecciona el género</option>
-                        <option value="Teatro">Teatro</option>
-                        <option value="Circo - Teatro">Circo - Teatro</option>
-                        <option value="Danza - Teatro">Danza - Teatro</option>
-                        <option value="Teatro Musical">Teatro Musical</option>
+                        <option value="Teatro" @if(old('prd_genre') == 'Teatro') selected @endif >Teatro</option>
+                        <option value="Circo - Teatro" @if(old('prd_genre') == 'Circo - Teatro') selected @endif >Circo - Teatro</option>
+                        <option value="Danza - Teatro" @if(old('prd_genre') == 'Danza - Teatro') selected @endif >Danza - Teatro</option>
+                        <option value="Teatro Musical" @if(old('prd_genre') == 'Teatro Musical') selected @endif >Teatro Musical</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -175,9 +300,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type3')) {{old('type3')}} @else Si la obra contiene piezas musicales deben ser originales para la producción. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type3')) || (isset($award) && $award->file(3)))
+                            @if(session('Error'))
+                                {{old('type3')}}
+                            @else
+                                {{$award->file(3)->name}}
+                            @endif
+                        @else
+                            Si la obra contiene piezas musicales deben ser originales para la producción.
+                        @endif
+                    </span>
                     <input type="file" id="type3">
-                    <input type="hidden" name="type3" value="{{old('type3')}}">
+                    <input type="hidden" name="type3"
+                           @if(session('Error'))
+                               value="{{old('type3')}}"
+                           @elseif(isset($award) && $award->file(3))
+                               value="{{$award->file(3)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type3')}}</span>
@@ -192,9 +332,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type1')) {{old('type1')}} @else Máximo 20 lineas @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type1')) || (isset($award) && $award->file(1)))
+                            @if(session('Error'))
+                                {{old('type1')}}
+                            @else
+                                {{$award->file(1)->name}}
+                            @endif
+                        @else
+                            Máximo 20 lineas
+                        @endif
+                    </span>
                     <input type="file" id="type1">
-                    <input type="hidden" name="type1" value="{{old('type1')}}">
+                    <input type="hidden" name="type1"
+                           @if(session('Error'))
+                               value="{{old('type1')}}"
+                           @elseif(isset($award) && $award->file(1))
+                               value="{{$award->file(1)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type1')}}</span>
@@ -207,9 +362,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type2')) {{old('type2')}} @else Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type2')) || (isset($award) && $award->file(2)))
+                            @if(session('Error'))
+                                {{old('type2')}}
+                            @else
+                                {{$award->file(2)->name}}
+                            @endif
+                        @else
+                            Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores.
+                        @endif
+                    </span>
                     <input type="file" id="type2">
-                    <input type="hidden" name="type2" value="{{old('type2')}}">
+                    <input type="hidden" name="type2"
+                           @if(session('Error'))
+                               value="{{old('type2')}}"
+                           @elseif(isset($award) && $award->file(2))
+                               value="{{$award->file(2)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type2')}}</span>
@@ -222,9 +392,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type11')) {{old('type11')}} @else Puesta en escena, metodología de trabajo y proceso de creación. 2 pag. Máx. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type11')) || (isset($award) && $award->file(11)))
+                            @if(session('Error'))
+                                {{old('type11')}}
+                            @else
+                                {{$award->file(11)->name}}
+                            @endif
+                        @else
+                            Puesta en escena, metodología de trabajo y proceso de creación. 2 pag. Máx.
+                        @endif
+                    </span>
                     <input type="file" id="type11">
-                    <input type="hidden" name="type11" value="{{old('type11')}}">
+                    <input type="hidden" name="type11"
+                           @if(session('Error'))
+                               value="{{old('type11')}}"
+                           @elseif(isset($award) && $award->file(11))
+                               value="{{$award->file(11)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type11')}}</span>
@@ -237,9 +422,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" style="font-size: 11px"> @if(old('type12')) {{old('type12')}} @else Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos @endif </span>
+                    <span class="Register-tooltip" style="font-size: 11px">
+                        @if((session('Error') && old('type12')) || (isset($award) && $award->file(12)))
+                            @if(session('Error'))
+                                {{old('type12')}}
+                            @else
+                                {{$award->file(12)->name}}
+                            @endif
+                        @else
+                            Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos
+                        @endif
+                    </span>
                     <input type="file" id="type12">
-                    <input type="hidden" name="type12" value="{{old('type12')}}">
+                    <input type="hidden" name="type12"
+                           @if(session('Error'))
+                               value="{{old('type12')}}"
+                           @elseif(isset($award) && $award->file(12))
+                               value="{{$award->file(12)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type12')}}</span>
@@ -252,9 +452,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type13')) {{old('type13')}} @else Fases de desarrollo de la propuesta, los tiempos estimados para cada una de ellas y sus responsables. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type13')) || (isset($award) && $award->file(13)))
+                            @if(session('Error'))
+                                {{old('type13')}}
+                            @else
+                                {{$award->file(13)->name}}
+                            @endif
+                        @else
+                            Fases de desarrollo de la propuesta, los tiempos estimados para cada una de ellas y sus responsables.
+                        @endif
+                    </span>
                     <input type="file" id="type13">
-                    <input type="hidden" name="type13" value="{{old('type13')}}">
+                    <input type="hidden" name="type13"
+                           @if(session('Error'))
+                               value="{{old('type13')}}"
+                           @elseif(isset($award) && $award->file(13))
+                               value="{{$award->file(13)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type13')}}</span>
@@ -267,9 +482,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" style="font-size: 10px"> @if(old('type14')) {{old('type14')}} @else Para montajes de compañías o uniones que vivan por fuera de Bogotá, incluir los costos de estadía, transporte y viáticos necesarios para montaje de la obra en el Teatro Colón @endif </span>
+                    <span class="Register-tooltip" style="font-size: 10px">
+                        @if((session('Error') && old('type14')) || (isset($award) && $award->file(14)))
+                            @if(session('Error'))
+                                {{old('type14')}}
+                            @else
+                                {{$award->file(14)->name}}
+                            @endif
+                        @else
+                            Para montajes de compañías o uniones que vivan por fuera de Bogotá, incluir los costos de estadía, transporte y viáticos necesarios para montaje de la obra en el Teatro Colón
+                        @endif
+                    </span>
                     <input type="file" id="type14">
-                    <input type="hidden" name="type14" value="{{old('type14')}}">
+                    <input type="hidden" name="type14"
+                           @if(session('Error'))
+                               value="{{old('type14')}}"
+                           @elseif(isset($award) && $award->file(14))
+                               value="{{$award->file(14)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type14')}}</span>
@@ -282,9 +512,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" > @if(old('type15')) {{old('type15')}} @else Si el valor total excede el monto de la cofinanciación explique las otras fuentes de financiación. @endif </span>
+                    <span class="Register-tooltip" >
+                        @if((session('Error') && old('type15')) || (isset($award) && $award->file(15)))
+                            @if(session('Error'))
+                                {{old('type15')}}
+                            @else
+                                {{$award->file(15)->name}}
+                            @endif
+                        @else
+                            Si el valor total excede el monto de la cofinanciación explique las otras fuentes de financiación.
+                        @endif
+                    </span>
                     <input type="file" id="type15">
-                    <input type="hidden" name="type15" value="{{old('type15')}}">
+                    <input type="hidden" name="type15"
+                           @if(session('Error'))
+                               value="{{old('type15')}}"
+                           @elseif(isset($award) && $award->file(15))
+                               value="{{$award->file(15)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type15')}}</span>
@@ -297,9 +542,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" > @if(old('type7')) {{old('type7')}} @else Actores, diseñadores, escenógrafos, etc. @endif</span>
+                    <span class="Register-tooltip" >
+                        @if((session('Error') && old('type7')) || (isset($award) && $award->file(7)))
+                            @if(session('Error'))
+                                {{old('type7')}}
+                            @else
+                                {{$award->file(7)->name}}
+                            @endif
+                        @else
+                            Actores, diseñadores, escenógrafos, etc.
+                        @endif
+                    </span>
                     <input type="file" id="type7">
-                    <input type="hidden" name="type7" value="{{old('type7')}}">
+                    <input type="hidden" name="type7"
+                           @if(session('Error'))
+                               value="{{old('type7')}}"
+                           @elseif(isset($award) && $award->file(7))
+                               value="{{$award->file(7)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type7')}}</span>
@@ -312,14 +572,26 @@
         <div class="row Register-contentLabel">
             <label class="col-5 small-10" for="rep_name">
                 <span>Nombres</span>
-                <input type="text" name="rep_name" id="rep_name" value="{{old('rep_name')}}">
+                <input type="text" name="rep_name" id="rep_name"
+                       @if(session('Error'))
+                           value="{{old('rep_name')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->name}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_name')}}</span>
                 @endif
             </label>
+
             <label class="col-5 small-10" for="rep_last_name">
                 <span>Apellidos</span>
-                <input type="text" name="rep_last_name" id="rep_last_name" value="{{old('rep_last_name')}}">
+                <input type="text" name="rep_last_name" id="rep_last_name"
+                       @if(session('Error'))
+                           value="{{old('rep_last_name')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->last_name}}"
+                       @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_last_name')}}</span>
                 @endif
@@ -330,9 +602,9 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="rep_doc_typ" id="rep_doc_typ">
                         <option value="1">Selecciona Documento</option>
-                        <option value="2">Cédula</option>
-                        <option value="3">Cédula de Extranjería</option>
-                        <option value="4">Pasaporte</option>
+                        <option value="2" @if(old('rep_doc_typ') == 2) selected @endif >Cédula</option>
+                        <option value="3" @if(old('rep_doc_typ') == 3) selected @endif >Cédula de Extranjería</option>
+                        <option value="4" @if(old('rep_doc_typ') == 4) selected @endif >Pasaporte</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -342,7 +614,12 @@
 
             <label class="col-5 small-10" for="rep_doc_number">
                 <span>Número de documento</span>
-                <input type="text" name="rep_doc_number" id="rep_doc_number" value="{{old('rep_doc_number')}}">
+                <input type="text" name="rep_doc_number" id="rep_doc_number"
+                       @if(session('Error'))
+                           value="{{old('rep_doc_number')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->document_number}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_doc_number')}}</span>
                 @endif
@@ -350,7 +627,12 @@
 
             <label class="col-5 small-10" for="rep_mobile">
                 <span>Teléfono celular</span>
-                <input type="text" name="rep_mobile" id="rep_mobile" value="{{old('rep_mobile')}}">
+                <input type="text" name="rep_mobile" id="rep_mobile"
+                       @if(session('Error'))
+                           value="{{old('rep_mobile')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->mobile}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_mobile')}}</span>
                 @endif
@@ -360,7 +642,12 @@
 
             <label class=" col-5 small-10" for="rep_email">
                 <span>Correo institucional</span>
-                <input type="email" name="rep_email" id="rep_email" value="{{old('rep_email')}}">
+                <input type="email" name="rep_email" id="rep_email"
+                       @if(session('Error'))
+                           value="{{old('rep_email')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->email1}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email')}}</span>
                 @endif
@@ -368,7 +655,12 @@
 
             <label class=" col-5 small-10" for="rep_email2">
                 <span>Correo personal</span>
-                <input type="email" name="rep_email2" id="rep_email2" value="{{old('rep_email2')}}">
+                <input type="email" name="rep_email2" id="rep_email2"
+                       @if(session('Error'))
+                           value="{{old('rep_email2')}}"
+                       @elseif($propietor)
+                           value="{{$propietor->email2}}"
+                       @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
@@ -382,9 +674,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type18')) {{old('type18')}} @else Firmado por todos los miembros de la unión temporal, en el que delegan su representación a un integrante del grupo. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type18')) || (isset($award) && $award->file(18)))
+                            @if(session('Error'))
+                                {{old('type18')}}
+                            @else
+                                {{$award->file(18)->name}}
+                            @endif
+                        @else
+                            Firmado por todos los miembros de la unión temporal, en el que delegan su representación a un integrante del grupo.
+                        @endif
+                    </span>
                     <input type="file" id="type18">
-                    <input type="hidden" name="type18" id="type18" value="{{old('type18')}}">
+                    <input type="hidden" name="type18" id="type18"
+                           @if(session('Error'))
+                               value="{{old('type18')}}"
+                           @elseif(isset($award) && $award->file(18))
+                               value="{{$award->file(18)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type18')}}</span>
@@ -397,9 +704,24 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip"> @if(old('type17')) {{old('type17')}} @else Aceptación de las reglas del contrato de coproducción con El Teatro Colón. @endif </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type17')) || (isset($award) && $award->file(17)))
+                            @if(session('Error'))
+                                {{old('type17')}}
+                            @else
+                                {{$award->file(17)->name}}
+                            @endif
+                        @else
+                            Aceptación de las reglas del contrato de coproducción con El Teatro Colón.
+                        @endif
+                    </span>
                     <input type="file" id="type17">
-                    <input type="hidden" name="type17" value="{{old('type17')}}">
+                    <input type="hidden" name="type17"
+                           @if(session('Error'))
+                               value="{{old('type17')}}"
+                           @elseif(isset($award) && $award->file(17))
+                               value="{{$award->file(17)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type17')}}</span>
@@ -411,9 +733,20 @@
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip">{{old('type19')}}</span>
+                    <span class="Register-tooltip">
+                        @if(session('Error'))
+                            {{old('type19')}}
+                        @elseif(isset($award) && $award->file(19))
+                            {{$award->file(19)->name}}
+                        @endif
+                    </span>
                     <input type="file" id="type19">
-                    <input type="hidden" name="type19" value="{{old('type19')}}">
+                    <input type="hidden" name="type19"
+                           @if(session('Error'))
+                               value="{{old('type19')}}"
+                           @elseif(isset($award) && $award->file(19))
+                               value="{{$award->file(19)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type19')}}</span>

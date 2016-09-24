@@ -113,7 +113,7 @@ return [
             'required' => 'El registro audiovisual es obligatorio'
         ],
         'rep_doc_typ' => [
-            'different' => 'El campo "tipo de documento" es obligatorio'
+            'not_in' => 'El campo "tipo de documento" es obligatorio'
         ]
 
     ],

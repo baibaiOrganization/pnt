@@ -45,27 +45,36 @@ class UserManagement{
             ? $organization->propietor->update($data['propietor'])
             : Propietor::create($data['propietor']);
 
-        $production = $organization->production
-                    ? $organization->production
-                    : Production::create($data['production']);
+        $isUpdate = false;
+        foreach($organization->awards as $key => $a){
+            $isUpdate = $a->award_type_id == $awardType;
+            if($isUpdate){
+                $award = $a;
+                $organization->awards[$key]->update(['state' => $data['state']]);
+                $award->production->update($data['production']);
+            }
+        }
 
-        $award = $production->award
-               ? $production->award
-               : Award::create([
-                    'award_type_id' => $awardType,
-                    'production_id' => $production->id,
-                    'state' => $data['state']
-                 ]);
+        if(!$isUpdate){
+            $production = Production::create($data['production']);
+            $award = Award::create([
+                'award_type_id' => $awardType,
+                'production_id' => $production->id,
+                'state' => $data['state']
+            ]);
 
-        $organization->awards()->attach($award->id);
-        static::uploadFile($award, $inputs, false);
+            $organization->awards()->attach($award->id);
+        }
+
+        static::uploadFile($award, $inputs, isset($inputs['isUpdate']));
     }
-
-    private static function uploadFile($award, $inputs, $isUpdate = true){
+    
+    private static function uploadFile($award, $inputs, $isUpdate = false){
         foreach ($inputs as $key => $file){
             if(strpos($key, 'type') !== false && strpos($file, 'temp') != false){
-                $fileName = explode('/temp/', $file)[1];
-                rename(base_path('public' . $file), base_path('public/uploads/semana/' . $fileName));
+                $fileName = $isUpdate ? $file : explode('/temp/', $file)[1];
+                !$isUpdate ? rename(base_path('public' . $file), base_path('public/uploads/semana/' . $fileName)) : null;
+
                 $type = explode('type', $key)[1];
                 $fileData = [
                     'name' => $fileName,
@@ -73,7 +82,7 @@ class UserManagement{
                     'award_id' => $award->id
                 ];
 
-                $isUpdate
+                $award->file($type)
                     ? $award->file($type)->update($fileData)
                     : File::create($fileData);
             }
@@ -108,7 +117,7 @@ class UserManagement{
                 'email2' => $inputs['rep_email2'],
             ],
 
-            'state' => !isset($inputs['isUpdate'])
+            'state' => isset($inputs['isUpdate']) ? 0 : 1
         ];
     }
 
@@ -142,7 +151,7 @@ class UserManagement{
                 'email2' => $inputs['rep_email2'],
             ],
 
-            'state' => !isset($inputs['isUpdate'])
+            'state' => isset($inputs['isUpdate']) ? 0 : 1
         ];
     }
 }

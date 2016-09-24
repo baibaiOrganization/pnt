@@ -16,18 +16,21 @@ class ColonController extends Controller
             if($award['award_type_id'] == 1 && $award['state'] == 1)
                 return redirect()->route('choose');
         }
-
+        
         return view('front.colon');
     }
     
     public function create(Request $request){
         $inputs = $request->all();
         $validate = Validator::make($inputs, Validation::getColonRules());
-
+        $message = isset($inputs['isUpdate']) 
+                 ? 'El formulario se ha guardado con exito'
+                 : 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.';
+        
         if($validate->fails() && !isset($inputs['isUpdate']))
-            return redirect()->back()->withErrors($validate)->withInput();
+            return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
 
         UserManagement::insertColon(auth()->user()->organization , $inputs);
-        return redirect()->route('choose')->with(['Success' => 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.']);
+        return redirect()->route('choose')->with(['Success' => $message]);
     }
 }

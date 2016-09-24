@@ -18,7 +18,7 @@ class Validation {
 
             'rep_name' => 'required',
             'rep_last_name' => 'required',
-            'rep_doc_typ' => 'required',
+            'rep_doc_typ' => 'not_in:1',
             'rep_doc_number' => 'required|numeric',
             'rep_mobile' => 'required|numeric',
             'rep_email' => 'required|email',
@@ -59,7 +59,7 @@ class Validation {
 
             'rep_name' => 'required',
             'rep_last_name' => 'required',
-            'rep_doc_typ' => 'required|different:1',
+            'rep_doc_typ' => 'required|not_in:1',
             'rep_doc_number' => 'required|numeric',
             'rep_mobile' => 'required|numeric',
             'rep_email1' => 'required|email',
