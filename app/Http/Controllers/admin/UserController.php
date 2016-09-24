@@ -25,9 +25,9 @@ class UserController extends Controller
 
     public function searchUser(Request $request, $type){
         $search = $request->get('search');
-        $users = $search 
-            ? $this->getUsers($type) 
-            : $this->getSearchUsers($type);
+        $users = !$search
+            ? $this->getUsers($type)
+            : $this->getSearchUsers($type, $search);
         
         if($type == 1)
             return view('back.colonUsers', compact('users'));
@@ -85,7 +85,7 @@ class UserController extends Controller
         })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
     }
 
-    private function getSearchUsers($type){
+    private function getSearchUsers($type, $search){
         return Organization::whereHas('user', function($q) use($search, $type){
             $q->where([
                 ['users.email', 'like', '%' . $search . '%'],
@@ -95,7 +95,7 @@ class UserController extends Controller
                 ['users.role_id', 2]
             ]);
         })->whereHas('awards', function($query) use($type){
-            $query->where('award_type_id', 2);
+            $query->where('award_type_id', $type);
         })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
     }
 }
