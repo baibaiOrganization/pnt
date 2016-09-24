@@ -18,7 +18,6 @@
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
 
-
         <h2 class="col-12">DATOS BÁSICOS DE LA ORGANIZACIÓN</h2>
         <div class=" row Register-contentLabel">
             <label class="col-10 small-10" for="org_name">
@@ -27,7 +26,7 @@
                 <input type="text" name="org_name" id="org_name"
                        @if(session('Error'))
                            value="{{old('org_name')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->name}}"
                        @endif>
 
@@ -143,7 +142,7 @@
                 <input type="text" name="org_address" id="org_address"
                        @if(session('Error'))
                            value="{{old('org_address')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->address}}"
                        @endif >
                 @if (count($errors) > 0)
@@ -156,7 +155,7 @@
                 <input type="text" name="org_phone" id="org_phone"
                        @if(session('Error'))
                            value="{{old('org_phone')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->phone}}"
                        @endif >
                 @if (count($errors) > 0)
@@ -168,7 +167,7 @@
                 <input type="text" name="org_mobile" id="org_mobile"
                        @if(session('Error'))
                            value="{{old('org_mobile')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->mobile}}"
                        @endif >
                 @if (count($errors) > 0)
@@ -181,7 +180,7 @@
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
                            value="{{old('org_email')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->email}}"
                        @endif >
                 @if (count($errors) > 0)
@@ -194,7 +193,7 @@
                 <input type="text" name="org_website" id="org_website"
                        @if(session('Error'))
                            value="{{old('org_website')}}"
-                       @else
+                       @elseif($organization)
                            value="{{$organization->website}}"
                        @endif >
                 @if (count($errors) > 0)
@@ -578,6 +577,7 @@
                        @elseif($propietor)
                            value="{{$propietor->name}}"
                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_name')}}</span>
                 @endif
@@ -633,6 +633,7 @@
                        @elseif($propietor)
                            value="{{$propietor->mobile}}"
                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_mobile')}}</span>
                 @endif
@@ -648,6 +649,7 @@
                        @elseif($propietor)
                            value="{{$propietor->email1}}"
                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email')}}</span>
                 @endif
@@ -661,6 +663,7 @@
                        @elseif($propietor)
                            value="{{$propietor->email2}}"
                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
@@ -754,7 +757,7 @@
             </label>
         </div>
 
-        <div class="center row"><button style="margin: 20px 0 0 0;" id="saveForm"> GUARDAR</button></div>
+        <div class="center row"><button style="margin: 20px 0 0 0;" id="saveForm"> TERMINAR DESPUÉS</button></div>
         <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
     </form>

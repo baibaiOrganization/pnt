@@ -5,7 +5,7 @@
     <div class="Register-header Colon">
         <h1>USUARIO INSCRITO AL PREMIO TEATRO COlÓN</h1>
     </div>
-    <form action="{{ route('colonUpdate', $user->id) }}" enctype="multipart/form-data" method="post" class=" Register-form Colon-form">
+    <form action="{{ route('colonUpdate', $award->id) }}" enctype="multipart/form-data" method="post" class=" Register-form Colon-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">
 
@@ -13,7 +13,7 @@
         <div class=" row Register-contentLabel">
             <label class="col-10 small-10" for="org_name">
                 <span>Nombre de la agrupación, grupo constituído o unión temporal</span>
-                <input type="text" name="org_name" id="org_name" value="{{$user->name}}">
+                <input type="text" name="org_name" id="org_name" value="{{$award->organization->name}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_name')}}</span>
                 @endif
@@ -25,7 +25,7 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option value="Bogotá">Bógota</option>
-                        <option value="Medellín" @if($user->city == 'Medellín') selected @endif >Medellín</option>
+                        <option value="Medellín" @if($award->organization->city == 'Medellín') selected @endif >Medellín</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -34,35 +34,35 @@
             </label>
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
-                <input type="text" name="org_address" id="org_address" value="{{$user->address}}">
+                <input type="text" name="org_address" id="org_address" value="{{$award->organization->address}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_address')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="org_phone">
                 <span>Teléfono fijo</span>
-                <input type="text" name="org_phone" id="org_phone" value="{{$user->phone}}">
+                <input type="text" name="org_phone" id="org_phone" value="{{$award->organization->phone}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_phone')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="org_mobile">
                 <span>Teléfono Celular</span>
-                <input type="text" name="org_mobile" id="org_mobile" value="{{$user->mobile}}">
+                <input type="text" name="org_mobile" id="org_mobile" value="{{$award->organization->mobile}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_mobile')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="org_email">
                 <span>Correo principal</span>
-                <input type="email" name="org_email" id="org_email" value="{{$user->email}}">
+                <input type="email" name="org_email" id="org_email" value="{{$award->organization->email}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_email')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="org_website">
                 <span>Sitio Web</span>
-                <input type="text" name="org_website" id="org_website" value="{{$user->website}}">
+                <input type="text" name="org_website" id="org_website" value="{{$award->organization->website}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_website')}}</span>
                 @endif
@@ -70,7 +70,7 @@
 
             <label class="col-12 small-10 row Colon-social" for="group_name">
                 <span  class="col-12 ">Redes sociales (facebook, instagram, twitter)</span>
-                <?php $socials = explode(',', $user->socials)?>
+                <?php $socials = explode(',', $award->organization->socials)?>
                 <input class="col-4" type="text" name="facebook" id="facebook" value="{{$socials[0]}}">
                 <input  class="col-4" type="text" name="instagram" id="instagram" value="{{$socials[1]}}">
                 <input class="col-4"  type="text" name="twitter" id="twitter" value="{{$socials[2]}}">
@@ -84,43 +84,42 @@
         </div>
         <h2 class="col-12">DATOS DE LA PRODUCCIÓN ARTÍSTICA</h2>
         <div class=" row Register-contentLabel">
-        @foreach($user->awards as $award)
-            @if($award['award_type_id'] == 1)
-                <label class="col-10 small-10" for="prd_name">
-                    <span>Nombre del espectáculo</span>
-                    <input type="text" name="prd_name" id="prd_name" value="{{$award->production->name}}">
-                    @if (count($errors) > 0)
-                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_name')}}</span>
-                    @endif
-                </label>
-                <label class="col-5 small-10" for="prd_date">
-                    <span>Fecha de estreno</span>
-                    <input type="date" name="prd_date" id="prd_date" value="{{$award->production->release_date}}">
-                    @if (count($errors) > 0)
-                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_date')}}</span>
-                    @endif
-                </label>
-                <label for="prd_genre" class="col-5  small-10">
-                    <div class="Register-contentSelect">
-                        <span>Género:</span>
-                        <span class="Register-arrowSelect">▼</span>
-                        <select name="prd_genre" id="prd_genre">
-                            <option value="Teatro">Teatro</option>
-                            <option value="Circo - Teatro" @if($award->production->genre == 'Circo - Teatro') selected @endif >Circo - Teatro</option>
-                            <option value="Danza - Teatro" @if($award->production->genre == 'Danza - Teatro') selected @endif >Danza - Teatro</option>
-                            <option value="Teatro Musical" @if($award->production->genre == 'Teatro Musical') selected @endif >Teatro Musical</option>
-                        </select>
-                    </div>
-                    @if (count($errors) > 0)
-                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_genre')}}</span>
-                    @endif
-                </label>
+            <label class="col-10 small-10" for="prd_name">
+                <span>Nombre del espectáculo</span>
+                <input type="text" name="prd_name" id="prd_name" value="{{$award->production->name}}">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_name')}}</span>
+                @endif
+            </label>
 
-                @foreach($award->files as $file)
-                    @if($file->file_type_id == 1)
-                        <label class="col-5 small-10" for="type1">
+            <label class="col-5 small-10" for="prd_date">
+                <span>Fecha de estreno</span>
+                <input type="date" name="prd_date" id="prd_date" value="{{$award->production->release_date}}">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_date')}}</span>
+                @endif
+            </label>
+
+            <label for="prd_genre" class="col-5  small-10">
+                <div class="Register-contentSelect">
+                    <span>Género:</span>
+                    <span class="Register-arrowSelect">▼</span>
+                    <select name="prd_genre" id="prd_genre">
+                        <option value="Teatro">Teatro</option>
+                        <option value="Circo - Teatro" @if($award->production->genre == 'Circo - Teatro') selected @endif >Circo - Teatro</option>
+                        <option value="Danza - Teatro" @if($award->production->genre == 'Danza - Teatro') selected @endif >Danza - Teatro</option>
+                        <option value="Teatro Musical" @if($award->production->genre == 'Teatro Musical') selected @endif >Teatro Musical</option>
+                    </select>
+                </div>
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_genre')}}</span>
+                @endif
+            </label>
+
+            @foreach($award->files as $file)
+                @if($file->file_type_id == 1)
+                    <label class="col-5 small-10" for="type1">
                         <span>Sinópsis (.pdf)</span>
-
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
@@ -136,7 +135,7 @@
                     </label>
                         @continue
                     @elseif($file->file_type_id == 2)
-                        <label class="col-5 small-10" for="type2">
+                    <label class="col-5 small-10" for="type2">
                         <span>Texto o libreto (.pdf)</span>
                         <div class="Register-file">
                             <span class="Register-actions">
@@ -247,8 +246,6 @@
                         <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_video')}}</span>
                     @endif
                 </label>
-            @endif
-        @endforeach
         </div>
 
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
@@ -256,14 +253,14 @@
         <div class="row Register-contentLabel">
             <label class="col-5 small-10" for="rep_name">
                 <span>Nombres</span>
-                <input type="text" name="rep_name" id="rep_name" value="{{$user->propietor->name}}">
+                <input type="text" name="rep_name" id="rep_name" value="{{$award->propietor->name}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_name')}}</span>
                 @endif
             </label>
             <label class="col-5 small-10" for="rep_last_name">
                 <span>Apellidos</span>
-                <input type="text" name="rep_last_name" id="rep_last_name" value="{{$user->propietor->last_name}}">
+                <input type="text" name="rep_last_name" id="rep_last_name" value="{{$award->propietor->last_name}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_last_name')}}</span>
                 @endif
@@ -274,8 +271,8 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="rep_doc_typ" id="rep_doc_typ">
                         <option value="2">Cédula</option>
-                        <option value="3" @if($user->propietor->document_type_id == 2) selected @endif >Cédula de Extranjería</option>
-                        <option value="4" @if($user->propietor->document_type_id == 3) selected @endif >Pasaporte</option>
+                        <option value="3" @if($award->propietor->document_type_id == 2) selected @endif >Cédula de Extranjería</option>
+                        <option value="4" @if($award->propietor->document_type_id == 3) selected @endif >Pasaporte</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -285,7 +282,7 @@
 
             <label class="col-5 small-10" for="rep_doc_number">
                 <span>Número de documento</span>
-                <input type="text" name="rep_doc_number" id="rep_doc_number" value="{{$user->propietor->document_number}}">
+                <input type="text" name="rep_doc_number" id="rep_doc_number" value="{{$award->propietor->document_number}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_doc_number')}}</span>
                 @endif
@@ -293,7 +290,7 @@
 
             <label class="col-5 small-10" for="rep_mobile">
                 <span>Teléfono celular</span>
-                <input type="text" name="rep_mobile" id="rep_mobile" value="{{$user->propietor->mobile}}">
+                <input type="text" name="rep_mobile" id="rep_mobile" value="{{$award->propietor->mobile}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_mobile')}}</span>
                 @endif
@@ -303,7 +300,7 @@
 
             <label class=" col-5 small-10" for="rep_email1">
                 <span>Correo electrónico</span>
-                <input type="email" name="rep_email1" id="rep_email1" value="{{$user->propietor->email1}}">
+                <input type="email" name="rep_email1" id="rep_email1" value="{{$award->propietor->email1}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email1')}}</span>
                 @endif
@@ -311,7 +308,7 @@
 
             <label class=" col-5 small-10" for="rep_email2">
                 <span>Correo electrónico 2</span>
-                <input type="email" name="rep_email2" id="rep_email2" value="{{$user->propietor->email2}}">
+                <input type="email" name="rep_email2" id="rep_email2" value="{{$award->propietor->email2}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif

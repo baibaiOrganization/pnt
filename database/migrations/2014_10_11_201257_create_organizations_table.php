@@ -21,6 +21,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('phone');
             $table->string('mobile');
             $table->string('website');
+            $table->string('socials');
             $table->timestamps();
         });
     }

@@ -37,35 +37,34 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($organizations as $organization)
-        <?php $award = $organization->awardColon()?>
+    @foreach($awards as $award)
         <tr>
-            <td>{{$organization->name}}</td>
-            <td>{{$organization->email}}</td>
-            <td>{{$organization->city}}</td>
-            <td>{{$organization->address}}</td>
-            <td>{{$organization->phone}}</td>
-            <td>{{$organization->mobile}}</td>
-            <td>{{$organization->website}}</td>
+            <td>{{$award->organization->name}}</td>
+            <td>{{$award->organization->email}}</td>
+            <td>{{$award->organization->city}}</td>
+            <td>{{$award->organization->address}}</td>
+            <td>{{$award->organization->phone}}</td>
+            <td>{{$award->organization->mobile}}</td>
+            <td>{{$award->organization->website}}</td>
 
             <td>{{$award->production->name}}</td>
             <td>{{$award->production->release_date}}</td>
             <td>{{$award->production->genre}}</td>
             <td>{{$award->production->link_video}}</td>
 
-            <td>{{$organization->propietor->name}}</td>
-            <td>{{$organization->propietor->last_name}}</td>
-            @if($organization->propietor->document_type == 1)
+            <td>{{$award->propietor->name}}</td>
+            <td>{{$award->propietor->last_name}}</td>
+            @if($award->propietor->document_type == 1)
             <td>Cédula</td>
-            @elseif($organization->propietor->document_type == 2)
+            @elseif($award->propietor->document_type == 2)
             <td>Cédula de extranjería</td>
             @else
             <td>Pasaporte</td>
             @endif
-            <td>{{$organization->propietor->document_number}}</td>
-            <td>{{$organization->propietor->mobile}}</td>
-            <td>{{$organization->propietor->email1}}</td>
-            <td>{{$organization->propietor->email2}}</td>
+            <td>{{$award->propietor->document_number}}</td>
+            <td>{{$award->propietor->mobile}}</td>
+            <td>{{$award->propietor->email1}}</td>
+            <td>{{$award->propietor->email2}}</td>
         </tr>
     @endforeach
     </tbody>

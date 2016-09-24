@@ -2,6 +2,7 @@
 
 namespace Theater\Http\Controllers\admin;
 
+use Theater\Entities\Award;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -25,33 +26,33 @@ class UserController extends Controller
 
     public function searchUser(Request $request, $type){
         $search = $request->get('search');
-        $users = !$search
+        $awards = !$search
             ? $this->getUsers($type)
             : $this->getSearchUsers($type, $search);
-        
+
         if($type == 1)
-            return view('back.colonUsers', compact('users'));
-        return view('back.semanaUsers', compact('users'));
+            return view('back.colonUsers', compact('awards'));
+        return view('back.semanaUsers', compact('awards'));
     }
 
     public function colonUsers(){
-        $users = $this->getUsers(1);
-        return view('back.colonUsers', compact('users'));
+        $awards = $this->getUsers(1);
+        return view('back.colonUsers', compact('awards'));
     }
 
     public function semanaUsers(){
-        $users = $this->getUsers(2);
-        return view('back.semanaUsers', compact('users'));
+        $awards = $this->getUsers(2);
+        return view('back.semanaUsers', compact('awards'));
     }
     
     public function semanaEditUser($id){
-        $user = Organization::with(['awards'])->find($id);
-        return view('back.semanaEditUser', compact('user'));
+        $award = Award::with('organization')->find($id);
+        return view('back.semanaEditUser', compact('award'));
     }
 
     public function colonEditUser($id){
-        $user = Organization::with(['awards'])->find($id);
-        return view('back.colonEditUser', compact('user'));
+        $award = Award::with('organization')->find($id);
+        return view('back.colonEditUser', compact('award'));
     }
 
     public function semanaUpdate(Request $request, $id){
@@ -61,8 +62,8 @@ class UserController extends Controller
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput();
 
-        $org = Organization::find($id);
-        UserManagement::updateSemana($org, $inputs);
+        $award = Award::find($id);
+        UserManagement::updateSemana($award, $inputs);
         return redirect()->route('semanaUsers')->with(['Success' => 'La inscripción se ha actualizado satisfactoriamente.']);
     }
 
@@ -72,36 +73,27 @@ class UserController extends Controller
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput();
 
-        $org = Organization::find($id);
-        UserManagement::updateColon($org, $inputs);
+        $award = Award::find($id);
+        UserManagement::updateColon($award, $inputs);
         return redirect()->route('colonUsers')->with(['Success' => 'La inscripción se ha actualizado satisfactoriamente.']);;
     }
 
     private function getUsers($type){
-        return Organization::whereHas('user', function($query){
-            $query->select('id')->where('role_id', 2);
-        })->whereHas('awards', function($query) use($type){
-            $query->where([
-                ['award_type_id', $type],
-                ['state', 1]
-            ]);
-        })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
+        return Award::whereHas('user', function($query){
+            $query->where('state', 1);
+        })->where('award_type_id', $type)
+          ->with(['organization'])
+          ->paginate(20);
     }
 
     private function getSearchUsers($type, $search){
-        return Organization::whereHas('user', function($q) use($search, $type){
-            $q->where([
-                ['users.email', 'like', '%' . $search . '%'],
-                ['users.role_id', 2]
-            ])->orWhere([
-                ['organizations.name', 'like', '%' . $search . '%'],
-                ['users.role_id', 2]
-            ]);
-        })->whereHas('awards', function($query) use($type){
-            $query->where([
-                ['award_type_id', $type],
-                ['state', 1]
-            ]);
-        })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
+        return Award::where([
+            ['award_type_id', $type],
+            ['state', 1]
+        ])->whereHas('user', function($q) use($search, $type){
+            $q->where('users.email', 'like', '%' . $search . '%');
+        })->orWhereHas('organization', function($q) use($search, $type){
+            $q->where('organizations.name', 'like', '%' . $search . '%');
+        })->with(['user', 'organization'])->paginate(20);
     }
 }

@@ -10,14 +10,20 @@ use Validator;
 class ColonController extends Controller
 {
     public function index(){
-        $awards = auth()->user()->organization->awards;
-
-        foreach ($awards as $award){
-            if($award['award_type_id'] == 1 && $award['state'] == 1)
-                return redirect()->route('choose');
+        foreach (auth()->user()->awards as $awd){
+            if($awd['award_type_id'] == 1) {
+                if ($awd['state'] == 1)
+                    return redirect()->route('choose');
+                else
+                    $award = $awd;
+            }
         }
-        
-        return view('front.colon');
+
+        $organization = isset($award) ? $award->organization : null;
+        $propietor = isset($award) ? $award->propietor : null;
+        $production = isset($award) ? $award->production : null;
+
+        return view('front.colon', compact('organization', 'award', 'propietor', 'production'));
     }
     
     public function create(Request $request){
@@ -30,7 +36,7 @@ class ColonController extends Controller
         if($validate->fails() && !isset($inputs['isUpdate']))
             return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
 
-        UserManagement::insertColon(auth()->user()->organization , $inputs);
+        UserManagement::insertColon(auth()->user(), $inputs);
         return redirect()->route('choose')->with(['Success' => $message]);
     }
 }

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Propietor extends Model
 {
-    protected $fillable = ['name', 'last_name', 'document_type_id', 'document_number', 'mobile', 'email1', 'email2', 'organization_id'];
+    protected $fillable = ['name', 'last_name', 'document_type_id', 'document_number', 'mobile', 'email1', 'email2'];
 
-    public function organization(){
-        return $this->hasOne(Organization::class);
+    public function award(){
+        return $this->hasOne(Award::class);
     }
 
     public function documentType(){

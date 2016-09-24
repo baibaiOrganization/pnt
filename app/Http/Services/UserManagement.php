@@ -3,67 +3,66 @@
 namespace Theater\Http\Services;
 
 use Theater\Entities\Award;
+use Theater\Entities\Organization;
 use Theater\Entities\Production;
 use Theater\Entities\Propietor;
 use Theater\Entities\File;
 
 class UserManagement{
 
-    public static function insertColon($organization, $inputs){
+    public static function insertColon($user, $inputs){
         $data = static::getColonInputs($inputs);
-        static::insert($organization, $data, $inputs, 1);
+        static::insert($user, $data, $inputs, 1);
     }
 
-    public static function insertSemana($organization, $inputs){
+    public static function insertSemana($user, $inputs){
         $data = static::getSemanaInputs($inputs);
-        static::insert($organization, $data, $inputs, 2);
+        static::insert($user, $data, $inputs, 2);
     }
 
-    public static function updateColon($organization, $inputs){
+    public static function updateColon($award, $inputs){
         $data = static::getColonInputs($inputs);
-        $award = $organization->awardColon();
-        static::update($organization, $data, $inputs, $award);
+        static::update($award, $data, $inputs);
     }
 
-    public static function updateSemana($organization, $inputs){
+    public static function updateSemana($award, $inputs){
         $data = static::getSemanaInputs($inputs);
-        $award = $organization->awardSemana();
-        static::update($organization, $data, $inputs, $award);
+        static::update($award, $data, $inputs);
     }
 
-    private static function update($organization, $data, $inputs, $award){
-        $organization->update($data['organization']);
-        $organization->propietor->update($data['propietor']);
+    private static function update($award, $data, $inputs){
+        $award->organization->update($data['organization']);
+        $award->propietor->update($data['propietor']);
         $award->production->update($data['production']);
         static::uploadFile($award, $inputs);
     }
 
-    private static function insert($organization, $data, $inputs, $awardType){
-        $organization->update($data['organization']);
-        $data['propietor']['organization_id'] = $organization->id;
-        $organization->propietor
-            ? $organization->propietor->update($data['propietor'])
-            : Propietor::create($data['propietor']);
-
+    private static function insert($user, $data, $inputs, $awardType){
         $isUpdate = false;
-        foreach($organization->awards as $key => $a){
+        foreach($user->awards as $key => $a){
             $isUpdate = $a->award_type_id == $awardType;
             if($isUpdate){
                 $award = $a;
-                $organization->awards[$key]->update(['state' => $data['state']]);
+                $award->update(['state' => $data['state']]);
+                $award->organization->update($data['organization']);
                 $award->production->update($data['production']);
+                $award->propietor->update($data['propietor']);
+                break;
             }
         }
 
         if(!$isUpdate){
+            $organization = Organization::create($data['organization']);
             $production = Production::create($data['production']);
+            $propietor = Propietor::create($data['propietor']);
             $award = Award::create([
+                'state' => $data['state'],
                 'award_type_id' => $awardType,
+                'user_id' => $user->id,
+                'organization_id' => $organization->id,
                 'production_id' => $production->id,
-                'state' => $data['state']
+                'propietor_id' => $propietor->id
             ]);
-
-            $organization->awards()->attach($award->id);
         }
 
         static::uploadFile($award, $inputs, isset($inputs['isUpdate']));

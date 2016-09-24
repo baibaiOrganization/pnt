@@ -16,9 +16,7 @@ use Theater\Entities\File;
 class SemanaController extends Controller
 {
     public function index(){
-        $organization = auth()->user()->organization;
-
-        foreach ($organization->awards as $awd){
+        foreach (auth()->user()->awards as $awd){
             if($awd['award_type_id'] == 2){
                 if($awd['state'] == 1)
                     return redirect()->route('choose');
@@ -27,7 +25,8 @@ class SemanaController extends Controller
             }
         }
 
-        $propietor = $organization->propietor;
+        $organization = isset($award) ? $award->organization : null;
+        $propietor = isset($award) ? $award->propietor : null;
         $production = isset($award) ? $award->production : null;
         return view('front.semana', compact('organization', 'award', 'propietor', 'production'));
     }
@@ -42,7 +41,7 @@ class SemanaController extends Controller
         if($validate->fails() && !isset($inputs['isUpdate']))
             return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
 
-        UserManagement::insertSemana(auth()->user()->organization, $inputs);
+        UserManagement::insertSemana(auth()->user() ,$inputs);
         return redirect()->route('choose')->with(['Success' => $message]);
     }
 }

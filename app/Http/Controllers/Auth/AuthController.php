@@ -90,13 +90,10 @@ class AuthController extends Controller
 
     protected function create(array $data)
     {
-        $organization = Organization::create();
-        
         return User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role_id' => 2,
-            'organization_id' => $organization->id
         ]);
     }
 }

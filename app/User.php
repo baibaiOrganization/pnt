@@ -3,7 +3,7 @@
 namespace Theater;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Theater\Entities\Organization;
+use Theater\Entities\Award;
 
 class User extends Authenticatable
 {
@@ -12,9 +12,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'role_id', 'organization_id'
-    ];
+    protected $fillable = ['name', 'email', 'password', 'role_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -25,7 +23,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function organization(){
-        return $this->belongsTo(Organization::class);
+    public function awards(){
+        return $this->hasMany(Award::class);
     }
 }

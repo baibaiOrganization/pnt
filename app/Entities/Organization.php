@@ -9,18 +9,11 @@ class Organization extends Model
 {
     protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website', 'socials'];
 
-    public function user(){
-        return $this->hasOne(User::class);
+    public function award(){
+        return $this->hasOne(Award::class);
     }
 
-    public function propietor(){
-        return $this->hasOne(Propietor::class);
-    }
-
-    public function awards(){
-        return $this->belongsToMany(Award::class);
-    }
-
+    /*
     public function awardColon(){
         return $this->awards()->where('award_type_id', 1)->first();
     }
@@ -28,4 +21,5 @@ class Organization extends Model
     public function awardSemana(){
         return $this->awards()->where('award_type_id', 2)->first();
     }
+    */
 }

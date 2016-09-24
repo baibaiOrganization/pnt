@@ -15,7 +15,7 @@ class HomeController extends Controller
     }
 
     function chooseForm(){
-        $awards = auth()->user()->organization->awards;
+        $awards = auth()->user()->awards;
         $event = [0 , 0];
 
         foreach ($awards as $award){
