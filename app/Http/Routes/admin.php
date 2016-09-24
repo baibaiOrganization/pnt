@@ -12,6 +12,11 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'generateExcel'
     ]);
 
+    Route::get('search/{type}', [
+        'uses' => 'UserController@searchUser',
+        'as' => 'searchUser'
+    ]);
+
     Route::get('semanaExcel', function(){
         return redirect()->to('/exports/semana.xls');
     });

@@ -23,7 +23,7 @@
                 </g>
             </svg>
         </a>
-        <form class="search" method="get" action="">
+        <form class="search" method="get" action="{{route('searchUser', 1)}}">
             <button class="icon yellow">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
                     <g fill="#fff">

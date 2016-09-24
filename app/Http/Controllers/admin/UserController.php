@@ -23,6 +23,17 @@ class UserController extends Controller
         return redirect()->back()->with(['Success' => 'El Excel está siendo generado, se enviará el link a su email.']);
     }
 
+    public function searchUser(Request $request, $type){
+        $search = $request->get('search');
+        $users = $search
+            ? $this->getUsers($type)
+            : $this->getSearchUsers($type);
+
+        if($type == 1)
+            return view('back.colonUsers', compact('users'));
+        return view('back.semanaUsers', compact('users'));
+    }
+
     public function colonUsers(){
         $users = $this->getUsers(1);
         return view('back.colonUsers', compact('users'));
@@ -71,6 +82,20 @@ class UserController extends Controller
             $query->select('id')->where('role_id', 2);
         })->whereHas('awards', function($query) use($type){
             $query->where('award_type_id', $type);
-        })->with(['user', 'awards'])->paginate(20);
+        })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
+    }
+
+    private function getSearchUsers($type){
+        return Organization::whereHas('user', function($q) use($search, $type){
+            $q->where([
+                ['users.email', 'like', '%' . $search . '%'],
+                ['users.role_id', 2]
+            ])->orWhere([
+                ['organizations.name', 'like', '%' . $search . '%'],
+                ['users.role_id', 2]
+            ]);
+        })->whereHas('awards', function($query) use($type){
+            $query->where('award_type_id', 2);
+        })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->paginate(20);
     }
 }

@@ -16,7 +16,7 @@ class UserExcel{
             $query->select('id')->where('role_id', 2);
         })->whereHas('awards', function($query) use($type){
             $query->where('award_type_id', $type);
-        })->with(['user', 'awards'])->get();
+        })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->get();
 
 
         Excel::create($name , function($excel) use($users, $type){
