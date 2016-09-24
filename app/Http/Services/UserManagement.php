@@ -40,16 +40,22 @@ class UserManagement{
 
     private static function insert($organization, $data, $inputs, $awardType){
         $organization->update($data['organization']);
-        $production = Production::create($data['production']);
         $data['propietor']['organization_id'] = $organization->id;
         $organization->propietor
             ? $organization->propietor->update($data['propietor'])
             : Propietor::create($data['propietor']);
 
-        $award = Award::create([
-            'award_type_id' => $awardType,
-            'production_id' => $production->id
-        ]);
+        $production = $organization->production
+                    ? $organization->production
+                    : Production::create($data['production']);
+
+        $award = $production->award
+               ? $production->award
+               : Award::create([
+                    'award_type_id' => $awardType,
+                    'production_id' => $production->id,
+                    'state' => $data['state']
+                 ]);
 
         $organization->awards()->attach($award->id);
         static::uploadFile($award, $inputs, false);
@@ -101,6 +107,8 @@ class UserManagement{
                 'email1' => $inputs['rep_email'],
                 'email2' => $inputs['rep_email2'],
             ],
+
+            'state' => !isset($inputs['isUpdate'])
         ];
     }
 
@@ -133,6 +141,8 @@ class UserManagement{
                 'email1' => $inputs['rep_email1'],
                 'email2' => $inputs['rep_email2'],
             ],
+
+            'state' => !isset($inputs['isUpdate'])
         ];
     }
 }

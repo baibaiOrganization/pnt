@@ -19,7 +19,7 @@ class SemanaController extends Controller
         $awards = auth()->user()->organization->awards;
 
         foreach ($awards as $award){
-            if($award['award_type_id'] == 2)
+            if($award['award_type_id'] == 2 && $award['state'] == 1)
                 return redirect()->route('choose');
         }
 
@@ -30,7 +30,7 @@ class SemanaController extends Controller
         $inputs = $request->all();
         $validate = Validator::make($inputs, Validation::getSemanaRules());
 
-        if($validate->fails())
+        if($validate->fails() && !isset($inputs['isUpdate']))
             return redirect()->back()->withErrors($validate)->withInput();
 
         UserManagement::insertSemana(auth()->user()->organization, $inputs);

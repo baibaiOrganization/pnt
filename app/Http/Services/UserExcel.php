@@ -15,7 +15,10 @@ class UserExcel{
         $users = Organization::whereHas('user', function($query){
             $query->select('id')->where('role_id', 2);
         })->whereHas('awards', function($query) use($type){
-            $query->where('award_type_id', $type);
+            $query->where([
+                ['award_type_id', $type],
+                ['state', 1]
+            ]);
         })->with(['user', 'awards'])->orderBy('created_at', 'DESC')->get();
 
 

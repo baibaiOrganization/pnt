@@ -111,6 +111,9 @@ return [
         ],
         'prd_video' => [
             'required' => 'El registro audiovisual es obligatorio'
+        ],
+        'rep_doc_typ' => [
+            'different' => 'El campo "tipo de documento" es obligatorio'
         ]
 
     ],

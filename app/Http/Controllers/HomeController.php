@@ -19,10 +19,12 @@ class HomeController extends Controller
         $event = [0 , 0];
 
         foreach ($awards as $award){
-            if($award['award_type_id'] == 1)
-                $event[0] = 1;
-            else
-                $event[1] = 1;
+            if($award['state'] == 1){
+                if($award['award_type_id'] == 1)
+                    $event[0] = 1;
+                else
+                    $event[1] = 1;
+            }
         }
 
         return view('front.formsMenu', compact('event'));

@@ -14,16 +14,21 @@ class DocumentTypeTableSeeder extends Seeder
     {
         DocumentType::create([
             'id' => 1,
-            'name' => 'Cedula de ciudadania',
+            'name' => 'Nulo',
         ]);
 
         DocumentType::create([
             'id' => 2,
-            'name' => 'Cedula de extranjería',
+            'name' => 'Cedula de ciudadania',
         ]);
 
         DocumentType::create([
             'id' => 3,
+            'name' => 'Cedula de extranjería',
+        ]);
+
+        DocumentType::create([
+            'id' => 4,
             'name' => 'Pasaporte',
         ]);
     }

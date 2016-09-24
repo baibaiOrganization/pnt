@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Award extends Model
 {
-    protected $fillable = ['name', 'award_type_id', 'production_id'];
+    protected $fillable = ['name', 'award_type_id', 'production_id', 'state'];
 
     public function organizations(){
         return $this->belongsToMany(Organization::class);
     }
 
     public function production(){
-        return $this->belongsTo(Production::class);
+        return $this->hasOne(Production::class);
     }
 
     public function awardType(){

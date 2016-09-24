@@ -329,10 +329,10 @@
                     <span>Tipo de Documento de Identidad:</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="rep_doc_typ" id="rep_doc_typ">
-                        <option value="">Selecciona Documento</option>
-                        <option value="1">Cédula</option>
-                        <option value="2">Cédula de Extranjería</option>
-                        <option value="3">Pasaporte</option>
+                        <option value="1">Selecciona Documento</option>
+                        <option value="2">Cédula</option>
+                        <option value="3">Cédula de Extranjería</option>
+                        <option value="4">Pasaporte</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -421,7 +421,8 @@
             </label>
         </div>
 
-        <div class="center row"><button> ENVIAR</button></div>
+        <div class="center row"><button style="margin: 20px 0 0 0;" id="saveForm"> GUARDAR</button></div>
+        <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
     </form>
     <div class="preload red hidden">
@@ -439,6 +440,10 @@
     <script type="text/javascript">
         $('#sector').select2({
             closeOnSelect: false
+        });
+
+        $('#saveForm').on('click', function(){
+            $(this).append('<input type="hidden" value="1" name="isUpdate">');
         });
     </script>
 @endsection

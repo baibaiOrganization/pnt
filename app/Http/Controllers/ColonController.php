@@ -13,7 +13,7 @@ class ColonController extends Controller
         $awards = auth()->user()->organization->awards;
 
         foreach ($awards as $award){
-            if($award['award_type_id'] == 1)
+            if($award['award_type_id'] == 1 && $award['state'] == 1)
                 return redirect()->route('choose');
         }
 
@@ -24,7 +24,7 @@ class ColonController extends Controller
         $inputs = $request->all();
         $validate = Validator::make($inputs, Validation::getColonRules());
 
-        if($validate->fails())
+        if($validate->fails() && !isset($inputs['isUpdate']))
             return redirect()->back()->withErrors($validate)->withInput();
 
         UserManagement::insertColon(auth()->user()->organization , $inputs);
