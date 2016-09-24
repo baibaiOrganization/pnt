@@ -1,0 +1,57 @@
+.Popup-Container
+  width: 100vw
+  height: 100vh
+  background: rgba(0,0,0,.5)
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 50
+  display: flex
+  justify-content: center
+  align-items: center
+
+  .Popup
+    background: white
+    width: rem(300)
+    padding: rem(20)
+    font-size: 1.1rem
+    position: relative
+    .close
+      width: rem(30)
+      height: rem(30)
+      display: flex
+      justify-content: center
+      align-items: center
+      position: absolute
+      top: 0
+      right: 0
+      cursor: pointer
+
+    label
+      height: rem(35)
+      display: block
+      position: relative
+      input
+        width: 100%
+        height: 100%
+        padding: 0 rem(80) 0 rem(10)
+      button
+        width: rem(70)
+        height: rem(35)
+        padding: 0 rem(10)
+        font-weight: 800
+        cursor: pointer
+        position: absolute
+        top: 0
+        right: 0
+
+  .Popup.yellow .close,
+  .Popup.yellow button
+      background: $yellow
+
+  .Popup.red .close,
+  .Popup.red button
+    background: #df2826
+    color: #fff
+
+

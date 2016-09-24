@@ -15,14 +15,14 @@
     @endif
 
     <section class="ToolBar">
-        <a href="{{route('generateExcel', 2)}}" class="Download-Excel" style="display: block; width: 50px">
+        <div id="SendExcel" class="Download-Excel" style="display: block; width: 50px">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" width="100%" height="auto">
                 <g fill="#df2826">
                     <path d="M25.162,3H16v2.984h3.031v2.031H16V10h3v2h-3v2h3v2h-3v2h3v2h-3v3h9.162   C25.623,23,26,22.609,26,22.13V3.87C26,3.391,25.623,3,25.162,3z M24,20h-4v-2h4V20z M24,16h-4v-2h4V16z M24,12h-4v-2h4V12z M24,8   h-4V6h4V8z"/>
                     <path d="M0,2.889v20.223L15,26V0L0,2.889z M9.488,18.08l-1.745-3.299c-0.066-0.123-0.134-0.349-0.205-0.678   H7.511C7.478,14.258,7.4,14.494,7.277,14.81l-1.751,3.27H2.807l3.228-5.064L3.082,7.951h2.776l1.448,3.037   c0.113,0.24,0.214,0.525,0.304,0.854h0.028c0.057-0.198,0.163-0.492,0.318-0.883l1.61-3.009h2.542l-3.037,5.022l3.122,5.107   L9.488,18.08L9.488,18.08z"/>
                 </g>
             </svg>
-        </a>
+        </div>
         <form class="search" method="get" action="{{route('searchUser', 2)}}">
             <button class="icon red">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
@@ -64,6 +64,20 @@
         </tbody>
     </table>
     <span class="red">{!! $users->render() !!}</span>
+
+    <section class="Popup-Container" id="Popup" style="display:none">
+        <article class="Popup red">
+            <div class="close">X</div>
+            <p>Escribe el email al que deseas enviar la lista de usuarios</p>
+            <form action="{{route('generateExcel', 2)}}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <label for="email">
+                    <input type="text"name="email">
+                    <button>Enviar</button>
+                </label>
+            </form>
+        </article>
+    </section>
 @endsection
 @section('scripts')
     <script src="{{asset('js/images.js')}}"></script>
@@ -73,6 +87,14 @@
     <script type="text/javascript">
         $('#sector').select2({
             closeOnSelect: false
+        });
+
+        $('#SendExcel').on('click', function(){
+            $('#Popup').show();
+        });
+
+        $('#Popup .close').on('click', function(){
+            $('#Popup').hide();
         });
     </script>
 @endsection

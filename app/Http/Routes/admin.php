@@ -7,7 +7,7 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'users.index'
     ]);
 
-    Route::get('generateExcel/{type}', [
+    Route::post('generateExcel/{type}', [
         'uses' => 'UserController@generateExcel',
         'as' => 'generateExcel'
     ]);

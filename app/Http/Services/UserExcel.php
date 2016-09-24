@@ -8,7 +8,7 @@ use Excel;
 
 class UserExcel{
 
-    public static function getExcel($type){
+    public static function getExcel($type, $email){
         $dir = public_path('exports');
         $name = $type == 1 ? 'colon' : 'semana';
 
@@ -29,8 +29,8 @@ class UserExcel{
             });
         })->store('xls', $dir, true);
 
-        Mail::send('emails.' . $name .'Excel', function ($m) use($name){
-            $m->to('sanruiz1003@gmail.com',  $name)->subject('Descargar excel ' . $name);
+        Mail::send('emails.' . $name .'Excel', function ($m) use($name, $email){
+            $m->to($email,  $name)->subject('Descargar excel ' . $name);
         });
     }
 }

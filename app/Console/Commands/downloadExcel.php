@@ -12,7 +12,7 @@ class downloadExcel extends Command
      *
      * @var string
      */
-    protected $signature = 'download:excel {awardType}';
+    protected $signature = 'download:excel {awardType} {email}';
 
     /**
      * The console command description.
@@ -37,13 +37,12 @@ class downloadExcel extends Command
      * @return mixed
      */
 
-    private function exportUsers($type){
-        UserExcel::getExcel($type);
+    private function exportUsers($type, $email){
+        UserExcel::getExcel($type, $email);
     }
 
     public function handle()
     {
-        $this->exportUsers($this->argument('awardType'));
-
+        $this->exportUsers($this->argument('awardType'), $this->argument('email'));
     }
 }

@@ -18,17 +18,17 @@ class UserController extends Controller
         return view('back.choose');
     }
 
-    public function generateExcel($type){
-        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] . "; cd ..; php artisan download:excel " . $type . " > /dev/null &");
+    public function generateExcel(Request $request, $type){
+        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] . "; cd ..; php artisan download:excel " . $type . " " . $request->get('email') . " > /dev/null &");
         return redirect()->back()->with(['Success' => 'El Excel está siendo generado, se enviará el link a su email.']);
     }
 
     public function searchUser(Request $request, $type){
         $search = $request->get('search');
-        $users = $search
-            ? $this->getUsers($type)
+        $users = $search 
+            ? $this->getUsers($type) 
             : $this->getSearchUsers($type);
-
+        
         if($type == 1)
             return view('back.colonUsers', compact('users'));
         return view('back.semanaUsers', compact('users'));
