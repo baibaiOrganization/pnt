@@ -28,7 +28,7 @@ class UserExcel{
             });
         })->store('xls', $dir, true);
 
-        Mail::send('emails.' . $name .'Excel', function ($m) use($name, $email){
+        Mail::send('emails.' . $name .'Excel', ['prueba' => 'prueba'], function ($m) use($name, $email){
             $m->to($email,  $name)->subject('Descargar excel ' . $name);
         });
     }
