@@ -1,1 +1,1 @@
-<p style="font-size: 18px">Has click <a href="{{url('/')}}/exports/colon.xls">AQUI</a> para descargar el Excel.</p>
+<p style="font-size: 18px">Haz click <a href="{{url('/')}}/exports/colon.xls">AQUI</a> para descargar el Excel.</p>
