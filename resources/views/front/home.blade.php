@@ -6,6 +6,14 @@
         <h1>INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
     </div>
 
+    @if(session('Success'))
+        <section class="Message">
+            <div class="notification success">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Exitoso!</span> {{session('Success')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
     @if(session('Error'))
     <section class="Message">
         <div class="notification error">
@@ -26,7 +34,10 @@
                 <span>Contraseña</span>
                 <input type="password" name="password" id="password">
             </label>
-            <div class="center row"><button> INGRESAR</button></div>
+            <div class="center row">
+                <button> INGRESAR</button>
+            </div>
+            <a style="color:#df2826; display: block; text-align: center; padding-bottom: 30px" href="{{route('getEmail')}}">¿Olvido su contraseña?</a>
         </form>
         <form method="POST" action="{{route('register')}}" class="col-5 small-12  Form-home Register-form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

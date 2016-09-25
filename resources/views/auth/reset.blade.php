@@ -1,14 +1,53 @@
 @extends('layout.front')
 @section('content')
-    <form class="row Form-register" role="form" method="POST" action="{{route('postReset')}}">
-        <h1 class="col-8 small-12  bottom-element">
-            DIRECTORIO
-            <b>RESTAURAR CONTRASEÑA</b>
-        </h1>
-        <div class="col-8 offset-4 offset-small-0 small-12">
+
+    <div class="Register-header"></div>
+
+    @if(session('Success'))
+        <section class="Message">
+            <div class="notification success">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Exitoso!</span> {{session('Success')}}<span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
+    @if(count($errors))
+        <section class="Message">
+            <div class="notification error">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{$errors->first()}} <span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
+    <div class="row around">
+        <form method="POST" action="{{route('postReset')}}" class=" col-5 small-12 Form-home Register-form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="token" value="{{ $token }}">
+
+            <h2>NUEVA CONTRASEÑA</h2>
+            <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
+                <span>Correo electrónico</span>
+                <input type="email" name="email" id="email" value="{{ old('email') }}">
+            </label>
+            <label class="col-10 small-10" for="group_name">
+                <span>Contraseña</span>
+                <input type="password" name="password" id="password">
+            </label>
+            <label class="col-10 small-10" for="group_name">
+                <span>Confirmar contraseña</span>
+                <input type="password" name="password_confirmation" id="password_confirmation">
+            </label>
+            <div class="center row">
+                <button style="margin: 20px auto 40px"> RESTAURAR</button>
+            </div>
+        </form>
+    </div>
+
+    <!--
+
             {!! csrf_field() !!}
 
-            <input type="hidden" name="token" value="{{ $token }}">
+
             <label for="email" class="row middle">
                 {!!  $errors->first('email', '<p class="error">:message</p>')  !!}
                 <span class="col-5">email:</span>
@@ -28,7 +67,7 @@
             </div>
         </div>
     </form>
-
+-->
 
 @endsection
 

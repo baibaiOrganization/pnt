@@ -2,26 +2,38 @@
 
 @section('content')
 
-    <form class="row Form-register" role="form" method="POST" action="{{route('postEmail')}}">
-        <h1 class="col-8 small-12  bottom-element">
-            DIRECTORIO
-            <b>INDUSTRIAS CREATIVAS Y CULTURALES</b>
-        </h1>
-        <div class="col-8 offset-4 offset-small-0 small-12">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <label for="email" class="row middle">
+    <div class="Register-header"></div>
 
-                {!!  $errors->first('email', '<p class="error">:message</p>')  !!}
-                <span class="col-5">email:</span>
-                <input class="col-7" id="email" type="email" name="email" value="{{ old('email') }}">
-
-            </label>
-            <div class="row col-12 end ">
-                <button>RESTAURAR</button>
+    @if(session('Success'))
+        <section class="Message">
+            <div class="notification success">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Exitoso!</span> {{session('Success')}}<span class="close">X</span>
             </div>
-        </div>
-    </form>
+        </section>
+    @endif
 
+    @if(count($errors))
+        <section class="Message">
+            <div class="notification error">
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{$errors->first('email')}} <span class="close">X</span>
+            </div>
+        </section>
+    @endif
+
+    <div class="row around">
+        <form method="POST" action="{{route('postEmail')}}" class=" col-5 small-12 Form-home Register-form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h2>RESTAURAR CONTRASEÑA</h2>
+            <label style=" margin-top: 2rem "  class="col-10 small-10" for="group_name">
+                <span>Correo electrónico</span>
+                <input type="email" name="email" id="email">
+            </label>
+            <div class="center row">
+                <button style="margin: 20px auto 40px"> ENVIAR</button>
+            </div>
+            <a style="color:#df2826; display: block; text-align: center; padding-bottom: 30px" href="/">Ingresar o registrarse</a>
+        </form>
+    </div>
 
 @endsection
 @section('scripts')
