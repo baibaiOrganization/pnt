@@ -7,6 +7,7 @@ class Validation {
     public static function getSemanaRules(){
         return [
             'org_name' => 'required',
+            'org_region' => 'required',
             'org_city' => 'required',
             'org_address' => 'required',
             'org_phone' => 'required|numeric',
@@ -46,6 +47,7 @@ class Validation {
     public static function getColonRules(){
         return [
             'org_name' => 'required',
+            'org_region' => 'required',
             'org_city' => 'required',
             'org_address' => 'required',
             'org_phone' => 'required|numeric',

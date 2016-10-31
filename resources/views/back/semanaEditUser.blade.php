@@ -70,6 +70,14 @@
                 @endif
             @endforeach
 
+            <label class="col-5 small-10" for="org_region">
+                <span>Región</span>
+                <input type="text" name="org_region" id="org_region" value="{{$award->organization->region}}">
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
+                @endif
+            </label>
+
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>

@@ -48,6 +48,21 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
                 @endif
             </label>
+
+            <label class="col-5 small-10" for="org_region">
+                <span>Región</span>
+                <input type="text" name="org_address" id="org_region"
+                       @if(session('Error'))
+                       value="{{old('org_region')}}"
+                       @elseif($organization)
+                       value="{{$organization->region}}"
+                        @endif >
+
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
+                @endif
+            </label>
+
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
                 <input type="text" name="org_address" id="org_address"

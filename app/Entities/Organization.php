@@ -7,7 +7,7 @@ use Theater\User;
 
 class Organization extends Model
 {
-    protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website', 'socials'];
+    protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website', 'socials', 'region'];
 
     public function award(){
         return $this->hasOne(Award::class);

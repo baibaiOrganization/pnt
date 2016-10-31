@@ -134,6 +134,7 @@ return [
         'email' => '"correo electrónico"',
 
         'org_name' => '"nombre"',
+        'org_region' => '"región"',
         'org_city' => '"ciudad"',
         'org_address' => '"dirección"',
         'org_phone' => '"teléfono"',
