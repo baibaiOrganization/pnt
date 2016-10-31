@@ -92,6 +92,7 @@ class UserManagement{
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
+                'region' => $inputs['org_region'],
                 'city' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],
@@ -124,6 +125,7 @@ class UserManagement{
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
+                'region' => $inputs['org_region'],
                 'city' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],

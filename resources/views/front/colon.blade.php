@@ -34,32 +34,32 @@
                 @endif
             </label>
 
+            <label class="col-5 small-10" for="org_region">
+                <span>Región</span>
+                <input type="text" name="org_region" id="org_region"
+                       @if(session('Error'))
+                       value="{{old('org_region')}}"
+                       @elseif($organization)
+                       value="{{$organization->region}}"
+                       @endif >
+
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
+                @endif
+            </label>
+
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option value="">Selecciona una ciudad</option>
-                        <option value="Bogotá" @if(old('org_city') == 'Bogotá') selected @endif >Bógota</option>
-                        <option value="Medellín" @if(old('org_city') == 'Medellín') selected @endif >Medellín</option>
+                        <option value="Bogotá" @if((session('Error') && old('org_city') == 'Bogotá') || ($organization && $organization->city == 'Bogotá')) selected @endif >Bógota</option>
+                        <option value="Medellín" @if((session('Error') && old('org_city') == 'Medellín') || ($organization && $organization->city == 'Medellín')) selected @endif >Medellín</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
-                @endif
-            </label>
-
-            <label class="col-5 small-10" for="org_region">
-                <span>Región</span>
-                <input type="text" name="org_address" id="org_region"
-                       @if(session('Error'))
-                       value="{{old('org_region')}}"
-                       @elseif($organization)
-                       value="{{$organization->region}}"
-                        @endif >
-
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
             </label>
 
@@ -192,10 +192,10 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="prd_genre" id="prd_genre">
                         <option value="">Selecciona el género</option>
-                        <option value="Teatro" @if(old('prd_genre') == 'Teatro') selected @endif>Teatro</option>
-                        <option value="Circo - Teatro" @if(old('prd_genre') == 'Circo - Teatro') selected @endif >Circo - Teatro</option>
-                        <option value="Danza - Teatro" @if(old('prd_genre') == 'Danza - Teatro') selected @endif >Danza - Teatro</option>
-                        <option value="Teatro Musical" @if(old('prd_genre') == 'Teatro Musical') selected @endif >Teatro Musical</option>
+                        <option value="Teatro" @if((session('Error') && old('prd_genre') == 'Teatro') || ($production && $production->genre == 'Teatro')) selected @endif >Teatro</option>
+                        <option value="Circo - Teatro" @if((session('Error') && old('prd_genre') == 'Circo - Teatro') || ($production && $production->genre == 'Circo - Teatro')) selected @endif >Circo - Teatro</option>
+                        <option value="Danza - Teatro" @if((session('Error') && old('prd_genre') == 'Danza - Teatro') || ($production && $production->genre == 'Danza - Teatro')) selected @endif >Danza - Teatro</option>
+                        <option value="Teatro Musical" @if((session('Error') && old('prd_genre') == 'Teatro Musical') || ($production && $production->genre == 'Teatro Musical')) selected @endif >Teatro Musical</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -456,9 +456,9 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="rep_doc_typ" id="rep_doc_typ">
                         <option value="1">Selecciona Documento</option>
-                        <option value="2" @if(old('rep_doc_typ') == 2) selected @endif >Cédula</option>
-                        <option value="3" @if(old('rep_doc_typ') == 3) selected @endif >Cédula de Extranjería</option>
-                        <option value="4" @if(old('rep_doc_typ') == 4) selected @endif >Pasaporte</option>
+                        <option value="2" @if((session('Error') && old('rep_doc_typ') == 2) || ($propietor && $propietor->document_type_id == 2)) selected @endif >Cédula</option>
+                        <option value="3" @if((session('Error') && old('rep_doc_typ') == 3) || ($propietor && $propietor->document_type_id == 3)) selected @endif >Cédula de Extranjería</option>
+                        <option value="4" @if((session('Error') && old('rep_doc_typ') == 4) || ($propietor && $propietor->document_type_id == 4)) selected @endif >Pasaporte</option>
                     </select>
                 </div>
                 @if (count($errors) > 0)
@@ -525,7 +525,7 @@
             </label>
             <h2 class="col-12">CATEGORIA(S) DE POSTULACIÓN</h2>
         </div>
-        <div class="center row"><button style="margin: 20px 0 0 0;" id="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div class="center row"><button style="color: black; margin: 20px 0 0 0;" id="saveForm"> TERMINAR DESPUÉS</button></div>
         <div class="center row"><button style="margin: 10px 0 50px 0; color: black"> ENVIAR</button></div>
     </form>
     <div class="preload yellow hidden">

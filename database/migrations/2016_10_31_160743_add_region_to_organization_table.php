@@ -12,7 +12,7 @@ class AddRegionToOrganizationTable extends Migration
      */
     public function up()
     {
-        Schema::table('region', function(Blueprint $table){
+        Schema::table('organizations', function(Blueprint $table){
             $table->string('region');
         });
     }
