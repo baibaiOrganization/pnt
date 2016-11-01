@@ -36,4 +36,8 @@ class Award extends Model
     public function file($type){
         return $this->files()->where('file_type_id', $type)->first();
     }
+
+    public function awardCategory($id){
+        return in_array($id, explode(',',$this->categories));
+    }
 }

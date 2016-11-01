@@ -43,7 +43,7 @@ class UserManagement{
             $isUpdate = $a->award_type_id == $awardType;
             if($isUpdate){
                 $award = $a;
-                $award->update(['state' => $data['state']]);
+                $award->update($data['award']);
                 $award->organization->update($data['organization']);
                 $award->production->update($data['production']);
                 $award->propietor->update($data['propietor']);
@@ -122,6 +122,11 @@ class UserManagement{
     }
 
     private static function getColonInputs($inputs){
+        $categories = '';
+        for ($i = 1; $i <= 10; $i++){
+            if(isset($inputs['check' . $i]))
+                $categories .= $inputs['check' . $i] . ',';
+        }
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
@@ -150,6 +155,12 @@ class UserManagement{
                 'mobile' => $inputs['rep_mobile'],
                 'email1' => $inputs['rep_email1'],
                 'email2' => $inputs['rep_email2'],
+            ],
+
+            'award' => [
+                'state' => isset($inputs['isUpdate']) ? 0 : 1,
+                'categories' => $categories,
+                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : null
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1

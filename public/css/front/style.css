@@ -656,14 +656,19 @@ span.red .pagination a {
 #Categories {
   padding-right: 2.1875rem; }
   #Categories label {
+    max-width: 100%;
     padding-bottom: 0; }
     #Categories label .Register-file,
-    #Categories label .Register-actions {
-      height: 25px;
-      margin: 0; }
-    #Categories label .Register-file {
-      background: #f7f7f7;
-      border: none; }
+    #Categories label .Register-actions,
+    #Categories label input[type="text"] {
+      height: 25px !important;
+      margin: 0 !important; }
+    #Categories label .Register-file,
+    #Categories label input[type="text"] {
+      background: #f7f7f7 !important;
+      border: none !important; }
+  #Categories input[type="file"] {
+    display: none; }
 
 .Empty {
   display: inline-block;
@@ -673,7 +678,10 @@ span.red .pagination a {
   .Empty.padding {
     padding: 0 3px; }
 
-.Checkbox {
+.hidden {
+  display: none !important; }
+
+.CheckboxContainer .Checkbox {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -681,15 +689,15 @@ span.red .pagination a {
   font-size: 1rem;
   text-transform: uppercase;
   height: 25px; }
-  .Checkbox input {
+  .CheckboxContainer .Checkbox input {
     display: none !important; }
-  .Checkbox span {
+  .CheckboxContainer .Checkbox span {
     -ms-flex-positive: 1;
     flex-grow: 1;
     height: 100%;
     background: #f7f7f7;
     padding: 3px 6px; }
-  .Checkbox:before {
+  .CheckboxContainer .Checkbox:before {
     content: "";
     display: inline-block;
     width: 1.5625rem;
@@ -698,8 +706,9 @@ span.red .pagination a {
     margin-right: 10px;
     border: #FFED00 1px solid;
     cursor: pointer; }
-  .Checkbox.active:before {
-    background: #FFED00; }
+
+.CheckboxContainer.active .Checkbox:before {
+  background: #FFED00; }
 
 .Header {
   max-width: 65rem;

@@ -5,11 +5,9 @@ $('input[type="file"]').on('change', function(){
     var file = new FormData();
     var flag = false;
     var regex;
+    var types = $(this).attr('types');
 
-    if($(this).attr('id') == 'type8')
-        regex = new RegExp("(.*?)\.(jpg|jpeg|bmp|png)$");
-    else
-        regex = new RegExp("(.*?)\.(docx|doc|pdf)$");
+    regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
 
     if(regex.test(data[0].type)){
         file.append('file', data[0]);

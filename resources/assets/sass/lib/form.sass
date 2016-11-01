@@ -1,14 +1,20 @@
 #Categories
     padding-right: rem(35)
     label
+        max-width: 100%
         padding-bottom: 0
         .Register-file,
-        .Register-actions
-            height: 25px
-            margin: 0
-        .Register-file
-            background: #f7f7f7
-            border: none
+        .Register-actions,
+        input[type="text"]
+            height: 25px !important
+            margin: 0 !important
+        .Register-file,
+        input[type="text"]
+            background: #f7f7f7 !important
+            border: none !important
+    input[type="file"]
+        display: none
+
 .Empty
     display: inline-block
     width: 100%
@@ -17,27 +23,31 @@
     &.padding
         padding: 0 3px
 
-.Checkbox
-    display: flex
-    align-items: center
-    font-size: 1rem
-    text-transform: uppercase
-    height: 25px
-    input
-        display: none !important
-    span
-        flex-grow: 1
-        height: 100%
-        background: #f7f7f7
-        padding: 3px 6px
-    &:before
-        content: ""
-        display: inline-block
-        width: rem(25)
-        height: rem(25)
-        border-radius: 50%
-        margin-right: 10px
-        border: $yellow 1px solid
-        cursor: pointer
-    &.active:before
+.hidden
+    display: none !important
+
+.CheckboxContainer
+    .Checkbox
+        display: flex
+        align-items: center
+        font-size: 1rem
+        text-transform: uppercase
+        height: 25px
+        input
+            display: none !important
+        span
+            flex-grow: 1
+            height: 100%
+            background: #f7f7f7
+            padding: 3px 6px
+        &:before
+            content: ""
+            display: inline-block
+            width: rem(25)
+            height: rem(25)
+            border-radius: 50%
+            margin-right: 10px
+            border: $yellow 1px solid
+            cursor: pointer
+    &.active .Checkbox:before
         background: $yellow
