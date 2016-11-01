@@ -106,5 +106,45 @@ class FileTypeTableSeeder extends Seeder
             'id' => 19,
             'name' => 'Fotocopia de la Cédula Representante Legal (.pdf)'
         ]);
+
+        FileType::create([
+            'id' => 20,
+            'name' => 'Foto ilustrativa (Mejor escenografía)'
+        ]);
+
+        FileType::create([
+            'id' => 21,
+            'name' => 'Bocetos de diseños (Mejor escenografía)'
+        ]);
+
+        FileType::create([
+            'id' => 22,
+            'name' => 'Foto ilustrativa (Mejor maquillaje)'
+        ]);
+
+        FileType::create([
+            'id' => 23,
+            'name' => 'Bocetos de diseños (Mejor maquillaje)'
+        ]);
+
+        FileType::create([
+            'id' => 24,
+            'name' => 'Foto ilustrativa (Mejor vestuario)'
+        ]);
+
+        FileType::create([
+            'id' => 25,
+            'name' => 'Bocetos de diseños (Mejor vestuario)'
+        ]);
+
+        FileType::create([
+            'id' => 26,
+            'name' => 'Foto ilustrativa (Mejor iluminación)'
+        ]);
+
+        FileType::create([
+            'id' => 27,
+            'name' => 'Bocetos de diseños (Mejor iluminación)'
+        ]);
     }
 }

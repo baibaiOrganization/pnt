@@ -653,6 +653,54 @@ span.red .pagination a {
   100% {
     transform: rotate(360deg); } }
 
+#Categories {
+  padding-right: 2.1875rem; }
+  #Categories label {
+    padding-bottom: 0; }
+    #Categories label .Register-file,
+    #Categories label .Register-actions {
+      height: 25px;
+      margin: 0; }
+    #Categories label .Register-file {
+      background: #f7f7f7;
+      border: none; }
+
+.Empty {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7; }
+  .Empty.padding {
+    padding: 0 3px; }
+
+.Checkbox {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 25px; }
+  .Checkbox input {
+    display: none !important; }
+  .Checkbox span {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: 100%;
+    background: #f7f7f7;
+    padding: 3px 6px; }
+  .Checkbox:before {
+    content: "";
+    display: inline-block;
+    width: 1.5625rem;
+    height: 1.5625rem;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: #FFED00 1px solid;
+    cursor: pointer; }
+  .Checkbox.active:before {
+    background: #FFED00; }
+
 .Header {
   max-width: 65rem;
   margin: auto;
