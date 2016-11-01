@@ -31,6 +31,7 @@ class UserManagement{
     }
 
     private static function update($award, $data, $inputs){
+        $award->update($data['award']);
         $award->organization->update($data['organization']);
         $award->propietor->update($data['propietor']);
         $award->production->update($data['production']);
@@ -61,7 +62,9 @@ class UserManagement{
                 'user_id' => $user->id,
                 'organization_id' => $organization->id,
                 'production_id' => $production->id,
-                'propietor_id' => $propietor->id
+                'propietor_id' => $propietor->id,
+                'categories' => $data['award']['categories'],
+                'sound' => $data['award']['sound'],
             ]);
         }
 
@@ -71,8 +74,9 @@ class UserManagement{
     private static function uploadFile($award, $inputs, $isUpdate = false){
         foreach ($inputs as $key => $file){
             if(strpos($key, 'type') !== false && strpos($file, 'temp') != false){
+
                 $fileName = $isUpdate ? $file : explode('/temp/', $file)[1];
-                !$isUpdate ? rename(base_path('public' . $file), base_path('public/uploads/semana/' . $fileName)) : null;
+                !$isUpdate ? rename(base_path('public' . $file), base_path('public/uploads/' . $award->awardType->name . '/' . $fileName)) : null;
 
                 $type = explode('type', $key)[1];
                 $fileData = [
@@ -85,6 +89,7 @@ class UserManagement{
                     ? $award->file($type)->update($fileData)
                     : File::create($fileData);
             }
+
         }
     }
 

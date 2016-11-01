@@ -523,8 +523,8 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
             </label>
-            <h2 class="col-12">CATEGORIA(S) DE POSTULACIÓN</h2>
-            <section class="row between col-12" id="Categories">
+            <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
+            <section class="row between small-12" id="Categories">
                 <!--
                 *************************************
                 ************* CHECKBOX 1 ************
@@ -536,7 +536,7 @@
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -545,13 +545,13 @@
                 *************************************
                 -->
 
-                <label class="small-4 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
+                <label class="small-12 col-4 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
                     <span class="Checkbox">
                         <span>MEJOR DIRECTOR</span>
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -560,13 +560,13 @@
                 *************************************
                 -->
 
-                <label class="small-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
+                <label class="small-12 col-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
                     <span class="Checkbox">
                         <span>MEJOR DRAMATURGIA</span>
                         <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -575,14 +575,14 @@
                 *************************************
                 -->
 
-                <label class="CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif small-12" for="check4">
+                <label class="small-12 CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif" for="check4">
                     <span class="Checkbox">
                         <span>MEJOR DISEÑO DE ESCENOGRAFÍA</span>
                         <input type="checkbox" name="check4" id="check4" value="4" @if(old('check4') || (isset($award) && $award->awardCategory(4))) checked="checked" @endif>
                     </span>
                 </label>
 
-                <label class="col-4 small-10 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
+                <label class="small-12 col-4 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
                     <div class="Register-file">
                         <span class="Register-actions">
                             <span class="Register-addFile">Añadir archivo</span>
@@ -607,7 +607,7 @@
                                @endif >
                     </div>
                 </label>
-                <label class=" @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif col-4 small-10" for="type21">
+                <label class="col-4 small-12 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type21">
                     <div class="Register-file">
                         <span class="Register-actions">
                             <span class="Register-addFile">Añadir archivo</span>
@@ -645,7 +645,7 @@
                         <input type="checkbox" name="check5" id="check5" value="5" @if(old('check5') || (isset($award) && $award->awardCategory(5))) checked="checked" @endif>
                     </span>
                 </label>
-                    <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type22">
+                    <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type22">
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <span class="Register-addFile">Añadir archivo</span>
@@ -670,7 +670,7 @@
                                     @endif >
                         </div>
                     </label>
-                    <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type23">
+                    <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type23">
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <span class="Register-addFile">Añadir archivo</span>

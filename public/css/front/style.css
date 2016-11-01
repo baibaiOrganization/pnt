@@ -344,6 +344,17 @@ span.red .pagination a {
     flex-basis: 100%;
     max-width: 100%; } }
 
+.from-small,
+.from-medium,
+.from-large {
+  display: none !important; }
+
+@media (min-width: 36rem) {
+  .to-small {
+    display: none !important; }
+  .from-small {
+    display: inherit !important; } }
+
 .offset-small-1 {
   margin-left: 8.3333333333%; }
 
@@ -381,6 +392,10 @@ span.red .pagination a {
   margin-left: 100%; }
 
 @media (min-width: 48.5rem) {
+  .to-medium {
+    display: none !important; }
+  .from-medium {
+    display: inherit !important; }
   .offset-medium-1 {
     margin-left: 8.3333333333%; }
   .offset-medium-2 {
@@ -407,6 +422,10 @@ span.red .pagination a {
     margin-left: 100%; } }
 
 @media (min-width: 65rem) {
+  .to-large {
+    display: none !important; }
+  .from-large {
+    display: inherit !important; }
   .offset-1 {
     margin-left: 8.3333333333%; }
   .offset-2 {

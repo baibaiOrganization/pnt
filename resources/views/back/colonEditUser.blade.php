@@ -5,9 +5,9 @@
     <div class="Register-header Colon">
         <h1>USUARIO INSCRITO AL PREMIO TEATRO COlÓN</h1>
     </div>
-    <form action="{{ route('colonUpdate', $award->id) }}" enctype="multipart/form-data" method="post" class=" Register-form Colon-form">
-        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">
+    <form action="{{ url('admin/usuarios/colon')}}" enctype="multipart/form-data" method="get" class=" Register-form Colon-form"> <!-- //route('colonUpdate', $award->id) -->
+        <!--<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">-->
+        <!--<input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">-->
 
         <h2 class="col-12">DATOS BÁSICOS DE LA ORGANIZACIÓN</h2>
         <div class=" row Register-contentLabel">
@@ -133,10 +133,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type1">
+                            <!--<input type="file" id="type1">-->
                             <input type="hidden" name="type1" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -150,10 +150,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type2">
+                            <!--<input type="file" id="type2">--
                             <input type="hidden" name="type2" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -167,10 +167,10 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <span class="Register-addFile">Cambiar</span>
+                                    <!--<span class="Register-addFile">Cambiar</span>-->
                                 </span>
                                 <span class="Register-tooltip"> {{$file->name}}</span>
-                                <input type="file" id="type3">
+                                <!--<input type="file" id="type3">-->
                                 <input type="hidden" name="type3" value="{{$file->name}}">
                             </div>
                             @if (count($errors) > 0)
@@ -184,10 +184,10 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <span class="Register-addFile">Cambiar</span>
+                                    <!--<span class="Register-addFile">Cambiar</span>-->
                                 </span>
                                 <span class="Register-tooltip">{{$file->name}}</span>
-                                <input type="file" id="type4">
+                                <!--<input type="file" id="type4">-->
                                 <input type="hidden" name="type4" value="{{$file->name}}">
                             </div>
                             @if (count($errors) > 0)
@@ -201,10 +201,10 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <span class="Register-addFile">Cambiar</span>
+                                    <!--<span class="Register-addFile">Cambiar</span>-->
                                 </span>
                                 <span class="Register-tooltip">{{$file->name}}</span>
-                                <input type="file" id="type5">
+                                <!--<input type="file" id="type5">-->
                                 <input type="hidden" name="type5" value="{{$file->name}}">
                             </div>
                             @if (count($errors) > 0)
@@ -218,10 +218,10 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <span class="Register-addFile">Cambiar</span>
+                                    <!--<span class="Register-addFile">Cambiar</span>-->
                                 </span>
                                 <span class="Register-tooltip">{{$file->name}}</span>
-                                <input type="file" id="type6">
+                                <!--<input type="file" id="type6">-->
                                 <input type="hidden" name="type6" value="{{$file->name}}">
                             </div>
                             @if (count($errors) > 0)
@@ -235,10 +235,10 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <span class="Register-addFile">Cambiar</span>
+                                    <!--<span class="Register-addFile">Cambiar</span>-->
                                 </span>
                                 <span class="Register-tooltip" >{{$file->name}} </span>
-                                <input type="file" id="type7">
+                                <!--<input type="file" id="type7">-->
                                 <input type="hidden" name="type7" value="{{$file->name}}">
                             </div>
                             @if (count($errors) > 0)
@@ -323,8 +323,8 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
             </label>
-            <h2 class="col-12">CATEGORIA(S) DE POSTULACIÓN</h2>
-            <section class="row between col-12" id="Categories">
+            <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
+            <section class="row between small-12" id="Categories">
                 <!--
                 *************************************
                 ************* CHECKBOX 1 ************
@@ -336,7 +336,7 @@
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class=" from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -345,13 +345,13 @@
                 *************************************
                 -->
 
-                <label class="small-4 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
+                <label class="col-4 small-12 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
                     <span class="Checkbox">
                         <span>MEJOR DIRECTOR</span>
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -360,13 +360,13 @@
                 *************************************
                 -->
 
-                <label class="small-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
+                <label class="small-12 col-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
                     <span class="Checkbox">
                         <span>MEJOR DRAMATURGIA</span>
                         <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -382,10 +382,11 @@
                     </span>
                 </label>
 
-                <label class="col-4 small-10 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
+                <label class="col-4 small-12 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
                     <div class="Register-file">
                         <span class="Register-actions">
-                            <span class="Register-addFile">Añadir archivo</span>
+                            <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(20)){{$award->file(20)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                            <!--<span class="Register-addFile">Cambiar</span>-->
                         </span>
                         <span class="Register-tooltip">
                             @if((session('Error') && old('type20')) || (isset($award) && $award->file(20)))
@@ -398,7 +399,7 @@
                                 Fotos ilustrativas (.zip .rar) 5 - 10
                             @endif
                         </span>
-                        <input type="file" id="type20" types="zip,rar">
+                        <!--<input type="file" id="type20" types="zip,rar">-->
                         <input type="hidden" name="type20"
                                @if(session('Error'))
                                value="{{old('type20')}}"
@@ -407,10 +408,11 @@
                                 @endif >
                     </div>
                 </label>
-                <label class=" @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif col-4 small-10" for="type21">
+                <label class=" @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif col-4 small-12" for="type21">
                     <div class="Register-file">
                         <span class="Register-actions">
-                            <span class="Register-addFile">Añadir archivo</span>
+                            <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(21)){{$award->file(21)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                            <!--<span class="Register-addFile">Cambiar</span>-->
                         </span>
                         <span class="Register-tooltip">
                             @if((session('Error') && old('type21')) || (isset($award) && $award->file(21)))
@@ -423,7 +425,7 @@
                                 Bocetos de diseños (.pdf)
                             @endif
                         </span>
-                        <input type="file" id="type21" types="pdf" accept="application/pdf">
+                        <!--<input type="file" id="type21" types="pdf" accept="application/pdf">-->
                         <input type="hidden" name="type21"
                                @if(session('Error'))
                                value="{{old('type21')}}"
@@ -445,10 +447,11 @@
                         <input type="checkbox" name="check5" id="check5" value="5" @if(old('check5') || (isset($award) && $award->awardCategory(5))) checked="checked" @endif>
                     </span>
                 </label>
-                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type22">
+                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type22">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(22)){{$award->file(22)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type22')) || (isset($award) && $award->file(22)))
@@ -461,7 +464,7 @@
                                     Fotos ilustrativas (.zip .rar) 5 - 10
                                 @endif
                             </span>
-                        <input type="file" id="type22" types="zip,rar">
+                        <!--<input type="file" id="type22" types="zip,rar">-->
                         <input type="hidden" name="type22"
                                @if(session('Error'))
                                value="{{old('type22')}}"
@@ -470,10 +473,11 @@
                                 @endif >
                     </div>
                 </label>
-                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type23">
+                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type23">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(23)){{$award->file(23)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type23')) || (isset($award) && $award->file(23)))
@@ -486,7 +490,7 @@
                                     Bocetos de diseños (.pdf)
                                 @endif
                             </span>
-                        <input type="file" id="type23" types="pdf" accept="application/pdf">
+                        <!--<input type="file" id="type23" types="pdf" accept="application/pdf">-->
                         <input type="hidden" name="type23"
                                @if(session('Error'))
                                value="{{old('type23')}}"
@@ -511,7 +515,8 @@
                 <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type24">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(24)){{$award->file(24)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
@@ -524,7 +529,7 @@
                                     Fotos ilustrativas (.zip .rar) 5 - 10
                                 @endif
                             </span>
-                        <input type="file" id="type24"  types="zip,rar">
+                        <!--<input type="file" id="type24"  types="zip,rar">-->
                         <input type="hidden" name="type24"
                                @if(session('Error'))
                                value="{{old('type24')}}"
@@ -536,7 +541,8 @@
                 <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type25">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(25)){{$award->file(25)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type25')) || (isset($award) && $award->file(25)))
@@ -549,7 +555,7 @@
                                     Bocetos de diseños (.pdf)
                                 @endif
                             </span>
-                        <input type="file" id="type25" types="pdf" accept="application/pdf">
+                        <!--<input type="file" id="type25" types="pdf" accept="application/pdf">-->
                         <input type="hidden" name="type25"
                                @if(session('Error'))
                                value="{{old('type25')}}"
@@ -574,7 +580,8 @@
                 <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4  small-12" for="type26">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(26)){{$award->file(26)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type26')) || (isset($award) && $award->file(26)))
@@ -587,7 +594,7 @@
                                     Fotos ilustrativas (.zip .rar) 5 - 10
                                 @endif
                             </span>
-                        <input type="file" id="type26"  types="zip,rar">
+                        <!--<input type="file" id="type26"  types="zip,rar">-->
                         <input type="hidden" name="type26"
                                @if(session('Error'))
                                value="{{old('type26')}}"
@@ -599,7 +606,8 @@
                 <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4 small-12" for="type27">
                     <div class="Register-file">
                             <span class="Register-actions">
-                                <span class="Register-addFile">Añadir archivo</span>
+                                <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(27)){{$award->file(27)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type27')) || (isset($award) && $award->file(27)))
@@ -612,7 +620,7 @@
                                     Bocetos de diseños (.pdf)
                                 @endif
                             </span>
-                        <input type="file" id="type27" types="pdf" accept="application/pdf">
+                        <!--<input type="file" id="type27" types="pdf" accept="application/pdf">-->
                         <input type="hidden" name="type27"
                                @if(session('Error'))
                                value="{{old('type27')}}"
@@ -660,7 +668,7 @@
                         <input type="checkbox" name="check9" id="check9" value="9" @if(old('check9') || (isset($award) && $award->awardCategory(9))) checked="checked" @endif>
                     </span>
                 </label>
-                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" class="from-large col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
                 <!--
@@ -680,7 +688,7 @@
 
             </section>
         </div>
-        <div class="center row"><button> ACTUALIZAR</button></div>
+        <div class="center row"><button style="color:black">VOLVER ATRÁS</button></div>
     </form>
     <div class="preload yellow hidden">
         <div class="loader">

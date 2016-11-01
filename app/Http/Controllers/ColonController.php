@@ -35,7 +35,7 @@ class ColonController extends Controller
         
         if($validate->fails() && !isset($inputs['isUpdate']))
             return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
-
+        
         UserManagement::insertColon(auth()->user(), $inputs);
         return redirect()->route('choose')->with(['Success' => $message]);
     }

@@ -47,7 +47,6 @@ $totalContainer: 100%
   -webkit-box-flex: 0
   flex: 0 0 auto
 
-
 @for $i from 1 through $columns
   .small-#{$i}
     -ms-flex-preferred-size: ($i / $columns) * 100%
@@ -71,21 +70,38 @@ $totalContainer: 100%
       flex-basis: ($i / $columns) * 100%
       max-width: ($i / $columns) * 100%
 
+.from-small,
+.from-medium,
+.from-large
+  display: none !important
+
+@include respond-to(small)
+  .to-small
+    display: none !important
+  .from-small
+    display: inherit !important
 
 @for $i from 1 through $columns
   .offset-small-#{$i}
     margin-left: ($totalContainer / $columns) * $i
 
 @include respond-to(medium)
+  .to-medium
+    display: none !important
+  .from-medium
+    display: inherit !important
   @for $i from 1 through $columns
     .offset-medium-#{$i}
       margin-left: ($totalContainer / $columns) * $i
 
 @include respond-to(large)
+  .to-large
+    display: none !important
+  .from-large
+    display: inherit !important
   @for $i from 1 through $columns
     .offset-#{$i}
       margin-left: ($totalContainer / $columns) * $i
-
 
 .start
   -webkit-justify-content: flex-start
