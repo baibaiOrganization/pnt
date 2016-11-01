@@ -117,6 +117,10 @@ class UserManagement{
                 'email2' => $inputs['rep_email2'],
             ],
 
+            'award' => [
+                'state' => isset($inputs['isUpdate']) ? 0 : 1,
+            ],
+
             'state' => isset($inputs['isUpdate']) ? 0 : 1
         ];
     }
