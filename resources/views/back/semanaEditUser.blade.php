@@ -5,7 +5,7 @@
     <div class="Register-header">
         <h1>USUARIO INSCRITO AL PREMIO SEMANA</h1>
     </div>
-    <form action="{{ route('semanaUpdate', $award->id) }}" enctype="multipart/form-data" method="POST" class=" Register-form">
+    <form action="{{ url('admin/usuarios/semana/') }}" enctype="multipart/form-data" method="POST" class=" Register-form"> <!--route('semanaUpdate', $award->id)-->
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
 
@@ -25,10 +25,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type8">
+                            <!--<input type="file" id="type8">-->
                             <input type="hidden" name="type8" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -41,10 +41,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type9">
+                            <!--<input type="file" id="type9">-->
                             <input type="hidden" name="type9" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -57,10 +57,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type5">
+                            <!--<input type="file" id="type5">-->
                             <input type="hidden" name="type5" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -134,10 +134,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}} </span>
-                            <input type="file" id="type16">
+                            <!--<input type="file" id="type16">-->
                             <input type="hidden" name="type16" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -165,10 +165,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type10">
+                            <!--<input type="file" id="type10">-->
                             <input type="hidden" name="type10" value="{{$file->name}}">
                             @if (count($errors) > 0)
                                 <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type10')}}</span>
@@ -200,10 +200,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type3">
+                            <!--<input type="file" id="type3">-->
                             <input type="hidden" name="type3" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -222,10 +222,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip"> {{$file->name}}</span>
-                            <input type="file" id="type1">
+                            <!--<input type="file" id="type1">-->
                             <input type="hidden" name="type1" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -238,10 +238,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type2">
+                            <!--<input type="file" id="type2">-->
                             <input type="hidden" name="type2" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -254,10 +254,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type11">
+                            <!--<input type="file" id="type11">-->
                             <input type="hidden" name="type11" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -270,10 +270,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip" style="font-size: 11px">{{$file->name}}</span>
-                            <input type="file" id="type12">
+                            <!--<input type="file" id="type12">-->
                             <input type="hidden" name="type12" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -286,10 +286,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type13">
+                            <!--<input type="file" id="type13">-->
                             <input type="hidden" name="type13" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -302,10 +302,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip" style="font-size: 10px">{{$file->name}}</span>
-                            <input type="file" id="type14">
+                            <!--<input type="file" id="type14">-->
                             <input type="hidden" name="type14" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -318,10 +318,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type15">
+                            <!--<input type="file" id="type15">-->
                             <input type="hidden" name="type15" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -334,10 +334,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip" >{{$file->name}}</span>
-                            <input type="file" id="type7">
+                            <!--<input type="file" id="type7">-->
                             <input type="hidden" name="type7" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -415,10 +415,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip"> {{$file->name}} </span>
-                            <input type="file" id="type18">
+                            <!--<input type="file" id="type18">-->
                             <input type="hidden" name="type18" id="type18" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -431,10 +431,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type17">
+                            <!--<input type="file" id="type17">-->
                             <input type="hidden" name="type17" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
@@ -447,10 +447,10 @@
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                <span class="Register-addFile">Cambiar</span>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
                             </span>
                             <span class="Register-tooltip">{{$file->name}}</span>
-                            <input type="file" id="type19">
+                            <!--<input type="file" id="type19">-->
                             <input type="hidden" name="type19" value="{{$file->name}}">
                         </div>
                         @if (count($errors) > 0)
