@@ -324,6 +324,361 @@
                 @endif
             </label>
             <h2 class="col-12">CATEGORIA(S) DE POSTULACIÓN</h2>
+            <section class="row between col-12" id="Categories">
+                <!--
+                *************************************
+                ************* CHECKBOX 1 ************
+                *************************************
+                -->
+                <label class="col-4 small-12 CheckboxContainer @if(old('check1') || (isset($award) && (isset($award) && $award->awardCategory(1) ))) active @endif" for="check1">
+                    <span class="Checkbox">
+                        <span>MEJOR OBRA</span>
+                        <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
+                    </span>
+                </label>
+                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 2 ************
+                *************************************
+                -->
+
+                <label class="small-4 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
+                    <span class="Checkbox">
+                        <span>MEJOR DIRECTOR</span>
+                        <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 3 ************
+                *************************************
+                -->
+
+                <label class="small-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
+                    <span class="Checkbox">
+                        <span>MEJOR DRAMATURGIA</span>
+                        <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 4 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif small-12" for="check4">
+                    <span class="Checkbox">
+                        <span>MEJOR DISEÑO DE ESCENOGRAFÍA</span>
+                        <input type="checkbox" name="check4" id="check4" value="4" @if(old('check4') || (isset($award) && $award->awardCategory(4))) checked="checked" @endif>
+                    </span>
+                </label>
+
+                <label class="col-4 small-10 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
+                    <div class="Register-file">
+                        <span class="Register-actions">
+                            <span class="Register-addFile">Añadir archivo</span>
+                        </span>
+                        <span class="Register-tooltip">
+                            @if((session('Error') && old('type20')) || (isset($award) && $award->file(20)))
+                                @if(session('Error'))
+                                    {{old('type20')}}
+                                @else
+                                    {{$award->file(20)->name}}
+                                @endif
+                            @else
+                                Fotos ilustrativas (.zip .rar) 5 - 10
+                            @endif
+                        </span>
+                        <input type="file" id="type20" types="zip,rar">
+                        <input type="hidden" name="type20"
+                               @if(session('Error'))
+                               value="{{old('type20')}}"
+                               @elseif(isset($award) && $award->file(20))
+                               value="{{$award->file(20)->name}}"
+                                @endif >
+                    </div>
+                </label>
+                <label class=" @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif col-4 small-10" for="type21">
+                    <div class="Register-file">
+                        <span class="Register-actions">
+                            <span class="Register-addFile">Añadir archivo</span>
+                        </span>
+                        <span class="Register-tooltip">
+                            @if((session('Error') && old('type21')) || (isset($award) && $award->file(21)))
+                                @if(session('Error'))
+                                    {{old('type21')}}
+                                @else
+                                    {{$award->file(21)->name}}
+                                @endif
+                            @else
+                                Bocetos de diseños (.pdf)
+                            @endif
+                        </span>
+                        <input type="file" id="type21" types="pdf" accept="application/pdf">
+                        <input type="hidden" name="type21"
+                               @if(session('Error'))
+                               value="{{old('type21')}}"
+                               @elseif(isset($award) && $award->file(21))
+                               value="{{$award->file(21)->name}}"
+                                @endif >
+                    </div>
+                </label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 5 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer @if(old('check5') || (isset($award) && $award->awardCategory(5))) col-4 active @endif small-12" for="check5">
+                    <span class="Checkbox">
+                        <span>MEJOR DISEÑO DE MAQUILLAJE</span>
+                        <input type="checkbox" name="check5" id="check5" value="5" @if(old('check5') || (isset($award) && $award->awardCategory(5))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type22">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type22')) || (isset($award) && $award->file(22)))
+                                    @if(session('Error'))
+                                        {{old('type22')}}
+                                    @else
+                                        {{$award->file(22)->name}}
+                                    @endif
+                                @else
+                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                @endif
+                            </span>
+                        <input type="file" id="type22" types="zip,rar">
+                        <input type="hidden" name="type22"
+                               @if(session('Error'))
+                               value="{{old('type22')}}"
+                               @elseif(isset($award) && $award->file(22))
+                               value="{{$award->file(22)->name}}"
+                                @endif >
+                    </div>
+                </label>
+                <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-10" for="type23">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type23')) || (isset($award) && $award->file(23)))
+                                    @if(session('Error'))
+                                        {{old('type23')}}
+                                    @else
+                                        {{$award->file(23)->name}}
+                                    @endif
+                                @else
+                                    Bocetos de diseños (.pdf)
+                                @endif
+                            </span>
+                        <input type="file" id="type23" types="pdf" accept="application/pdf">
+                        <input type="hidden" name="type23"
+                               @if(session('Error'))
+                               value="{{old('type23')}}"
+                               @elseif(isset($award) && $award->file(23))
+                               value="{{$award->file(23)->name}}"
+                                @endif >
+                    </div>
+                </label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 6 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer @if(old('check6') || (isset($award) && $award->awardCategory(6))) col-4 active @endif small-12" for="check6">
+                    <span class="Checkbox">
+                        <span>MEJOR DISEÑO DE VESTUARIO</span>
+                        <input type="checkbox" name="check6" id="check6" value="6" @if(old('check6') || (isset($award) && $award->awardCategory(6))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type24">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
+                                    @if(session('Error'))
+                                        {{old('type24')}}
+                                    @else
+                                        {{$award->file(24)->name}}
+                                    @endif
+                                @else
+                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                @endif
+                            </span>
+                        <input type="file" id="type24"  types="zip,rar">
+                        <input type="hidden" name="type24"
+                               @if(session('Error'))
+                               value="{{old('type24')}}"
+                               @elseif(isset($award) && $award->file(24))
+                               value="{{$award->file(24)->name}}"
+                                @endif >
+                    </div>
+                </label>
+                <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type25">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type25')) || (isset($award) && $award->file(25)))
+                                    @if(session('Error'))
+                                        {{old('type25')}}
+                                    @else
+                                        {{$award->file(25)->name}}
+                                    @endif
+                                @else
+                                    Bocetos de diseños (.pdf)
+                                @endif
+                            </span>
+                        <input type="file" id="type25" types="pdf" accept="application/pdf">
+                        <input type="hidden" name="type25"
+                               @if(session('Error'))
+                               value="{{old('type25')}}"
+                               @elseif(isset($award) && $award->file(25))
+                               value="{{$award->file(25)->name}}"
+                                @endif >
+                    </div>
+                </label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 7 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer @if(old('check7') || (isset($award) && (isset($award) && $award->awardCategory(7)))) col-4 active @endif small-12" for="check7">
+                    <span class="Checkbox">
+                        <span>MEJOR DISEÑO DE ILUMINACIÓN</span>
+                        <input type="checkbox" name="check7" id="check7" value="7" @if(old('check7') || (isset($award) && $award->awardCategory(7))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4  small-12" for="type26">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type26')) || (isset($award) && $award->file(26)))
+                                    @if(session('Error'))
+                                        {{old('type26')}}
+                                    @else
+                                        {{$award->file(26)->name}}
+                                    @endif
+                                @else
+                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                @endif
+                            </span>
+                        <input type="file" id="type26"  types="zip,rar">
+                        <input type="hidden" name="type26"
+                               @if(session('Error'))
+                               value="{{old('type26')}}"
+                               @elseif(isset($award) && $award->file(26))
+                               value="{{$award->file(26)->name}}"
+                                @endif >
+                    </div>
+                </label>
+                <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4 small-12" for="type27">
+                    <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                            <span class="Register-tooltip">
+                                @if((session('Error') && old('type27')) || (isset($award) && $award->file(27)))
+                                    @if(session('Error'))
+                                        {{old('type27')}}
+                                    @else
+                                        {{$award->file(27)->name}}
+                                    @endif
+                                @else
+                                    Bocetos de diseños (.pdf)
+                                @endif
+                            </span>
+                        <input type="file" id="type27" types="pdf" accept="application/pdf">
+                        <input type="hidden" name="type27"
+                               @if(session('Error'))
+                               value="{{old('type27')}}"
+                               @elseif(isset($award) && $award->file(27))
+                               value="{{$award->file(27)->name}}"
+                                @endif >
+                    </div>
+                </label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 8 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer @if(old('check8') || (isset($award) && $award->awardCategory(8))) col-4 active @endif small-12" for="check8">
+                    <span class="Checkbox">
+                        <span>MEJOR DISEÑO DE SONIDO</span>
+                        <input type="checkbox" name="check8" id="check8" value="8" @if(old('check8') || (isset($award) && $award->awardCategory(8))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label class="col-8 small-12 @if(!(old('check8') || (isset($award) && $award->awardCategory(8)))) hidden @endif " for="cat_sound">
+                    <input placeholder="Vinculo audio (Banda sonora espectáculo)" type="text" name="cat_sound" id="cat_sound"
+                           @if(session('Error'))
+                           value="{{old('cat_sound')}}"
+                           @elseif(isset($award))
+                           value="{{$award->sound}}"
+                            @endif >
+
+                    @if (count($errors) > 0)
+                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('cat_sound')}}</span>
+                    @endif
+                </label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 9 ************
+                *************************************
+                -->
+
+                <label class="CheckboxContainer col-4 small-12 @if(old('check9') || (isset($award) && $award->awardCategory(9))) active @endif" for="check9">
+                    <span class="Checkbox">
+                        <span>MEJOR ACTOR</span>
+                        <input type="checkbox" name="check9" id="check9" value="9" @if(old('check9') || (isset($award) && $award->awardCategory(9))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+                <!--
+                *************************************
+                ************* CHECKBOX 10 ***********
+                *************************************
+                -->
+
+                <label class="CheckboxContainer col-4 small-12 @if(old('check10') || (isset($award) && $award->awardCategory(10))) active @endif" for="check10">
+                    <span class="Checkbox">
+                        <span>MEJOR ACTRÍZ</span>
+                        <input type="checkbox" name="check10" id="check10" value="10" @if(old('check10') || (isset($award) && $award->awardCategory(10))) checked="checked" @endif>
+                    </span>
+                </label>
+                <label for="" class="col-8"><span class="Empty"></span></label>
+                <label for="" style="display:none"><span class="Empty"></span></label>
+
+            </section>
         </div>
         <div class="center row"><button> ACTUALIZAR</button></div>
     </form>
