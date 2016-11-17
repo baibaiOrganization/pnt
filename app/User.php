@@ -4,6 +4,8 @@ namespace Theater;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Theater\Entities\Award;
+use Theater\Entities\Region;
+use Theater\Entities\Role;
 
 class User extends Authenticatable
 {
@@ -25,5 +27,13 @@ class User extends Authenticatable
 
     public function awards(){
         return $this->hasMany(Award::class);
+    }
+
+    public function region(){
+        return $this->belongsTo(Region::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 }

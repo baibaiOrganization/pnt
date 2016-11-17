@@ -7,19 +7,13 @@ use Theater\User;
 
 class Organization extends Model
 {
-    protected $fillable = ['name', 'email', 'city', 'address', 'phone', 'mobile', 'website', 'socials', 'region'];
+    protected $fillable = ['name', 'email', 'address', 'phone', 'mobile', 'website', 'socials', 'region_id'];
 
     public function award(){
         return $this->hasOne(Award::class);
     }
 
-    /*
-    public function awardColon(){
-        return $this->awards()->where('award_type_id', 1)->first();
+    public function region(){
+        return $this->belongsTo(Region::class);
     }
-    
-    public function awardSemana(){
-        return $this->awards()->where('award_type_id', 2)->first();
-    }
-    */
 }
