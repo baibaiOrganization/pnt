@@ -40,6 +40,7 @@
             <tr>
                 <td>NOMBRE</td>
                 <td>EMAIL</td>
+                <td>REGIÓN</td>
                 <td>CIUDAD</td>
                 <td>VER/EDITAR</td>
             </tr>
@@ -49,7 +50,8 @@
             <tr>
                 <td>{{$award->organization->name}}</td>
                 <td>{{$award->user->email}}</td>
-                <td>{{$award->organization->city}}</td>
+                <td>{{$award->organization->city->region->name}}</td>
+                <td>{{$award->organization->city->name}}</td>
                 <td>
                     <a href="{{route('semanaEditUser', $award->id)}}" class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90">

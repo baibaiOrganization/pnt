@@ -5,9 +5,9 @@
     <div class="Register-header">
         <h1>USUARIO INSCRITO AL PREMIO SEMANA</h1>
     </div>
-    <form action="{{ url('admin/usuarios/semana/') }}" enctype="multipart/form-data" method="POST" class=" Register-form"> <!--route('semanaUpdate', $award->id)-->
-        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
+    <form action="{{ url('admin/usuarios/semana/') }}" enctype="multipart/form-data" method="GET" class=" Register-form"> <!--route('semanaUpdate', $award->id) -> ruta : {{ url('admin/usuarios/semana/') }} -->
+        <!--<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">-->
 
         <h2 class="col-12">DATOS BÁSICOS DE LA ORGANIZACIÓN</h2>
         <div class=" row Register-contentLabel">
@@ -70,9 +70,18 @@
                 @endif
             @endforeach
 
-            <label class="col-5 small-10" for="org_region">
-                <span>Región</span>
-                <input type="text" name="org_region" id="org_region" value="{{$award->organization->region}}">
+            <label for="org_region" class="col-5 small-10">
+                <div class="Register-contentSelect">
+                    <span>Región</span>
+                    <span class="Register-arrowSelect">▼</span>
+                    <select name="org_region" id="org_region">
+                        <option value="">Selecciona una región</option>
+                        @foreach($regions as $region)
+                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($award->organization && $award->organization->city->region->id == $region->id)) selected @endif >{{$region->name}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
@@ -83,14 +92,17 @@
                     <span>Ciudad</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
-                        <option value="Bogotá">Bógota</option>
-                        <option value="Medellín" @if($award->organization->city == "Medellín") selected @endif>Medellín</option>
+                        <option data-region="0" value="">Selecciona una ciudad</option>
+                        @foreach($cities as $city)
+                            <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
                 @endif
             </label>
+
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
                 <input type="text" name="org_address" id="org_address" value="{{$award->organization->address}}">
@@ -460,7 +472,7 @@
                     @endif
                 @endforeach
             </div>
-        <div class="center row"><button> ACTUALIZAR</button></div>
+        <div class="center row"><button>IR ATRÁS</button></div>
     </form>
     <div class="preload red hidden">
         <div class="loader">
@@ -475,6 +487,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="{{asset('js/form.js')}}"></script>
     <script type="text/javascript">
+
+        if($('#org_region').val()){
+            var city = $('#org_city');
+            var data = city.find("[data-region='" + $('#org_region').val() + "']");
+            city.children('option').addClass('hidden').eq(0).removeClass('hidden');
+            data.removeClass('hidden');
+        }
+
+        $('#org_region').on('change', function(){
+            var city = $('#org_city');
+            var data = city.find("[data-region='" + $(this).val() + "']");
+            city.children('option').addClass('hidden').eq(0).removeClass('hidden').prop('selected', true);
+            data.removeClass('hidden');
+        });
+
         $('#sector').select2({
             closeOnSelect: false
         });

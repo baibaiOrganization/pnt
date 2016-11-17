@@ -19,7 +19,7 @@
                 @endif
             </label>
 
-            <label for="org_region" class="col-5  small-10">
+            <!--<label for="org_region" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Región</span>
                     <input type="text" name="org_region" id="org_region" value="{{$award->organization->region}}">
@@ -27,21 +27,24 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
-            </label>
+            </label>-->
 
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
-                        <option value="Bogotá">Bógota</option>
-                        <option value="Medellín" @if($award->organization->city == 'Medellín') selected @endif >Medellín</option>
+                        <option value="">Selecciona una ciudad</option>
+                        @foreach($cities as $city)
+                            <option value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
                 @endif
             </label>
+
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
                 <input type="text" name="org_address" id="org_address" value="{{$award->organization->address}}">
@@ -688,7 +691,7 @@
 
             </section>
         </div>
-        <div class="center row"><button style="color:black">VOLVER ATRÁS</button></div>
+        <div class="center row"><button style="color:black">IR ATRÁS</button></div>
     </form>
     <div class="preload yellow hidden">
         <div class="loader">

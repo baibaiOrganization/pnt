@@ -3,6 +3,8 @@
 namespace Theater\Http\Controllers\admin;
 
 use Theater\Entities\Award;
+use Theater\Entities\City;
+use Theater\Entities\Region;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -47,12 +49,15 @@ class UserController extends Controller
     
     public function semanaEditUser($id){
         $award = Award::with('organization')->find($id);
-        return view('back.semanaEditUser', compact('award'));
+        $regions = Region::where('id', '<>', 1)->orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
+        return view('back.semanaEditUser', compact('award', 'regions', 'cities'));
     }
 
     public function colonEditUser($id){
         $award = Award::with('organization')->find($id);
-        return view('back.colonEditUser', compact('award'));
+        $cities = City::orderBy('name')->get();
+        return view('back.colonEditUser', compact('award', 'cities'));
     }
 
     public function semanaUpdate(Request $request, $id){
