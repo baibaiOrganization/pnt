@@ -9,10 +9,6 @@ class Region extends Model
 {
     protected $fillable = ['name'];
 
-    public function organizations(){
-        return $this->hasMany(Organization::class);
-    }
-
     public function users(){
         return $this->hasMany(User::class);
     }

@@ -21,10 +21,10 @@ class CreateOrganizationsTable extends Migration
             $table->string('mobile');
             $table->string('website');
             $table->string('socials');
-            $table->integer('region_id')->default(1)->unsigned();
+            $table->integer('city_id')->default(1)->unsigned();
             $table->timestamps();
 
-            $table->foreign('region_id')->references('id')->on('regions');
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 

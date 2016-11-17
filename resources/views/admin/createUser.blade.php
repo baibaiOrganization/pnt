@@ -5,7 +5,7 @@
     <div class="Register-header">
         <h1>EDITAR USUARIO - {{$user->name}}</h1>
     </div>
-    <form action="" enctype="multipart/form-data" method="POST" class=" Register-form">
+    <form action="{{route('admin.userEdit', $user->id)}}" enctype="multipart/form-data" method="POST" class=" Register-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <div class=" row Register-contentLabel">
             <label class="small-10 col-5" for="name">
@@ -24,25 +24,18 @@
                 @endif
             </label>
 
-            <label class="col-5 small-10" for="org_region">
-                <span>Región</span>
-                <input type="text" name="region" id="region" value="{{$user->region}}">
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('region')}}</span>
-                @endif
-            </label>
-
-            <label for="city" class="col-5 small-10">
+            <label for="region_id" class="col-5 small-10">
                 <div class="Register-contentSelect">
-                    <span>Ciudad</span>
+                    <span>Región</span>
                     <span class="Register-arrowSelect">▼</span>
-                    <select name="city" id="city">
-                        <option value="Bogotá">Bógota</option>
-                        <option value="Medellín" @if($user->city == "Medellín") selected @endif>Medellín</option>
+                    <select name="region_id" id="region_id">
+                        @foreach($regions as $region)
+                            <option value="{{$region->id}}" @if($user->region_id == $region->id) selected @endif>{{$region->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('city')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('region_id')}}</span>
                 @endif
             </label>
         </div>

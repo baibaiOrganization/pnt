@@ -64,5 +64,10 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'AdminController@edit',
         'as' => 'admin.userEdit'
     ]);
+
+    Route::post('usuario/editar/{id}', [
+        'uses' => 'AdminController@update',
+        'as' => 'admin.userEdit'
+    ]);
 });
 
