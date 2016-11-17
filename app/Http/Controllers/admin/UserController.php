@@ -41,7 +41,7 @@ class UserController extends Controller
     }
 
     public function semanaUsers(){
-        $awards = $this->getUsers(2);
+        $awards = $this->getUsers(2, auth()->user()->region_id);
         return view('back.semanaUsers', compact('awards'));
     }
     
@@ -78,11 +78,16 @@ class UserController extends Controller
         return redirect()->route('colonUsers')->with(['Success' => 'La inscripción se ha actualizado satisfactoriamente.']);;
     }
 
-    private function getUsers($type){
+    private function getUsers($type, $region = null){
         return Award::whereHas('user', function($query){
             $query->where('state', 1);
         })->where('award_type_id', $type)
-          ->with(['organization'])
+          ->whereHas('organization' , function($query) use($region){
+              if($region > 1)
+              $query->whereHas('city', function($query) use($region){
+                  $query->where('region_id', $region);
+              });
+        })->with('organization')
           ->paginate(20);
     }
 
