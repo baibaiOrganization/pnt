@@ -5,6 +5,16 @@ Route::get('logout', [
     'as' => 'logout',
 ]);
 
+Route::get('mi-perfil', [
+    'uses' => 'HomeController@getProfile',
+    'as' => 'getProfile'
+]);
+
+Route::post('mi-perfil', [
+    'uses' => 'HomeController@postProfile',
+    'as' => 'postProfile'
+]);
+
 Route::post('ajaxTempFiles', function(\Illuminate\Http\Request $request){
     if($request->ajax()){
         foreach ($request->file() as $file) {
