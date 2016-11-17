@@ -15,7 +15,9 @@
     @endif
 
     <section class="ToolBar">
-        <div style="visibility: hidden;"></div>
+        <div>
+            <a href="{{route('admin.userCreate')}}" class="ButtonForm"> CREAR USUARIO</a></div>
+        </div>
         <form class="search" method="get" action="{{route('searchUser', 2)}}">
             <button class="icon red">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
@@ -51,20 +53,6 @@
         </tbody>
     </table>
     <span class="red">{!! $users->render() !!}</span>
-
-    <section class="Popup-Container" id="Popup" style="display:none">
-        <article class="Popup red">
-            <div class="close">X</div>
-            <p>Escribe el email al que deseas enviar la lista de usuarios</p>
-            <form action="{{route('generateExcel', 2)}}" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <label for="email">
-                    <input type="text"name="email">
-                    <button>Enviar</button>
-                </label>
-            </form>
-        </article>
-    </section>
 @endsection
 @section('scripts')
     <script src="{{asset('js/images.js')}}"></script>

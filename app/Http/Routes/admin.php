@@ -69,5 +69,15 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'AdminController@update',
         'as' => 'admin.userEdit'
     ]);
+
+    Route::get('usuario/nuevo', [
+        'uses' => 'AdminController@add',
+        'as' => 'admin.userCreate'
+    ]);
+
+    Route::post('usuario/nuevo', [
+        'uses' => 'AdminController@create',
+        'as' => 'admin.userCreate'
+    ]);
 });
 

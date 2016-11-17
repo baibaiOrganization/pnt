@@ -2,8 +2,8 @@
 
 namespace Theater\Http\Controllers\admin;
 
+use Validator;
 use Illuminate\Http\Request;
-
 use Theater\Entities\Region;
 use Theater\Entities\Role;
 use Theater\Http\Controllers\Controller;
@@ -12,16 +12,22 @@ use Theater\User;
 class AdminController extends Controller
 {
     public function index(){
-        $users = User::whereIn('role_id', [1,3])->paginate(10);
+        $users = User::whereIn('role_id', [1,3])->orderBy('name')->paginate(10);
         return view('admin.usersList', compact('users'));
     }
 
     public function add(){
-        return view('admin.createUser', compact('users'));
+        $regions = Region::all();
+        $roles = Role::whereIn('id', [1,3])->get();
+        return view('admin.createUser', compact('regions', 'roles'));
     }
 
     public function create(Request $request){
-        User::create($request->all());
+        $inputs = $request->all();
+        $validate = $this->validator($inputs);
+        if($validate->fails())
+            return redirect()->back()->withErrors($validate)->withInput()->with('Error', 'hubo un error');
+        User::create($inputs);
         return redirect()->route('admin.usersList')->with('Success', '¡El usuario ha sido creado!');
     }
 
@@ -41,5 +47,15 @@ class AdminController extends Controller
 
         $user->update($inputs);
         return redirect()->route('admin.usersList')->with('Success', '¡El usuario ha sido actualizado!');
+    }
+
+    private function validator($inputs){
+        return Validator::make($inputs, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'role_id' => 'required',
+            'region_id' => 'required'
+        ]);
     }
 }
