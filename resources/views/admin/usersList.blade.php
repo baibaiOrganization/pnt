@@ -33,6 +33,7 @@
             <tr>
                 <td>NOMBRE</td>
                 <td>EMAIL</td>
+                <td>REGIÓN</td>
                 <td>ESTADO</td>
                 <td>ACCIONES</td>
             </tr>
@@ -42,7 +43,14 @@
             <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>Activo</td>
+                <td>{{$user->region->name}}</td>
+                <td>
+                    @if($user->isActive)
+                        Activo
+                    @else
+                        Desactivado
+                    @endif
+                </td>
                 <td><a href="{{route('admin.userEdit', $user->id)}}">Editar</a></td>
             </tr>
         @endforeach
