@@ -16,7 +16,7 @@ class UserLogged
     public function handle($request, Closure $next)
     {
         if(auth()->check()){
-            if(auth()->user()->role_id == 1)
+            if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3)
                 return redirect('admin');
             return redirect()->route('choose');
         }
