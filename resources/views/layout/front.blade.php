@@ -44,7 +44,10 @@
     </div>
     <div class="Menu-profile small-12 col-6">
         @if(Auth::check())
-        Bienvenido {{explode('@', Auth::user()->email)[0]}} - <a href="{{route('getProfile')}}">Mi perfil</a> - <a href="{{route('logout')}}">Cerrar sesión</a>
+            @if(auth()->user()->role_id == 1)
+                <a href="{{route('admin.usersList')}}" style="line-height: 4rem;">Administración de usuarios</a><br>
+            @endif
+            Bienvenido {{explode('@', Auth::user()->email)[0]}} - <a href="{{route('getProfile')}}">Mi perfil</a> - <a href="{{route('logout')}}">Cerrar sesión</a>
         @endif
     </div>
 </header>
