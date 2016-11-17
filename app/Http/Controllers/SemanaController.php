@@ -38,12 +38,16 @@ class SemanaController extends Controller
 
     public function create(Request $request){
         $inputs = $request->all();
-        $validate = Validator::make($inputs, Validation::getSemanaRules());
+
+        $validate = !isset($inputs['isUpdate'])
+                    ? Validator::make($inputs, Validation::getSemanaRules())
+                    : Validator::make($inputs, ['org_city' => 'required', 'org_region' => 'required']);
+
         $message = isset($inputs['isUpdate'])
             ? 'El formulario se ha guardado con exito'
             : 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.';
 
-        if($validate->fails() && !isset($inputs['isUpdate']))
+        if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
 
         UserManagement::insertSemana(auth()->user() ,$inputs);
