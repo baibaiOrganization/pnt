@@ -33,6 +33,7 @@ $('input[type="file"]').on('change', function(){
             },
             error: function (error) {
                 console.log(error);
+                $('.preload').addClass("hidden");
                 alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
             }
         });

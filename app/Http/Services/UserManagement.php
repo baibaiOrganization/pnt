@@ -97,8 +97,7 @@ class UserManagement{
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
-                'region' => $inputs['org_region'],
-                'city' => $inputs['org_city'],
+                'city_id' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],
                 'mobile' => $inputs['org_mobile'],
@@ -124,6 +123,8 @@ class UserManagement{
 
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
+                'categories' => '',
+                'sound' => ''
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1
@@ -136,11 +137,11 @@ class UserManagement{
             if(isset($inputs['check' . $i]))
                 $categories .= $inputs['check' . $i] . ',';
         }
+
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
-                'region' => $inputs['org_region'],
-                'city' => $inputs['org_city'],
+                'city_id' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],
                 'mobile' => $inputs['org_mobile'],

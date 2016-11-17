@@ -3,6 +3,8 @@
 namespace Theater\Http\Controllers;
 
 
+use Theater\Entities\City;
+use Theater\Entities\Region;
 use Theater\Http\Services\UserManagement;
 use Validator;
 use Illuminate\Http\Request;
@@ -28,7 +30,10 @@ class SemanaController extends Controller
         $organization = isset($award) ? $award->organization : null;
         $propietor = isset($award) ? $award->propietor : null;
         $production = isset($award) ? $award->production : null;
-        return view('front.semana', compact('organization', 'award', 'propietor', 'production'));
+        $regions = Region::where('id', '<>', 1)->orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
+
+        return view('front.semana', compact('organization', 'award', 'propietor', 'production', 'regions', 'cities'));
     }
 
     public function create(Request $request){

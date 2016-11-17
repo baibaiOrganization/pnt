@@ -3,6 +3,7 @@
 namespace Theater\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Theater\Entities\City;
 use Theater\Http\Services\UserManagement;
 use Theater\Http\Services\Validation;
 use Validator;
@@ -22,8 +23,8 @@ class ColonController extends Controller
         $organization = isset($award) ? $award->organization : null;
         $propietor = isset($award) ? $award->propietor : null;
         $production = isset($award) ? $award->production : null;
-
-        return view('front.colon', compact('organization', 'award', 'propietor', 'production'));
+        $cities = City::orderBy('name')->get();
+        return view('front.colon', compact('organization', 'award', 'propietor', 'production', 'cities'));
     }
     
     public function create(Request $request){

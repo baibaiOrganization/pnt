@@ -34,7 +34,7 @@
                 @endif
             </label>
 
-            <label class="col-5 small-10" for="org_region">
+            <!--<label class="col-5 small-10" for="org_region">
                 <span>Región</span>
                 <input type="text" name="org_region" id="org_region"
                        @if(session('Error'))
@@ -46,7 +46,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
-            </label>
+            </label>-->
 
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
@@ -54,8 +54,9 @@
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option value="">Selecciona una ciudad</option>
-                        <option value="Bogotá" @if((session('Error') && old('org_city') == 'Bogotá') || ($organization && $organization->city == 'Bogotá')) selected @endif >Bógota</option>
-                        <option value="Medellín" @if((session('Error') && old('org_city') == 'Medellín') || ($organization && $organization->city == 'Medellín')) selected @endif >Medellín</option>
+                        @foreach($cities as $city)
+                            <option value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($organization && $organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if (count($errors) > 0)

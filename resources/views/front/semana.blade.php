@@ -124,14 +124,18 @@
                 @endif
             </label>
 
-            <label class="col-5 small-10" for="org_region">
-                <span>Región</span>
-                <input type="text" name="org_region" id="org_region"
-                    @if(session('Error'))
-                        value="{{old('org_name')}}"
-                    @elseif($organization)
-                        value="{{$organization->region}}"
-                    @endif>
+            <label for="org_region" class="col-5 small-10">
+                <div class="Register-contentSelect">
+                    <span>Región</span>
+                    <span class="Register-arrowSelect">▼</span>
+                    <select name="org_region" id="org_region">
+                        <option value="">Selecciona una región</option>
+                        @foreach($regions as $region)
+                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($organization && $organization->city->region->id == $region->id)) selected @endif >{{$region->name}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
@@ -142,15 +146,17 @@
                     <span>Ciudad</span>
                     <span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
-                        <option value="">Selecciona una ciudad</option>
-                        <option value="Bogotá" @if((session('Error') && old('org_city') == 'Bogotá') || ($organization && $organization->city == 'Bogotá')) selected @endif >Bógota</option>
-                        <option value="Medellín" @if((session('Error') && old('org_city') == 'Medellín') || ($organization && $organization->city == 'Medellín')) selected @endif >Medellín</option>
+                        <option data-region="0" value="">Selecciona una ciudad</option>
+                        @foreach($cities as $city)
+                            <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($organization && $organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
                 @endif
             </label>
+
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
                 <input type="text" name="org_address" id="org_address"
@@ -788,6 +794,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="{{asset('js/form.js')}}"></script>
     <script type="text/javascript">
+
+        if($('#org_region').val()){
+            var city = $('#org_city');
+            var data = city.find("[data-region='" + $('#org_region').val() + "']");
+            city.children('option').addClass('hidden').eq(0).removeClass('hidden');
+            data.removeClass('hidden');
+        }
+
+        $('#org_region').on('change', function(){
+            var city = $('#org_city');
+            var data = city.find("[data-region='" + $(this).val() + "']");
+            city.children('option').addClass('hidden').eq(0).removeClass('hidden').prop('selected', true);
+            data.removeClass('hidden');
+        });
+
         $('#sector').select2({
             closeOnSelect: false
         });
