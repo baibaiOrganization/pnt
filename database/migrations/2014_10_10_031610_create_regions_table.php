@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRegionToOrganizationTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class AddRegionToOrganizationTable extends Migration
      */
     public function up()
     {
-        Schema::table('organizations', function(Blueprint $table){
-            $table->string('region');
+        Schema::create('regions', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +26,6 @@ class AddRegionToOrganizationTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('regions');
     }
 }
