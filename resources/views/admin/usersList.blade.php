@@ -34,7 +34,7 @@
                 <td>NOMBRE</td>
                 <td>EMAIL</td>
                 <td>REGIÓN</td>
-                <td>ESTADO</td>
+                <td>ROL</td>
                 <td>ACCIONES</td>
             </tr>
         </thead>
@@ -44,13 +44,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->region->name}}</td>
-                <td>
-                    @if($user->isActive)
-                        Activo
-                    @else
-                        Desactivado
-                    @endif
-                </td>
+                <td style="text-transform: capitalize;">{{$user->role->name}}</td>
                 <td><a href="{{route('admin.userEdit', $user->id)}}">Editar</a></td>
             </tr>
         @endforeach

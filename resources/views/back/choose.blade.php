@@ -10,9 +10,11 @@
         <article class="col-4 small-12">
             <a href="{{route('semanaUsers')}}"> Usuarios registrados <br> al Premio Semana </a>
         </article>
-        <article class="col-4 small-12">
-            <a style="background: #FFED00;color: black;" href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
-        </article>
+        @if(auth()->user()->role_id == 1)
+            <article class="col-4 small-12">
+                <a style="background: #FFED00;color: black;" href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
+            </article>
+        @endif
     </section>
 
 @endsection
