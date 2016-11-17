@@ -27,6 +27,7 @@ class AdminController extends Controller
         $validate = $this->validator($inputs);
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput()->with('Error', 'hubo un error');
+        $inputs['password'] = bcrypt($inputs['password']);
         User::create($inputs);
         return redirect()->route('admin.usersList')->with('Success', '¡El usuario ha sido creado!');
     }
