@@ -44,6 +44,9 @@
     </div>
     <div class="Menu-profile small-12 col-6">
         @if(Auth::check())
+            @if(auth()->user()->role_id == 1)
+                <a href="{{route('admin.usersList')}}" style="line-height: 4rem;">Administración de usuarios</a><br>
+            @endif
             Bienvenido {{explode('@', Auth::user()->email)[0]}} - <a href="{{route('logout')}}">Cerrar sesión</a>
         @endif
     </div>

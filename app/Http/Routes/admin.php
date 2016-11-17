@@ -55,29 +55,14 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'semanaUpdate'
     ]);
 
-    /*
-    Route::get('cliente/{id}', [
-        'uses' => 'UserController@showClient',
-        'as' => 'clientDetail'
+    Route::get('listado-usuarios', [
+        'uses' => 'AdminController@index',
+        'as' => 'admin.usersList'
     ]);
 
-    Route::post('updatePayClient', [
-        'uses' => 'UserController@updatePayClient',
-        'as' => 'updatePayClient'
+    Route::get('usuario/editar/{id}', [
+        'uses' => 'AdminController@edit',
+        'as' => 'admin.userEdit'
     ]);
-
-    Route::post('/', [
-        'uses' => 'UserController@searchClient',
-        'as' => 'UserSearch'
-    ]);
-    Route::post('updateClient', [
-        'uses' => 'UserController@updateClient',
-        'as' => 'updateClient'
-    ]);
-
-    Route::get('usersExcel', [
-        'uses' => 'ReportController@usersExcel',
-        'as' => 'usersExcel'
-    ]);*/
 });
 
