@@ -251,6 +251,11 @@
                 @endif
             </label>
         </div>
+
+        <div class="center row">
+            <button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+        </div><br>
+
         <h2 class="col-12">DATOS BÁSICOS DEL ESPECTÁCULO</h2>
         <div class=" row Register-contentLabel">
 
@@ -585,7 +590,9 @@
                 @endif
             </label>
         </div>
-
+        <div class="center row">
+            <button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+        </div><br>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 
         <div class="row Register-contentLabel">
@@ -777,7 +784,7 @@
             </label>
         </div>
 
-        <div class="center row"><button style="margin: 20px 0 0 0;" id="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div class="center row"><button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
         <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
     </form>
@@ -813,7 +820,7 @@
             closeOnSelect: false
         });
 
-        $('#saveForm').on('click', function(){
+        $('.saveForm').on('click', function(){
             $(this).append('<input type="hidden" value="1" name="isUpdate">');
         });
     </script>
