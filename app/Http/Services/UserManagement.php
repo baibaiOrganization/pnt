@@ -170,7 +170,7 @@ class UserManagement{
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
                 'categories' => $categories,
-                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : null
+                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : ''
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1

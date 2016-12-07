@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <div class="Register-header">
+    <div class="Register-header Colon">
         <h1>USUARIO INSCRITO AL PREMIO SEMANA</h1>
     </div>
-    <form action="{{ url('admin/usuarios/semana/') }}" enctype="multipart/form-data" method="GET" class=" Register-form"> <!--route('semanaUpdate', $award->id) -> ruta : {{ url('admin/usuarios/semana/') }} -->
+    <form action="{{ url('admin/usuarios/semana/') }}" enctype="multipart/form-data" method="GET" class=" Register-form Colon-form"> <!--route('semanaUpdate', $award->id) -> ruta : {{ url('admin/usuarios/semana/') }} -->
         <!--<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">-->
 
@@ -225,7 +225,7 @@
                     @break
                 @endif
             @endforeach
-            <h3 class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
+            <h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
             <p> La obra producto del premio deberá tener una duración mínima de cuarenta y cinco (45) minutos. </p>
             @foreach($award->files as $file)
                 @if($file->file_type_id == 1)
@@ -419,7 +419,7 @@
                         <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                     @endif
                 </label>
-                <h3 class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
+                <h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
                 @foreach($award->files as $file)
                     @if($file->file_type_id == 18)
                     <label class="col-10 small-10" for="type18">
@@ -472,9 +472,9 @@
                     @endif
                 @endforeach
             </div>
-        <div class="center row"><button>IR ATRÁS</button></div>
+        <div class="center row"><button style="color:black">IR ATRÁS</button></div>
     </form>
-    <div class="preload red hidden">
+    <div class="preload yellow hidden">
         <div class="loader">
             <div class="circle-outer"></div>
             <div class="circle-inner"></div>

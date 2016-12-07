@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="Register-header">
+    <div class="Register-header Colon">
         <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
     </div>
 
@@ -14,7 +14,7 @@
         </section>
     @endif
 
-    <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="POST" class=" Register-form">
+    <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="POST" class=" Colon-form Register-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
 
@@ -253,7 +253,7 @@
         </div>
 
         <div class="center row">
-            <button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
         </div><br>
 
         <h2 class="col-12">DATOS BÁSICOS DEL ESPECTÁCULO</h2>
@@ -348,7 +348,7 @@
                 @endif
             </label>
 
-            <h3 class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
+            <h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
             <p> La obra producto del premio deberá tener una duración mínima de cuarenta y cinco (45) minutos. </p>
             <label class="col-10 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
@@ -591,7 +591,7 @@
             </label>
         </div>
         <div class="center row">
-            <button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
         </div><br>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 
@@ -696,7 +696,7 @@
                 @endif
             </label>
 
-            <h3 class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
+            <h3 style="color:black;" class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
 
             <label class="col-10 small-10" for="type18">
                 <span>Documento de delegación de representación (.pdf)</span>
@@ -784,11 +784,11 @@
             </label>
         </div>
 
-        <div class="center row"><button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
-        <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
+        <div class="center row"><button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div class="center row"><button style="color:black; margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
     </form>
-    <div class="preload red hidden">
+    <div class="preload yellow hidden">
         <div class="loader">
             <div class="circle-outer"></div>
             <div class="circle-inner"></div>

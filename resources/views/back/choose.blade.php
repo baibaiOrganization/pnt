@@ -8,11 +8,11 @@
 
     <section class="row around Choose">
         <article class="col-4 small-12">
-            <a href="{{route('semanaUsers')}}"> Usuarios registrados <br> al Premio Semana </a>
+            <a href="{{route('semanaUsers')}}" style="color: black;background: #FFED00 "> Usuarios registrados <br> al Premio Semana </a>
         </article>
         @if(auth()->user()->role_id == 1)
             <article class="col-4 small-12">
-                <a style="background: #FFED00;color: black;" href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
+                <a style="background: #df2826;" href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
             </article>
         @endif
     </section>

@@ -17,16 +17,16 @@
     <section class="row around Choose">
         <article class="col-4 small-12">
             @if($event[1])
-                <a href="#" class="disabled"> Ya está inscrito al <br> Premio Semana </a>
+                <a style="color: black; background: #FFED00;" href="#" class="disabled"> Ya está inscrito al <br> Premio Semana </a>
             @else
-                <a href="{{route('semana')}}"> Inscripción <br> Premio Semana </a>
+                <a style="color: black; background: #FFED00;" href="{{route('semana')}}"> Inscripción <br> Premio Semana </a>
             @endif
         </article>
         <article class="col-4 small-12">
             @if($event[0])
-                <a style="background: #FFED00;color: black;" href="#" class="disabled"> Ya está inscrito al <br> Premio Teatro Colón</a>
+                <a href="#" class="disabled"> Ya está inscrito al <br> Premio Teatro Colón</a>
             @else
-                <a style="background: #FFED00;color: black;" href="{{route('colon')}}"> Inscripción <br> Premio Teatro Colón</a>
+                <a href="{{route('colon')}}"> Inscripción <br> Premio Teatro Colón</a>
             @endif
            {{-- <p>Ya te has registrado al premio Semana </p>--}}
         </article>

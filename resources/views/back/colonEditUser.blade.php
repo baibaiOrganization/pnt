@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <div class="Register-header Colon">
+    <div class="Register-header Semana">
         <h1>USUARIO INSCRITO AL PREMIO TEATRO COlÓN</h1>
     </div>
-    <form action="{{ url('admin/usuarios/colon')}}" enctype="multipart/form-data" method="get" class=" Register-form Colon-form"> <!-- //route('colonUpdate', $award->id) -->
+    <form action="{{ url('admin/usuarios/colon')}}" enctype="multipart/form-data" method="get" class=" Register-form Semana-form"> <!-- //route('colonUpdate', $award->id) -->
         <!--<input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">-->
         <!--<input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">-->
 
@@ -170,9 +170,9 @@
                             <div class="Register-file">
                                 <span class="Register-actions">
                                     <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
-                                    <!--<span class="Register-addFile">Cambiar</span>-->
+                                    <!--<span class="Register-addFile">Cambiar</span>
                                 </span>
-                                <span class="Register-tooltip"> {{$file->name}}</span>
+                                <span class="Register-tooltip"> {{$file->name}}</span>-->
                                 <!--<input type="file" id="type3">-->
                                 <input type="hidden" name="type3" value="{{$file->name}}">
                             </div>
@@ -326,14 +326,14 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
             </label>
-            <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
+            {{--<h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
             <section class="row between small-12" id="Categories">
                 <!--
                 *************************************
                 ************* CHECKBOX 1 ************
                 *************************************
                 -->
-                <label class="col-4 small-12 CheckboxContainer @if(old('check1') || (isset($award) && (isset($award) && $award->awardCategory(1) ))) active @endif" for="check1">
+            <!--    <label class="col-4 small-12 CheckboxContainer @if(old('check1') || (isset($award) && (isset($award) && $award->awardCategory(1) ))) active @endif" for="check1">
                     <span class="Checkbox">
                         <span>MEJOR OBRA</span>
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
@@ -348,7 +348,7 @@
                 *************************************
                 -->
 
-                <label class="col-4 small-12 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
+            {{--<label class="col-4 small-12 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) active @endif" for="check2">
                     <span class="Checkbox">
                         <span>MEJOR DIRECTOR</span>
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
@@ -361,7 +361,7 @@
                 *************************************
                 ************* CHECKBOX 3 ************
                 *************************************
-                -->
+
 
                 <label class="small-12 col-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
                     <span class="Checkbox">
@@ -376,7 +376,7 @@
                 *************************************
                 ************* CHECKBOX 4 ************
                 *************************************
-                -->
+
 
                 <label class="CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif small-12" for="check4">
                     <span class="Checkbox">
@@ -390,7 +390,7 @@
                         <span class="Register-actions">
                             <a style="margin-right: 2px" href="{{asset('uploads/colon/')}}/@if($award->file(20)){{$award->file(20)->name}}@endif" target="_blank" class="Register-openFile">Abrir</a>
                             <!--<span class="Register-addFile">Cambiar</span>-->
-                        </span>
+                   {{--</span>
                         <span class="Register-tooltip">
                             @if((session('Error') && old('type20')) || (isset($award) && $award->file(20)))
                                 @if(session('Error'))
@@ -689,11 +689,11 @@
                 <label for="" class="col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
-            </section>
+            </section>--}}
         </div>
-        <div class="center row"><button style="color:black">IR ATRÁS</button></div>
+        <div class="center row"><button style="">IR ATRÁS</button></div>
     </form>
-    <div class="preload yellow hidden">
+    <div class="preload red hidden">
         <div class="loader">
             <div class="circle-outer"></div>
             <div class="circle-inner"></div>
