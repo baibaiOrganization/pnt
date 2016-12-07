@@ -19,9 +19,13 @@ class UserAuth
         $userRoute = str_contains($prefix, 'premio');
 
         if(auth()->check()){
-            if((auth()->user()->role_id == 1 && !$userRoute) || (auth()->user()->role_id == 3 && !$userRoute) || (auth()->user()->role_id == 2 && $userRoute))
-                return $next($request);
+            $role = auth()->user()->role_id;
+            if(($role == 1 && $userRoute) || ($role == 3 && $userRoute) || ($role == 2 && !$userRoute)){
+                return $role == 2 ? redirect('premios') : redirect('admin');
+            }
+
+            return $next($request);
         }
-        return redirect('/premios');
+        return redirect('/');
     }
 }
