@@ -12,13 +12,13 @@ use Theater\User;
 class AdminController extends Controller
 {
     public function index(){
-        $users = User::whereIn('role_id', [1,3])->orderBy('name')->paginate(10);
+        $users = User::whereIn('role_id', [1,3,4,5])->orderBy('name')->paginate(20);
         return view('admin.usersList', compact('users'));
     }
 
     public function add(){
         $regions = Region::all();
-        $roles = Role::whereIn('id', [1,3])->get();
+        $roles = Role::whereIn('id', [1,3,4,5])->get();
         return view('admin.createUser', compact('regions', 'roles'));
     }
 
@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function edit($id){
         $user = User::find($id);
         $regions = Region::all();
-        $roles = Role::whereIn('id', [1,3])->get();
+        $roles = Role::whereIn('id', [1,3,4,5])->get();
         return view('admin.updateUser', compact('user', 'regions', 'roles'));
     }
 
