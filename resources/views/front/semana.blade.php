@@ -53,7 +53,7 @@
                         @endif
                     </span>
 
-                    <input type="file" id="type8" types="jpg|png|jpg" accept="image/jpg,image/jpeg,image/png">
+                    <input type="file" id="type8" types="jpg|png|jpeg" accept="image/jpg,image/jpeg,image/png">
                     <input type="hidden" name="type8"
                            @if(session('Error'))
                                value="{{old('org_name')}}"

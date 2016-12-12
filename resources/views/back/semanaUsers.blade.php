@@ -42,7 +42,7 @@
                 <td>EMAIL</td>
                 <td>REGIÓN</td>
                 <td>CIUDAD</td>
-                <td>VER/EDITAR</td>
+                <td>ACCIONES</td>
             </tr>
         </thead>
         <tbody>
