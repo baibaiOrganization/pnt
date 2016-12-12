@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="Register-header Colon">
-        <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO</h1>
+        <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO SEMANA</h1>
     </div>
 
     @if(session('Error'))
