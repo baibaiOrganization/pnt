@@ -14,7 +14,7 @@ class CuradorController extends Controller
 
         $user = auth()->user();
         $region = $user->region->id;
-        $limit = $region != 2 ? 6 : 3;
+        $limit = $region == 2 ? 6 : 3;
         $column = $user->role_id == 3 ? 'isSelected' : 'isPreselected';
         $state = $request->get('isSelected') == 'true' ? 1 : 0;
 
