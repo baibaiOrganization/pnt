@@ -24,7 +24,7 @@ class CityTableSeeder extends Seeder
         City::create(['name' => 'Nariño', 'region_id' => 4]);
         City::create(['name' => 'Amazonas', 'region_id' => 4]);
 
-        City::create(['name' => 'Manizalez', 'region_id' => 5]);
+        City::create(['name' => 'Manizales', 'region_id' => 5]);
         City::create(['name' => 'Risaralda', 'region_id' => 5]);
         City::create(['name' => 'Caldas', 'region_id' => 5]);
         City::create(['name' => 'Quindío', 'region_id' => 5]);
