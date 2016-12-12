@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AwardTypeTableSeeder::class);
         $this->call(DocumentTypeTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
     }
 }

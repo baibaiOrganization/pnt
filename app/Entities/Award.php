@@ -40,4 +40,8 @@ class Award extends Model
     public function awardCategory($id){
         return in_array($id, explode(',',$this->categories));
     }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class);
+    }
 }
