@@ -24,6 +24,8 @@
             </svg>
         </div>
         <form class="search" method="get" action="{{route('searchUser', 2)}}">
+            <input type="hidden" id="token" value="{{csrf_token()}}">
+            <input type="hidden" id="preselected_url" value="{{route('admin.curador.selectedUpdate')}}">
             <button class="icon yellow">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
                     <g fill="#fff">
@@ -42,7 +44,10 @@
                 <td>EMAIL</td>
                 <td>REGIÓN</td>
                 <td>CIUDAD</td>
-                <td>ACCIONES</td>
+                @if(auth()->user()->role_id == 3 || auth()->user()->role_id == 4)
+                    <td>SELECCIONAR</td>
+                @endif
+                <td>VER</td>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +57,28 @@
                 <td>{{$award->user->email}}</td>
                 <td>{{$award->organization->city->region->name}}</td>
                 <td>{{$award->organization->city->name}}</td>
+
+                @if(($isCurador = auth()->user()->role_id == 3) || auth()->user()->role_id == 4)
+                    @if($isCurador)
+                        <td>
+                            <label class="small-12 col-4 CheckboxContainer @if(isset($award) && $award->isSelected)) active @endif" for="check{{$award->id}}">
+                                <span class="row center Checkbox">
+                                    <input type="hidden" class="award_id" value="{{$award->id}}">
+                                    <input type="checkbox" id="check{{$award->id}}" value="3" @if(isset($award) && $award->isSelected) checked="checked" @endif>
+                                </span>
+                            </label>
+                        </td>
+                    @else
+                        <td>
+                            <label class="small-12 col-4 CheckboxContainer @if(isset($award) && $award->isPreselected)) active @endif" for="check{{$award->id}}">
+                                <span class="row center Checkbox">
+                                    <input type="hidden" class="award_id" value="{{$award->id}}">
+                                    <input type="checkbox" id="check{{$award->id}}" value="3" @if(isset($award) && $award->isPreselected) checked="checked" @endif>
+                                </span>
+                            </label>
+                        </td>
+                    @endif
+                @endif
                 <td>
                     <a href="{{route('semanaEditUser', $award->id)}}" class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90">
@@ -98,6 +125,25 @@
         $('#Popup .close').on('click', function(){
             $('#Popup').hide();
         });
+
+        $('label.CheckboxContainer .Checkbox').on('change', function(){
+            var element = $(this),
+                award_id = element.children('input.award_id').val(),
+                url = $('#preselected_url').val(),
+                token = $('#token').val(),
+                flag = element.children('input').is(':checked');
+
+            flag ? element.parent().addClass('active') : element.parent().removeClass('active');
+
+            $.post(url, {
+                '_token' : token,
+                'award_id' : award_id,
+                'isSelected' : flag
+            }, function(s){
+                console.log(s);
+            });
+        });
+
     </script>
 @endsection
 @section('styles')

@@ -93,6 +93,8 @@ class UserController extends Controller
                   $query->where('region_id', $region);
               });
         })->with('organization')
+          ->orderBy('isSelected', 'DESC')
+            ->orderBy('isPreselected', 'DESC')
           ->paginate(20);
     }
 

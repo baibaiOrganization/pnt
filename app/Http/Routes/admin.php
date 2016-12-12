@@ -79,5 +79,11 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'AdminController@create',
         'as' => 'admin.userCreate'
     ]);
+
+
+    Route::post('selected/update', [
+        'as' => 'admin.curador.selectedUpdate',
+        'uses' => 'CuradorController@selectedUpdate'
+    ]);
 });
 

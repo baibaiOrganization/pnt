@@ -20,7 +20,7 @@ class UserAuth
 
         if(auth()->check()){
             $role = auth()->user()->role_id;
-            if(($role == 1 && $userRoute) || ($role == 3 && $userRoute) || ($role == 2 && !$userRoute)){
+            if((in_array($role, [1,3,4,5]) && $userRoute) || ($role == 2 && !$userRoute)){
                 return $role == 2 ? redirect('premios') : redirect('admin');
             }
 

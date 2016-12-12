@@ -65,6 +65,7 @@ class UserManagement{
                 'propietor_id' => $propietor->id,
                 'categories' => $data['award']['categories'],
                 'sound' => $data['award']['sound'],
+                'isPreselected' => $data['award']['isPreselected']
             ]);
         }
 
@@ -124,7 +125,8 @@ class UserManagement{
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
                 'categories' => '',
-                'sound' => ''
+                'sound' => '',
+                'isPreselected' => $inputs['org_region'] == 2 ? 0 : 1
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1
@@ -170,7 +172,8 @@ class UserManagement{
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
                 'categories' => $categories,
-                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : ''
+                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : '',
+                'isPreselected' => 1
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1
