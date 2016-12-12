@@ -133,14 +133,17 @@
                 token = $('#token').val(),
                 flag = element.children('input').is(':checked');
 
-            flag ? element.parent().addClass('active') : element.parent().removeClass('active');
-
             $.post(url, {
                 '_token' : token,
                 'award_id' : award_id,
                 'isSelected' : flag
-            }, function(s){
-                console.log(s);
+            }, function(response){
+                if(response.error){
+                    alert('¡Ya ha seleccionado ' + response.quantity + ' usuarios!');
+                }else {
+                    flag ? element.parent().addClass('active') : element.parent().removeClass('active');
+                }
+
             });
         });
 

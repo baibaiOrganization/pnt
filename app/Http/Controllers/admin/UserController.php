@@ -94,7 +94,7 @@ class UserController extends Controller
               });
         })->with('organization')
           ->orderBy('isSelected', 'DESC')
-            ->orderBy('isPreselected', 'DESC')
+          ->orderBy('isPreselected', 'DESC')
           ->paginate(20);
     }
 
