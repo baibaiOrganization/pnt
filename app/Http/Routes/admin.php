@@ -85,5 +85,10 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'admin.curador.selectedUpdate',
         'uses' => 'CuradorController@selectedUpdate'
     ]);
+
+    Route::post('sendToJudge', [
+        'as' => 'sendToJudge',
+        'uses' => 'CuradorController@sendToJudge'
+    ]);
 });
 

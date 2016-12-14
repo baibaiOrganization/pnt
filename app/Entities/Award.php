@@ -7,7 +7,7 @@ use Theater\User;
 
 class Award extends Model
 {
-    protected $fillable = ['name', 'state', 'award_type_id', 'user_id', 'organization_id', 'propietor_id', 'production_id', 'categories', 'sound', 'isSelected', 'isPreselected'];
+    protected $fillable = ['name', 'state', 'award_type_id', 'user_id', 'organization_id', 'propietor_id', 'production_id', 'categories', 'sound', 'isSelected', 'isPreselected', 'isSelEdit'];
 
     public function user(){
         return $this->belongsTo(User::class);

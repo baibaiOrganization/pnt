@@ -44,7 +44,8 @@ class UserController extends Controller
 
     public function semanaUsers(){
         $awards = $this->getUsers(2, auth()->user()->region_id);
-        return view('back.semanaUsers', compact('awards'));
+        $isEditable = $awards[0]->isSelEdit;
+        return view('back.semanaUsers', compact('awards', 'isEditable'));
     }
     
     public function semanaEditUser($id){

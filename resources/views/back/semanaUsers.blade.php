@@ -60,7 +60,7 @@
 
                 @if(($isCurador = auth()->user()->role_id == 3) || auth()->user()->role_id == 4)
                     @if($isCurador)
-                        <td>
+                        <td @if(!$isEditable) class="locked" @endif>
                             <label class="small-12 col-4 CheckboxContainer @if(isset($award) && $award->isSelected)) active @endif" for="check{{$award->id}}">
                                 <span class="row center Checkbox">
                                     <input type="hidden" class="award_id" value="{{$award->id}}">
@@ -90,6 +90,13 @@
                 </td>
             </tr>
             @endforeach
+            @if(auth()->user()->role_id == 3 && $isEditable)
+                <tr>
+                    <td colspan="6">
+                        <a href="#" id="sendToJudge" data-url="{{route('sendToJudge')}}" class="Button" style="width:auto;margin:20px 0;padding: 0 10px;background: #FFED00;">ENVIAR RESULTADOS A LOS JUECES</a>
+                    </td>
+                </tr>
+            @endif
         </tbody>
     </table>
     <span class="yellow">{!! $awards->render() !!}</span>
@@ -102,7 +109,6 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <label for="email">
                     <input type="text"name="email">
-                    <button>Enviar</button>
                 </label>
             </form>
         </article>
@@ -126,6 +132,25 @@
             $('#Popup').hide();
         });
 
+        $('#sendToJudge').on('click', function(){
+            var r = confirm('Una vez enviado al juez, no podrá volver a hacer modificaciones. ¿Desea finalizar el proceso de preselección?');
+            if(r){
+                var url = $(this).data('url'),
+                    token = $('#token').val();
+
+
+                $.post(url, { '_token' : token }, function(response){
+                    console.log(response);
+                    if(response.error){
+                        alert(response.message);
+                    } else {
+                        window.location.reload();
+                    }
+                });
+            }
+            return false;
+        });
+
         $('label.CheckboxContainer .Checkbox').on('change', function(){
             var element = $(this),
                 award_id = element.children('input.award_id').val(),
@@ -138,12 +163,12 @@
                 'award_id' : award_id,
                 'isSelected' : flag
             }, function(response){
+                console.log(response);
                 if(response.error){
-                    alert('¡Ya ha seleccionado ' + response.quantity + ' usuarios!');
+                    alert(response.message);
                 }else {
                     flag ? element.parent().addClass('active') : element.parent().removeClass('active');
                 }
-
             });
         });
 

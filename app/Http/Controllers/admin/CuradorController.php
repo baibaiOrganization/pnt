@@ -10,6 +10,28 @@ use Theater\Http\Controllers\Controller;
 
 class CuradorController extends Controller
 {
+
+
+    function sendToJudge(){
+        $region_id = auth()->user()->region_id;
+        $limit = $region_id == 2 ? 6 : 3;
+        $awards = Award::where('isSelected', 1)->whereHas('organization', function($query) use ($region_id){
+            $query->whereHas('city', function($query) use ($region_id){
+                $query->where('region_id', $region_id);
+            });
+        })->get();
+
+        if(count($awards) != $limit)
+            return ['error' => true, 'message' => "No fue posible enviar al juez. Debe seleccionar {$limit} participantes."];
+
+
+        foreach ($awards as $key => $award){
+            $award->update(['isSelEdit' => 0]);
+        }
+        return $awards;
+    }
+
+
     function selectedUpdate(Request $request){
 
         $user = auth()->user();
@@ -29,9 +51,13 @@ class CuradorController extends Controller
             })->count();
 
         if($nAwards >= $limit && $state == 1)
-            return ['error' => true, 'quantity' => $limit];
+            return ['error' => true, 'message' => "¡Ya ha seleccionado {$limit} usuarios!"];
 
         $award = Award::find($request->get('award_id'));
+
+        if(!$award->isSelEdit)
+            return ['error' => true, 'message' => 'El formulario ya no es editable!'];
+
         $award->update(["$column" => $state]);
         return $award;
     }
