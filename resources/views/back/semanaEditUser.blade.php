@@ -472,7 +472,7 @@
                     @endif
                 @endforeach
             </div>
-        <div class="center row"><button style="color:black">IR ATRÁS</button></div>
+        <!--<div class="center row"><button style="color:black">IR ATRÁS</button></div>-->
     </form>
     <div class="preload yellow hidden">
         <div class="loader">
