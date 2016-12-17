@@ -4,6 +4,8 @@ namespace Theater\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Theater\Entities\Award;
+use Theater\Entities\Category;
+use Theater\Entities\Region;
 use Theater\Http\Requests;
 use Theater\Http\Controllers\Controller;
 
@@ -15,6 +17,14 @@ class QualificationController extends Controller
         $awards = Award::where('isSelected', 1)->paginate(20);
         $isEditable = $awards[0]->isSelEdit == 0 ? 1 : 0;
         return view('admin.userSelectedList', compact('awards', 'isEditable'));
+    }
+
+
+    function getSelectedSemana(){
+        $awards = Award::where('isSelected', 1)->orderBy('region_id')->get();
+        $regions = Region::where('id', '<>', 1)->get();
+        $categories = Category::all();
+        return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories'));
     }
 
 

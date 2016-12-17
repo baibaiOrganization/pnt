@@ -95,5 +95,29 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'userSelectedList',
         'uses' => 'QualificationController@userSelectedList'
     ]);
+
+
+
+
+
+    Route::get('juez/usuarios-seleccionados/semana', [
+        'as' => 'semanaSelectedUsers',
+        'uses' => 'QualificationController@getSelectedSemana'
+    ]);
+
+    Route::get('juez/usuarios-seleccionados/colon', [
+        'as' => 'semanaSelectedUsers',
+        'uses' => 'QualificationController@getJudgeSelectedList'
+    ]);
+
+    Route::post('juez/usuarios-seleccionados/semana', [
+        'as' => 'semanaSelectedUsers',
+        'uses' => 'QualificationController@postUserSelectedList'
+    ]);
+
+    Route::post('juez/usuarios-seleccionados/colon', [
+        'as' => 'colonSelectedUsers',
+        'uses' => 'QualificationController@postUserSelectedList'
+    ]);
 });
 
