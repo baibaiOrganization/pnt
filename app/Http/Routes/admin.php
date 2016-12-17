@@ -83,12 +83,17 @@ Route::group(['namespace' => 'admin'], function () {
 
     Route::post('selected/update', [
         'as' => 'admin.curador.selectedUpdate',
-        'uses' => 'CuradorController@selectedUpdate'
+        'uses' => 'QualificationController@selectedUpdate'
     ]);
 
     Route::post('sendToJudge', [
         'as' => 'sendToJudge',
-        'uses' => 'CuradorController@sendToJudge'
+        'uses' => 'QualificationController@sendToJudge'
+    ]);
+
+    Route::get('usuarios-seleccionados', [
+        'as' => 'userSelectedList',
+        'uses' => 'QualificationController@userSelectedList'
     ]);
 });
 

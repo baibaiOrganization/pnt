@@ -3,14 +3,22 @@
 namespace Theater\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-
 use Theater\Entities\Award;
 use Theater\Http\Requests;
 use Theater\Http\Controllers\Controller;
 
-class CuradorController extends Controller
+class QualificationController extends Controller
 {
+    /*************** JUEZ ***************/
 
+    function userSelectedList(){
+        $awards = Award::where('isSelected', 1)->paginate(20);
+        $isEditable = $awards[0]->isSelEdit == 0 ? 1 : 0;
+        return view('admin.userSelectedList', compact('awards', 'isEditable'));
+    }
+
+
+    /************* CURADOR *************/
 
     function sendToJudge(){
         $region_id = auth()->user()->region_id;
@@ -42,7 +50,7 @@ class CuradorController extends Controller
 
         $nAwards = Award::whereHas('user', function($query){
             $query->where('state', 1);
-            })->whereRaw('award_type_id = 2 and ' . $column . ' = 1')
+        })->whereRaw('award_type_id = 2 and ' . $column . ' = 1')
             ->whereHas('organization' , function($query) use($region){
                 if($region > 1)
                     $query->whereHas('city', function($query) use($region){
