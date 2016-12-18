@@ -158,7 +158,7 @@
             </label>
 
         </div>
-        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <h2 class="col-12">DATOS DE LA PRODUCCIÓN ARTÍSTICA</h2>
         <div class=" row Register-contentLabel">
 
@@ -422,7 +422,7 @@
             </label>
            
         </div>
-        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 
         <div class="row Register-contentLabel">
@@ -525,8 +525,8 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
             </label>
-            {{--
-            <div style="margin-bottom: 20px" class="center row col-12"><button style="color: black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+
+            <div style="margin-bottom: 20px" class="center row col-12"><button style="color: black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
             <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
             <section class="row between small-12" id="Categories">
                 <!--
@@ -882,9 +882,9 @@
                 <label for="" class="col-8"><span class="Empty"></span></label>
                 <label for="" style="display:none"><span class="Empty"></span></label>
 
-            </section> --}}
+            </section>
         </div>
-        <div class="center row"><button style="margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div class="center row"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
     </form>
     <div class="preload red hidden">

@@ -253,7 +253,7 @@
         </div>
 
         <div class="center row">
-            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button>
         </div><br>
 
         <h2 class="col-12">DATOS BÁSICOS DEL ESPECTÁCULO</h2>
@@ -591,7 +591,7 @@
             </label>
         </div>
         <div class="center row">
-            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button>
+            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button>
         </div><br>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 
@@ -784,7 +784,7 @@
             </label>
         </div>
 
-        <div class="center row"><button style="color:black; margin: 20px 0 0 0;" class="saveForm"> TERMINAR DESPUÉS</button></div>
+        <div class="center row"><button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <div class="center row"><button style="color:black; margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
     </form>
