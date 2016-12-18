@@ -91,6 +91,11 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'QualificationController@sendToJudge'
     ]);
 
+    Route::post('semanaSaveScore', [
+        'as' => 'semanaSaveScore',
+        'uses' => 'QualificationController@semanaSaveScore'
+    ]);
+
     Route::get('usuarios-seleccionados', [
         'as' => 'userSelectedList',
         'uses' => 'QualificationController@userSelectedList'

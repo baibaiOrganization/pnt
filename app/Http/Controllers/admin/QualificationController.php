@@ -27,6 +27,11 @@ class QualificationController extends Controller
         return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories'));
     }
 
+    function semanaSaveScore(Request $request){
+        return ['award' => 'dkjlasjd'];
+        return ['award' => $request->all()];
+    }
+
 
     /************* CURADOR *************/
 
