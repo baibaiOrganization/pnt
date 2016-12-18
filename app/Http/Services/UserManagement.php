@@ -96,6 +96,12 @@ class UserManagement{
     }
 
     private static function getSemanaInputs($inputs){
+        $categories = '';
+        for ($i = 1; $i <= 10; $i++){
+            if(isset($inputs['check' . $i]))
+                $categories .= $inputs['check' . $i] . ',';
+        }
+
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
@@ -125,8 +131,8 @@ class UserManagement{
 
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
-                'categories' => '',
-                'sound' => '',
+                'categories' => $categories,
+                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : '',
                 'isPreselected' => $inputs['org_region'] == 2 ? 0 : 1,
                 'region_id' => $inputs['org_region']
             ],
@@ -136,11 +142,6 @@ class UserManagement{
     }
 
     private static function getColonInputs($inputs){
-        $categories = '';
-        for ($i = 1; $i <= 10; $i++){
-            if(isset($inputs['check' . $i]))
-                $categories .= $inputs['check' . $i] . ',';
-        }
 
         return [
             'organization' => [
@@ -173,10 +174,10 @@ class UserManagement{
 
             'award' => [
                 'state' => isset($inputs['isUpdate']) ? 0 : 1,
-                'categories' => $categories,
-                'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : '',
+                'sound' => '',
+                'categories' => '',
                 'isPreselected' => 1,
-                'region_id' => $inputs['org_region']
+                'region_id' => 1
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1
