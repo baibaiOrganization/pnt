@@ -12,15 +12,15 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['name' => 'MEJOR OBRA']);
-        Category::create(['name' => 'MEJOR DIRECTOR']);
-        Category::create(['name' => 'MEJOR DRAMATURGIA']);
-        Category::create(['name' => 'MEJOR DISEÑO DE ESCENOGRAFÍA']);
-        Category::create(['name' => 'MEJOR DISEÑO DE MAQUILLAJE']);
-        Category::create(['name' => 'MEJOR DISEÑO DE VESTUARIO']);
-        Category::create(['name' => 'MEJOR DISEÑO DE ILUMINACIÓN']);
-        Category::create(['name' => 'MEJOR DISEÑO DE SONIDO']);
-        Category::create(['name' => 'MEJOR ACTOR']);
-        Category::create(['name' => 'MEJOR ACTRÍZ']);
+        Category::create(['name' => 'OBRA']);
+        Category::create(['name' => 'DIRECTOR']);
+        Category::create(['name' => 'DRAMATURGIA']);
+        Category::create(['name' => 'ESCENOGRAFÍA']);
+        Category::create(['name' => 'MAQUILLAJE']);
+        Category::create(['name' => 'VESTUARIO']);
+        Category::create(['name' => 'ILUMINACIÓN']);
+        Category::create(['name' => 'SONIDO']);
+        Category::create(['name' => 'ACTOR']);
+        Category::create(['name' => 'ACTRÍZ']);
     }
 }

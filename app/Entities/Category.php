@@ -11,4 +11,8 @@ class Category extends Model
     function awards(){
         return $this->belongsToMany(Award::class);
     }
+
+    public function score($category){
+        return $this->where('ca', 1);
+    }
 }

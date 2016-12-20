@@ -44,4 +44,12 @@ class Award extends Model
     public function categories(){
         return $this->belongsToMany(Category::class);
     }
+
+    public function scores(){
+        return $this->hasMany(Score::class);
+    }
+
+    public function score($category){
+        return $this->scores()->where('category_id', $category)->first();
+    }
 }

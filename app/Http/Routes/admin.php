@@ -102,15 +102,23 @@ Route::group(['namespace' => 'admin'], function () {
     ]);
 
 
-
-
-
     Route::get('juez/usuarios-seleccionados/semana', [
+        'as' => 'judgeSelectedSemana',
+        'uses' => 'QualificationController@judgeSelectedSemana'
+    ]);
+
+    Route::get('juez/usuarios-seleccionados/colon', [
+        'as' => 'judgeSelectedColon',
+        'uses' => 'QualificationController@judgeSelectedColon'
+    ]);
+
+
+    Route::get('usuarios-seleccionados/semana', [
         'as' => 'semanaSelectedUsers',
         'uses' => 'QualificationController@getSelectedSemana'
     ]);
 
-    Route::get('juez/usuarios-seleccionados/colon', [
+    Route::get('usuarios-seleccionados/colon', [
         'as' => 'semanaSelectedUsers',
         'uses' => 'QualificationController@getJudgeSelectedList'
     ]);

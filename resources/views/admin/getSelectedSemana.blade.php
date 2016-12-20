@@ -1,7 +1,6 @@
 @extends('layout.front')
 
 @section('content')
-
     <div class="Register-header Colon">
         <h1>USUARIOS INSCRITOS AL PREMIO SEMANA</h1>
     </div>
@@ -40,40 +39,34 @@
                                     <td>{{$award->organization->name}}</td>
                                     <td>{{$award->organization->city->region->name}}</td>
                                     <td>
-                                        <select name="score1" style="background: white">
-                                            <option value=""></option>
-                                            <option value="0">N/A</option>
-                                            @for($i = 1; $i <= 10; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        <?php $sum1 = 0 ?>
+                                        @foreach($award->scores as $score)
+                                            @if($score->user_id == $judges[0]->id && $category->id == $score->category_id)
+                                                <?php $sum1 += intval($score->score); ?>
+                                            @endif
+                                        @endforeach
+                                        {{$sum1}}
                                     </td>
                                     <td>
-                                        <select name="score2" style="background: white">
-                                            <option value=""></option>
-                                            <option value="0">N/A</option>
-                                            @for($i = 1; $i <= 10; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        <?php $sum2 = 0 ?>
+                                        @foreach($award->scores as $score)
+                                            @if($score->user_id == $judges[1]->id && $category->id == $score->category_id)
+                                                <?php $sum2 += intval($score->score); ?>
+                                            @endif
+                                        @endforeach
+                                        {{$sum2}}
                                     </td>
                                     <td>
-                                        <select name="score3" style="background: white">
-                                            <option value=""></option>
-                                            <option value="0">N/A</option>
-                                            @for($i = 1; $i <= 10; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        <?php $sum3 = 0 ?>
+                                        @foreach($award->scores as $score)
+                                            @if($score->user_id == $judges[2]->id && $category->id == $score->category_id)
+                                                <?php $sum3 += intval($score->score); ?>
+                                            @endif
+                                        @endforeach
+                                        {{$sum3}}
                                     </td>
                                     <td>
-                                        <select name="total" style="background: white">
-                                            <option value=""></option>
-                                            <option value="0">N/A</option>
-                                            @for($i = 1; $i <= 10; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
-                                        </select>
+                                        {{$sum3 + $sum2 + $sum1}}
                                     </td>
                                     <td class="row between">
                                         <a target="_blank" href="{{route('semanaEditUser', $award->id)}}" class="icon">

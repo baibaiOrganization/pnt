@@ -3,15 +3,24 @@
 namespace Theater\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use Validator;
 use Theater\Entities\Award;
 use Theater\Entities\Category;
 use Theater\Entities\Region;
+use Theater\Entities\Score;
 use Theater\Http\Requests;
 use Theater\Http\Controllers\Controller;
 
 class QualificationController extends Controller
 {
     /*************** JUEZ ***************/
+
+    function judgeSelectedSemana(){
+        $awards = Award::where('isSelected', 1)->orderBy('region_id')->with('scores')->get();
+        $regions = Region::where('id', '<>', 1)->get();
+        $categories = Category::all();
+        return view('admin.judgeSelectedSemana', compact('awards', 'regions', 'categories', 'scores'));
+    }
 
     function userSelectedList(){
         $awards = Award::where('isSelected', 1)->paginate(20);
@@ -28,8 +37,25 @@ class QualificationController extends Controller
     }
 
     function semanaSaveScore(Request $request){
-        return ['award' => 'dkjlasjd'];
-        return ['award' => $request->all()];
+        $scores = $request->get('categories');
+        $award = $request->get('award');
+        $user = auth()->user()->id;
+
+        if(in_array("", $scores))
+            return ['error' => 'Antes de continuar debe llenar todos los campos'];
+
+        foreach ($scores as $category => $score){
+            Score::whereRaw("category_id = {$category} and award_id = {$award} and user_id = {$user}")->delete();
+            Score::create([
+                'score' => $score,
+                'category_id' => $category,
+                'award_id' => $award,
+                'user_id' => $user,
+                'isEditable' => 1
+            ]);
+        }
+
+        return ['success' => true];
     }
 
 

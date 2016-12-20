@@ -4,7 +4,10 @@ namespace Theater\Http\Controllers\admin;
 
 use Theater\Entities\Award;
 use Theater\Entities\City;
+use Theater\Entities\Category;
 use Theater\Entities\Region;
+use Theater\Entities\Score;
+use Theater\User;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -43,9 +46,17 @@ class UserController extends Controller
     }
 
     public function semanaUsers(){
-        $awards = $this->getUsers(2, auth()->user()->region_id);
-        $isEditable = $awards[0] ? $awards[0]->isSelEdit : 1;
-        return view('back.semanaUsers', compact('awards', 'isEditable'));
+        if(auth()->user()->role_id != 1) {
+            $awards = $this->getUsers(2, auth()->user()->region_id);
+            $isEditable = $awards[0] ? $awards[0]->isSelEdit : 1;
+            return view('back.semanaUsers', compact('awards', 'isEditable'));
+        } else {
+            $awards = Award::where('isSelected', 1)->with(['scores'])->orderBy('region_id')->get();
+            $regions = Region::where('id', '<>', 1)->get();
+            $judges = User::where('role_id', 5)->get();
+            $categories = Category::all();
+            return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories', 'judges'));
+        }
     }
     
     public function semanaEditUser($id){
