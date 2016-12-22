@@ -103,6 +103,7 @@ class UserManagement{
         }
 
         return [
+
             'organization' => [
                 'name' => $inputs['org_name'],
                 'city_id' => $inputs['org_city'],
@@ -111,12 +112,14 @@ class UserManagement{
                 'mobile' => $inputs['org_mobile'],
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
-                'socials' => ',,',
+                'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
             ],
 
             'production' => [
                 'name' => $inputs['prd_name'],
+                'release_date' => $inputs['prd_date'],
                 'genre' => $inputs['prd_genre'],
+                'link_video' => $inputs['prd_video'],
             ],
 
             'propietor' => [
@@ -152,14 +155,12 @@ class UserManagement{
                 'mobile' => $inputs['org_mobile'],
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
-                'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
+                'socials' => ',,',
             ],
 
             'production' => [
                 'name' => $inputs['prd_name'],
-                'release_date' => $inputs['prd_date'],
                 'genre' => $inputs['prd_genre'],
-                'link_video' => $inputs['prd_video'],
             ],
 
             'propietor' => [
