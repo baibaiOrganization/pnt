@@ -407,10 +407,10 @@
                                 {{$award->file(4)->name}}
                             @endif
                         @else
-                            Autorización de uso de las piezas musicales (pdf,jpg,png,jpeg)
+                            Autorización de uso de las piezas musicales (pdf,png,jpeg)
                         @endif
                     </span>
-                    <input type="file" id="type4" types="pdf|jpg|png|jpeg" accept="application/pdf,image/*">
+                    <input type="file" id="type4" types="pdf|png|jpeg" accept="application/pdf,image/*">
                     <input type="hidden" name="type4"
                            @if(session('Error'))
                            value="{{old('type4')}}"
@@ -988,7 +988,7 @@
         <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
     </form>
 
-    <div class="preload yellow hidden">
+    <div class="preload red hidden">
         <div class="loader">
             <div class="circle-outer"></div>
             <div class="circle-inner"></div>

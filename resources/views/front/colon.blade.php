@@ -693,7 +693,7 @@
 
     </form>
 
-    <div class="preload red hidden">
+    <div class="preload yellow hidden">
         <div class="loader">
             <div class="circle-outer"></div>
             <div class="circle-inner"></div>
