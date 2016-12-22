@@ -151,5 +151,30 @@ class FileTypeTableSeeder extends Seeder
             'id' => 28,
             'name' => 'Dossier compania'
         ]);
+
+        FileType::create([
+            'id' => 29,
+            'name' => 'Mejor Obra'
+        ]);
+
+        FileType::create([
+            'id' => 30,
+            'name' => 'Mejor Director'
+        ]);
+
+        FileType::create([
+            'id' => 31,
+            'name' => 'Mejor Dramaturgia'
+        ]);
+
+        FileType::create([
+            'id' => 32,
+            'name' => 'Mejor Actor'
+        ]);
+
+        FileType::create([
+            'id' => 33,
+            'name' => 'Mejor Actriz'
+        ]);
     }
 }

@@ -94,33 +94,33 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type9')}}</span>
                 @endif
             </label>
-            <label class="col-10 small-10" for="type28">
+            <label class="col-10 small-10" for="type5">
                 <span>Dossier del grupo o compañía (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type28')) || (isset($award) && $award->file(28)))
+                        @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
                             @if(session('Error'))
-                                {{old('type28')}}
+                                {{old('type5')}}
                             @else
-                                {{$award->file(28)->name}}
+                                {{$award->file(5)->name}}
                             @endif
                         @else
                             Trayectoria de la compañía, reseña de su director, integrantes y repertorio
                         @endif
                     </span>
-                    <input type="file" id="type28" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type28"
+                    <input type="file" id="type5" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type5"
                            @if(session('Error'))
-                           value="{{old('type28')}}"
-                           @elseif(isset($award) && $award->file(28))
-                           value="{{$award->file(28)->name}}"
+                           value="{{old('type5')}}"
+                           @elseif(isset($award) && $award->file(5))
+                           value="{{$award->file(5)->name}}"
                            @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type28')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
                 @endif
             </label>
 
@@ -639,8 +639,31 @@
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
                     </span>
             </label>
-            <label for="" class="from-large col-8"><span class="Empty"></span></label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label class=" @if(!(old('check1') || (isset($award) && $award->awardCategory(1)))) hidden @endif col-4 small-12" for="type29">
+                <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type29')) || (isset($award) && $award->file(29)))
+                            @if(session('Error'))
+                                {{old('type29')}}
+                            @else
+                                {{$award->file(29)->name}}
+                            @endif
+                        @else
+                            Fotos ilustrativas (.zip .rar) 5 - 10
+                        @endif
+                            </span>
+                    <input type="file" id="type29"  types="zip,rar">
+                    <input type="hidden" name="type29"
+                           @if(session('Error'))
+                           value="{{old('type29')}}"
+                           @elseif(isset($award) && $award->file(29))
+                           value="{{$award->file(29)->name}}"
+                            @endif >
+                </div>
+            </label>
 
             <!--
             *************************************
@@ -654,8 +677,31 @@
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
             </label>
-            <label for="" class="from-large col-8"><span class="Empty"></span></label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label class="CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) col-4 active @endif small-12" for="check2">
+                <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type30')) || (isset($award) && $award->file(30)))
+                            @if(session('Error'))
+                                {{old('type30')}}
+                            @else
+                                {{$award->file(30)->name}}
+                            @endif
+                        @else
+                            Fotos ilustrativas (.zip .rar) 5 - 10
+                        @endif
+                            </span>
+                    <input type="file" id="type30"  types="zip,rar">
+                    <input type="hidden" name="type30"
+                           @if(session('Error'))
+                           value="{{old('type30')}}"
+                           @elseif(isset($award) && $award->file(30))
+                           value="{{$award->file(30)->name}}"
+                            @endif >
+                </div>
+            </label>
 
             <!--
             *************************************
@@ -663,14 +709,37 @@
             *************************************
             -->
 
-            <label class="small-12 col-4 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) active @endif" for="check3">
+            <label class="CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) col-4 active @endif small-12" for="check3">
                     <span class="Checkbox">
                         <span>MEJOR DRAMATURGIA</span>
                         <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
                     </span>
             </label>
-            <label for="" class="from-large col-8"><span class="Empty"></span></label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label class=" @if(!(old('check3') || (isset($award) && $award->awardCategory(3)))) hidden @endif col-4 small-12" for="type31">
+                <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type31')) || (isset($award) && $award->file(31)))
+                            @if(session('Error'))
+                                {{old('type31')}}
+                            @else
+                                {{$award->file(31)->name}}
+                            @endif
+                        @else
+                            Fotos ilustrativas (.zip .rar) 5 - 10
+                        @endif
+                            </span>
+                    <input type="file" id="type24"  types="zip,rar">
+                    <input type="hidden" name="type31"
+                           @if(session('Error'))
+                           value="{{old('type31')}}"
+                           @elseif(isset($award) && $award->file(31))
+                           value="{{$award->file(31)->name}}"
+                            @endif >
+                </div>
+            </label>
 
             <!--
             *************************************
@@ -957,14 +1026,37 @@
             *************************************
             -->
 
-            <label class="CheckboxContainer col-4 small-12 @if(old('check9') || (isset($award) && $award->awardCategory(9))) active @endif" for="check9">
+            <label class="CheckboxContainer @if(old('check9') || (isset($award) && $award->awardCategory(9))) col-4 active @endif small-12" for="check9">
                     <span class="Checkbox">
                         <span>MEJOR ACTOR</span>
                         <input type="checkbox" name="check9" id="check9" value="9" @if(old('check9') || (isset($award) && $award->awardCategory(9))) checked="checked" @endif>
                     </span>
             </label>
-            <label for="" class="col-8"><span class="Empty"></span></label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label class=" @if(!(old('check9') || (isset($award) && $award->awardCategory(9)))) hidden @endif col-4 small-12" for="type32">
+                <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type32')) || (isset($award) && $award->file(32)))
+                            @if(session('Error'))
+                                {{old('type32')}}
+                            @else
+                                {{$award->file(32)->name}}
+                            @endif
+                        @else
+                            Fotos ilustrativas (.zip .rar) 5 - 10
+                        @endif
+                            </span>
+                    <input type="file" id="type32"  types="zip,rar">
+                    <input type="hidden" name="type32"
+                           @if(session('Error'))
+                           value="{{old('type32')}}"
+                           @elseif(isset($award) && $award->file(32))
+                           value="{{$award->file(32)->name}}"
+                            @endif >
+                </div>
+            </label>
 
             <!--
             *************************************
@@ -972,14 +1064,37 @@
             *************************************
             -->
 
-            <label class="CheckboxContainer col-4 small-12 @if(old('check10') || (isset($award) && $award->awardCategory(10))) active @endif" for="check10">
+            <label class="CheckboxContainer @if(old('check10') || (isset($award) && $award->awardCategory(10))) col-4 active @endif small-12" for="check10">
                     <span class="Checkbox">
                         <span>MEJOR ACTRÍZ</span>
                         <input type="checkbox" name="check10" id="check10" value="10" @if(old('check10') || (isset($award) && $award->awardCategory(10))) checked="checked" @endif>
                     </span>
             </label>
-            <label for="" class="col-8"><span class="Empty"></span></label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label class=" @if(!(old('check10') || (isset($award) && $award->awardCategory(10)))) hidden @endif col-4 small-12" for="type33">
+                <div class="Register-file">
+                            <span class="Register-actions">
+                                <span class="Register-addFile">Añadir archivo</span>
+                            </span>
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type33')) || (isset($award) && $award->file(33)))
+                            @if(session('Error'))
+                                {{old('type33')}}
+                            @else
+                                {{$award->file(33)->name}}
+                            @endif
+                        @else
+                            Fotos ilustrativas (.zip .rar) 5 - 10
+                        @endif
+                            </span>
+                    <input type="file" id="type33"  types="zip,rar">
+                    <input type="hidden" name="type33"
+                           @if(session('Error'))
+                           value="{{old('type33')}}"
+                           @elseif(isset($award) && $award->file(33))
+                           value="{{$award->file(33)->name}}"
+                            @endif >
+                </div>
+            </label>
 
         </section>
 
