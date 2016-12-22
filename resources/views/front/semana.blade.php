@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="Register-header Colon">
+    <div class="Register-header Semana">
         <h1>FORMULARIO DE INSCRIPCIÓN PARA POSTULACIONES AL PREMIO SEMANA</h1>
     </div>
 
@@ -14,9 +14,9 @@
         </section>
     @endif
 
-    <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="POST" class=" Colon-form Register-form">
+    <form action="{{ route('semanaPost') }}" enctype="multipart/form-data" method="post" class=" Register-form Semana-form">
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="url" id="url" value="{{ url('ajaxTempFiles') }}">
+        <input type="hidden" id="url" value="{{ url('ajaxTempFiles') }}">
 
         <h2 class="col-12">DATOS BÁSICOS DE LA ORGANIZACIÓN</h2>
         <div class=" row Register-contentLabel">
@@ -25,10 +25,10 @@
 
                 <input type="text" name="org_name" id="org_name"
                        @if(session('Error'))
-                           value="{{old('org_name')}}"
+                       value="{{old('org_name')}}"
                        @elseif($organization)
-                           value="{{$organization->name}}"
-                       @endif>
+                       value="{{$organization->name}}"
+                        @endif>
 
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_name')}}</span>
@@ -56,10 +56,10 @@
                     <input type="file" id="type8" types="jpg|png|jpeg" accept="image/jpg,image/jpeg,image/png">
                     <input type="hidden" name="type8"
                            @if(session('Error'))
-                               value="{{old('org_name')}}"
+                           value="{{old('org_name')}}"
                            @elseif(isset($award) && $award->file(8))
-                               value="{{$award->file(8)->name}}"
-                           @endif >
+                           value="{{$award->file(8)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type8')}}</span>
@@ -85,10 +85,10 @@
                     <input type="file" id="type9" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type9"
                            @if(session('Error'))
-                               value="{{old('type9')}}"
+                           value="{{old('type9')}}"
                            @elseif(isset($award) && $award->file(9))
-                               value="{{$award->file(9)->name}}"
-                           @endif >
+                           value="{{$award->file(9)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type9')}}</span>
@@ -114,10 +114,10 @@
                     <input type="file" id="type5" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type5"
                            @if(session('Error'))
-                               value="{{old('type5')}}"
+                           value="{{old('type5')}}"
                            @elseif(isset($award) && $award->file(5))
-                               value="{{$award->file(5)->name}}"
-                           @endif >
+                           value="{{$award->file(5)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
@@ -161,10 +161,10 @@
                 <span>Dirección física</span>
                 <input type="text" name="org_address" id="org_address"
                        @if(session('Error'))
-                           value="{{old('org_address')}}"
+                       value="{{old('org_address')}}"
                        @elseif($organization)
-                           value="{{$organization->address}}"
-                       @endif >
+                       value="{{$organization->address}}"
+                        @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_address')}}</span>
                 @endif
@@ -174,10 +174,10 @@
                 <span>Teléfono fijo</span>
                 <input type="text" name="org_phone" id="org_phone"
                        @if(session('Error'))
-                           value="{{old('org_phone')}}"
+                       value="{{old('org_phone')}}"
                        @elseif($organization)
-                           value="{{$organization->phone}}"
-                       @endif >
+                       value="{{$organization->phone}}"
+                        @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_phone')}}</span>
                 @endif
@@ -186,10 +186,10 @@
                 <span>Teléfono Celular</span>
                 <input type="text" name="org_mobile" id="org_mobile"
                        @if(session('Error'))
-                           value="{{old('org_mobile')}}"
+                       value="{{old('org_mobile')}}"
                        @elseif($organization)
-                           value="{{$organization->mobile}}"
-                       @endif >
+                       value="{{$organization->mobile}}"
+                        @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_mobile')}}</span>
                 @endif
@@ -199,10 +199,10 @@
                 <span>Correo principal</span>
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
-                           value="{{old('org_email')}}"
+                       value="{{old('org_email')}}"
                        @elseif($organization)
-                           value="{{$organization->email}}"
-                       @endif >
+                       value="{{$organization->email}}"
+                        @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_email')}}</span>
                 @endif
@@ -212,10 +212,10 @@
                 <span>Sitio Web</span>
                 <input type="text" name="org_website" id="org_website"
                        @if(session('Error'))
-                           value="{{old('org_website')}}"
+                       value="{{old('org_website')}}"
                        @elseif($organization)
-                           value="{{$organization->website}}"
-                       @endif >
+                       value="{{$organization->website}}"
+                        @endif >
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_website')}}</span>
                 @endif
@@ -241,10 +241,10 @@
                     <input type="file" id="type16" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type16"
                            @if(session('Error'))
-                               value="{{old('type16')}}"
+                           value="{{old('type16')}}"
                            @elseif(isset($award) && $award->file(16))
-                               value="{{$award->file(16)->name}}"
-                           @endif >
+                           value="{{$award->file(16)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type16')}}</span>
@@ -253,53 +253,38 @@
         </div>
 
         <div class="center row">
-            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button>
-        </div><br>
+            <button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button>
+        </div>
+        <br>
 
-        <h2 class="col-12">DATOS BÁSICOS DEL ESPECTÁCULO</h2>
+        <h2 class="col-12">DATOS DE LA PRODUCCIÓN ARTÍSTICA</h2>
         <div class=" row Register-contentLabel">
 
             <label class="col-10 small-10" for="prd_name">
                 <span>Nombre del espectáculo</span>
                 <input type="text" name="prd_name" id="prd_name"
                        @if(session('Error'))
-                           value="{{old('prd_name')}}"
+                       value="{{old('prd_name')}}"
                        @elseif($production)
-                           value="{{$production->name}}"
-                       @endif >
+                       value="{{$production->name}}"
+                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_name')}}</span>
                 @endif
             </label>
-            <label class="col-5 small-10" for="type10">
-                <span>Reseña Corta en Español (.pdf)</span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip">
-                        @if((session('Error') && old('type10')) || (isset($award) && $award->file(10)))
-                            @if(session('Error'))
-                                {{old('type10')}}
-                            @else
-                                {{$award->file(10)->name}}
-                            @endif
-                        @else
-                            400 caracteres máx
-                        @endif
-                    </span>
-                    <input type="file" id="type10" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type10"
-                           @if(session('Error'))
-                               value="{{old('type10')}}"
-                           @elseif(isset($award) && $award->file(10))
-                               value="{{$award->file(10)->name}}"
-                           @endif >
+            <label class="col-5 small-10" for="prd_date">
+                <span>Fecha de estreno</span>
+                <input type="date" name="prd_date" id="prd_date"
+                       @if(session('Error'))
+                       value="{{old('prd_date')}}"
+                       @elseif($production)
+                       value="{{$production->release_date}}"
+                        @endif >
 
-                    @if (count($errors) > 0)
-                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type10')}}</span>
-                    @endif
-                </div>
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_date')}}</span>
+                @endif
             </label>
             <label for="prd_genre" class="col-5  small-10">
                 <div class="Register-contentSelect">
@@ -318,39 +303,7 @@
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type3">
-                <span>Certificado de Registro de derechos de Autor o Autorización de uso de la obra (pdf.)</span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip">
-                        @if((session('Error') && old('type3')) || (isset($award) && $award->file(3)))
-                            @if(session('Error'))
-                                {{old('type3')}}
-                            @else
-                                {{$award->file(3)->name}}
-                            @endif
-                        @else
-                            Si la obra contiene piezas musicales deben ser originales para la producción.
-                        @endif
-                    </span>
-                    <input type="file" id="type3" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type3"
-                           @if(session('Error'))
-                               value="{{old('type3')}}"
-                           @elseif(isset($award) && $award->file(3))
-                               value="{{$award->file(3)->name}}"
-                           @endif >
-                </div>
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type3')}}</span>
-                @endif
-            </label>
-
-            <h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
-            <p> La obra producto del premio deberá tener una duración mínima de cuarenta y cinco (45) minutos. </p>
-            <label class="col-10 small-10" for="type1">
+            <label class="col-5 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -370,17 +323,17 @@
                     <input type="file" id="type1" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type1"
                            @if(session('Error'))
-                               value="{{old('type1')}}"
+                           value="{{old('type1')}}"
                            @elseif(isset($award) && $award->file(1))
-                               value="{{$award->file(1)->name}}"
-                           @endif >
+                           value="{{$award->file(1)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type1')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type2">
+            <label class="col-5 small-10" for="type2">
                 <span>Texto o libreto (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -400,168 +353,136 @@
                     <input type="file" id="type2" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type2"
                            @if(session('Error'))
-                               value="{{old('type2')}}"
+                           value="{{old('type2')}}"
                            @elseif(isset($award) && $award->file(2))
-                               value="{{$award->file(2)->name}}"
-                           @endif >
+                           value="{{$award->file(2)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type2')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type11">
-                <span>Propuesta de dirección (.pdf)</span>
+            <label class="col-5 small-10" for="type3">
+                <span>Certificado de registro de Derechos de Autor</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type11')) || (isset($award) && $award->file(11)))
+                        @if((session('Error') && old('type3')) || (isset($award) && $award->file(3)))
                             @if(session('Error'))
-                                {{old('type11')}}
+                                {{old('type3')}}
                             @else
-                                {{$award->file(11)->name}}
+                                {{$award->file(3)->name}}
                             @endif
                         @else
-                            Puesta en escena, metodología de trabajo y proceso de creación. 2 pag. Máx.
+                            Autorización de uso de la obra (.pdf)
                         @endif
                     </span>
-                    <input type="file" id="type11" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type11"
+                    <input type="file" id="type3" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type3"
                            @if(session('Error'))
-                               value="{{old('type11')}}"
-                           @elseif(isset($award) && $award->file(11))
-                               value="{{$award->file(11)->name}}"
-                           @endif >
+                           value="{{old('type3')}}"
+                           @elseif(isset($award) && $award->file(3))
+                           value="{{$award->file(3)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type11')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type3')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type12">
-                <span>Propuesta Estética (.pdf) <em>Enlace a condiciones y equipamiento técnico del Teatro Colón</em></span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip" style="font-size: 11px">
-                        @if((session('Error') && old('type12')) || (isset($award) && $award->file(12)))
-                            @if(session('Error'))
-                                {{old('type12')}}
-                            @else
-                                {{$award->file(12)->name}}
-                            @endif
-                        @else
-                            Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos
-                        @endif
-                    </span>
-                    <input type="file" id="type12" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type12"
-                           @if(session('Error'))
-                               value="{{old('type12')}}"
-                           @elseif(isset($award) && $award->file(12))
-                               value="{{$award->file(12)->name}}"
-                           @endif >
-                </div>
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type12')}}</span>
-                @endif
-            </label>
-
-            <label class="col-10 small-10" for="type13">
-                <span>Cronograma (.pdf)</span>
+            <label class="col-5 small-10" for="type4">
+                <span>Certificación de música original en caso de tenerla</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type13')) || (isset($award) && $award->file(13)))
+                        @if((session('Error') && old('type4')) || (isset($award) && $award->file(4)))
                             @if(session('Error'))
-                                {{old('type13')}}
+                                {{old('type4')}}
                             @else
-                                {{$award->file(13)->name}}
+                                {{$award->file(4)->name}}
                             @endif
                         @else
-                            Fases de desarrollo de la propuesta, los tiempos estimados para cada una de ellas y sus responsables.
+                            Autorización de uso de las piezas musicales (pdf,jpg,png,jpeg)
                         @endif
                     </span>
-                    <input type="file" id="type13" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type13"
+                    <input type="file" id="type4" types="pdf|jpg|png|jpeg" accept="application/pdf,image/*">
+                    <input type="hidden" name="type4"
                            @if(session('Error'))
-                               value="{{old('type13')}}"
-                           @elseif(isset($award) && $award->file(13))
-                               value="{{$award->file(13)->name}}"
-                           @endif >
+                           value="{{old('type4')}}"
+                           @elseif(isset($award) && $award->file(4))
+                           value="{{$award->file(4)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type13')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type4')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type14">
-                <span>Presupuesto (.pdf) <em>Honorarios, servicios a contratar y actividades a realizar.</em></span>
+            <label class="col-5 small-10" for="type5">
+                <span>Dossier del espectáculo (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" style="font-size: 10px">
-                        @if((session('Error') && old('type14')) || (isset($award) && $award->file(14)))
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
                             @if(session('Error'))
-                                {{old('type14')}}
+                                {{old('type5')}}
                             @else
-                                {{$award->file(14)->name}}
+                                {{$award->file(5)->name}}
                             @endif
-                        @else
-                            Para montajes de compañías o uniones que vivan por fuera de Bogotá, incluir los costos de estadía, transporte y viáticos necesarios para montaje de la obra en el Teatro Colón
                         @endif
                     </span>
-                    <input type="file" id="type14" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type14"
+                    <input type="file" id="type5" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type5"
                            @if(session('Error'))
-                               value="{{old('type14')}}"
-                           @elseif(isset($award) && $award->file(14))
-                               value="{{$award->file(14)->name}}"
-                           @endif >
+                           value="{{old('type5')}}"
+                           @elseif(isset($award) && $award->file(5))
+                           value="{{$award->file(5)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type14')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type15">
-                <span>Propuesta de Financiación (.pdf)</span>
+            <label class="col-5 small-10" for="type6">
+                <span>Soporte de 5 presentaciones realizadas hasta el 30 de Sept</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
-                    <span class="Register-tooltip" >
-                        @if((session('Error') && old('type15')) || (isset($award) && $award->file(15)))
+                    <span class="Register-tooltip">
+                        @if((session('Error') && old('type6')) || (isset($award) && $award->file(6)))
                             @if(session('Error'))
-                                {{old('type15')}}
+                                {{old('type6')}}
                             @else
-                                {{$award->file(15)->name}}
+                                {{$award->file(6)->name}}
                             @endif
                         @else
-                            Si el valor total excede el monto de la cofinanciación explique las otras fuentes de financiación.
+                            Afiches, certificaciones, prensa, programas de mano, etc.) (.pdf)
                         @endif
                     </span>
-                    <input type="file" id="type15" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type15"
+                    <input type="file" id="type6" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type6"
                            @if(session('Error'))
-                               value="{{old('type15')}}"
-                           @elseif(isset($award) && $award->file(15))
-                               value="{{$award->file(15)->name}}"
-                           @endif >
+                           value="{{old('type6')}}"
+                           @elseif(isset($award) && $award->file(6))
+                           value="{{$award->file(6)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type15')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type6')}}</span>
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type7">
-                <span>Hoja de Vida de c/u de los integrantes (.pdf)</span>
+            <label class="col-5 small-10" for="type7">
+                <span>Hoja de Vida de c/u de los integrantes</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -574,25 +495,32 @@
                                 {{$award->file(7)->name}}
                             @endif
                         @else
-                            Actores, diseñadores, escenógrafos, etc.
+                            Hoja de vida del equipo artístico y creativo (.pdf)
                         @endif
                     </span>
                     <input type="file" id="type7" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type7"
                            @if(session('Error'))
-                               value="{{old('type7')}}"
+                           value="{{old('type7')}}"
                            @elseif(isset($award) && $award->file(7))
-                               value="{{$award->file(7)->name}}"
-                           @endif >
+                           value="{{$award->file(7)->name}}"
+                            @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type7')}}</span>
                 @endif
             </label>
+
+            <label class="col-10 small-10" for="prd_video">
+                <span>Registro audiovisual (vínculo a video del espectáculo)</span>
+                <textarea class="col-12" name="prd_video" id="prd_video" placeholder="Grabación completa del espectáculo en buena calidad de imagen (mínimo 1280x720 ) y audio. Deberá ser en plano general y sin edición.">@if(session('Error')){{old('prd_video')}}@elseif($production){{$production->link_video}}@endif</textarea>
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_video')}}</span>
+                @endif
+            </label>
+
         </div>
-        <div class="center row">
-            <button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button>
-        </div><br>
+        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 
         <div class="row Register-contentLabel">
@@ -600,30 +528,29 @@
                 <span>Nombres</span>
                 <input type="text" name="rep_name" id="rep_name"
                        @if(session('Error'))
-                           value="{{old('rep_name')}}"
+                       value="{{old('rep_name')}}"
                        @elseif($propietor)
-                           value="{{$propietor->name}}"
-                       @endif >
+                       value="{{$propietor->name}}"
+                        @endif >
 
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_name')}}</span>
                 @endif
             </label>
-
             <label class="col-5 small-10" for="rep_last_name">
                 <span>Apellidos</span>
                 <input type="text" name="rep_last_name" id="rep_last_name"
                        @if(session('Error'))
-                           value="{{old('rep_last_name')}}"
+                       value="{{old('rep_last_name')}}"
                        @elseif($propietor)
-                           value="{{$propietor->last_name}}"
-                       @endif >
+                       value="{{$propietor->last_name}}"
+                        @endif >
 
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_last_name')}}</span>
                 @endif
             </label>
-            <label for="city" class="col-5  small-10">
+            <label for="rep_doc_typ" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Tipo de Documento de Identidad:</span>
                     <span class="Register-arrowSelect">▼</span>
@@ -643,10 +570,11 @@
                 <span>Número de documento</span>
                 <input type="text" name="rep_doc_number" id="rep_doc_number"
                        @if(session('Error'))
-                           value="{{old('rep_doc_number')}}"
+                       value="{{old('rep_doc_number')}}"
                        @elseif($propietor)
-                           value="{{$propietor->document_number}}"
-                       @endif >
+                       value="{{$propietor->document_number}}"
+                        @endif >
+
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_doc_number')}}</span>
                 @endif
@@ -656,10 +584,10 @@
                 <span>Teléfono celular</span>
                 <input type="text" name="rep_mobile" id="rep_mobile"
                        @if(session('Error'))
-                           value="{{old('rep_mobile')}}"
+                       value="{{old('rep_mobile')}}"
                        @elseif($propietor)
-                           value="{{$propietor->mobile}}"
-                       @endif >
+                       value="{{$propietor->mobile}}"
+                        @endif >
 
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_mobile')}}</span>
@@ -668,123 +596,36 @@
 
             <div class="col-5"></div>
 
-            <label class=" col-5 small-10" for="rep_email">
-                <span>Correo institucional</span>
-                <input type="email" name="rep_email" id="rep_email"
+            <label class=" col-5 small-10" for="rep_email1">
+                <span>Correo electrónico</span>
+                <input type="email" name="rep_email1" id="rep_email1"
                        @if(session('Error'))
-                           value="{{old('rep_email')}}"
+                       value="{{old('rep_email1')}}"
                        @elseif($propietor)
-                           value="{{$propietor->email1}}"
-                       @endif >
+                       value="{{$propietor->email1}}"
+                        @endif >
 
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email1')}}</span>
                 @endif
             </label>
 
             <label class=" col-5 small-10" for="rep_email2">
-                <span>Correo personal</span>
+                <span>Correo electrónico 2</span>
                 <input type="email" name="rep_email2" id="rep_email2"
                        @if(session('Error'))
-                           value="{{old('rep_email2')}}"
+                       value="{{old('rep_email2')}}"
                        @elseif($propietor)
-                           value="{{$propietor->email2}}"
-                       @endif >
+                       value="{{$propietor->email2}}"
+                        @endif >
 
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('rep_email2')}}</span>
                 @endif
             </label>
-
-            <h3 style="color:black;" class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
-
-            <label class="col-10 small-10" for="type18">
-                <span>Documento de delegación de representación (.pdf)</span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip">
-                        @if((session('Error') && old('type18')) || (isset($award) && $award->file(18)))
-                            @if(session('Error'))
-                                {{old('type18')}}
-                            @else
-                                {{$award->file(18)->name}}
-                            @endif
-                        @else
-                            Firmado por todos los miembros de la unión temporal, en el que delegan su representación a un integrante del grupo.
-                        @endif
-                    </span>
-                    <input type="file" id="type18" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type18" id="type18"
-                           @if(session('Error'))
-                               value="{{old('type18')}}"
-                           @elseif(isset($award) && $award->file(18))
-                               value="{{$award->file(18)->name}}"
-                           @endif >
-                </div>
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type18')}}</span>
-                @endif
-            </label>
-
-            <label class="col-10 small-10" for="type17">
-                <span>Carta de Compromiso</span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip">
-                        @if((session('Error') && old('type17')) || (isset($award) && $award->file(17)))
-                            @if(session('Error'))
-                                {{old('type17')}}
-                            @else
-                                {{$award->file(17)->name}}
-                            @endif
-                        @else
-                            Aceptación de las reglas del contrato de coproducción con El Teatro Colón.
-                        @endif
-                    </span>
-                    <input type="file" id="type17" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type17"
-                           @if(session('Error'))
-                               value="{{old('type17')}}"
-                           @elseif(isset($award) && $award->file(17))
-                               value="{{$award->file(17)->name}}"
-                           @endif >
-                </div>
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type17')}}</span>
-                @endif
-            </label>
-            <label class="col-10 small-10" for="type19">
-                <span>Fotocopia de la Cédula Representante Legal (.pdf)</span>
-                <div class="Register-file">
-                    <span class="Register-actions">
-                        <span class="Register-addFile">Añadir archivo</span>
-                    </span>
-                    <span class="Register-tooltip">
-                        @if(session('Error'))
-                            {{old('type19')}}
-                        @elseif(isset($award) && $award->file(19))
-                            {{$award->file(19)->name}}
-                        @endif
-                    </span>
-                    <input type="file" id="type19" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type19"
-                           @if(session('Error'))
-                               value="{{old('type19')}}"
-                           @elseif(isset($award) && $award->file(19))
-                               value="{{$award->file(19)->name}}"
-                           @endif >
-                </div>
-                @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type19')}}</span>
-                @endif
-            </label>
         </div>
 
-        <div style="margin-bottom: 20px" class="center row col-12"><button style="color: black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
+        <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
         <section class="row between small-12" id="Categories">
             <!--
@@ -1142,10 +983,11 @@
 
         </section>
 
-        <div class="center row"><button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
-        <div class="center row"><button style="color:black; margin: 10px 0 50px 0;"> ENVIAR</button></div>
 
+        <div class="center row"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
+        <div class="center row"><button style="margin: 10px 0 50px 0;"> ENVIAR</button></div>
     </form>
+
     <div class="preload yellow hidden">
         <div class="loader">
             <div class="circle-outer"></div>

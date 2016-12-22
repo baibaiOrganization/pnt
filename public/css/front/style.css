@@ -723,11 +723,11 @@ span.red .pagination a {
     height: 1.5625rem;
     border-radius: 50%;
     margin-right: 10px;
-    border: #FFED00 1px solid;
+    border: #df2826 1px solid;
     cursor: pointer; }
 
 .CheckboxContainer.active .Checkbox:before {
-  background: #FFED00; }
+  background: #df2826; }
 
 .Header {
   max-width: 65rem;

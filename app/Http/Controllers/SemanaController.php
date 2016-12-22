@@ -27,6 +27,7 @@ class SemanaController extends Controller
             }
         }
 
+
         $organization = isset($award) ? $award->organization : null;
         $propietor = isset($award) ? $award->propietor : null;
         $production = isset($award) ? $award->production : null;
@@ -34,6 +35,7 @@ class SemanaController extends Controller
         $cities = City::orderBy('name')->get();
 
         return view('front.semana', compact('organization', 'award', 'propietor', 'production', 'regions', 'cities'));
+
     }
 
     public function create(Request $request){

@@ -4,6 +4,7 @@ namespace Theater\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Theater\Entities\City;
+use Theater\Entities\Region;
 use Theater\Http\Services\UserManagement;
 use Theater\Http\Services\Validation;
 use Validator;
