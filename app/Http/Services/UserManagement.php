@@ -112,7 +112,7 @@ class UserManagement{
                 'mobile' => $inputs['org_mobile'],
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
-                'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
+                'socials' => ',,',
             ],
 
             'production' => [
@@ -128,7 +128,7 @@ class UserManagement{
                 'document_type_id' => $inputs['rep_doc_typ'],
                 'document_number' => $inputs['rep_doc_number'],
                 'mobile' => $inputs['rep_mobile'],
-                'email1' => $inputs['rep_email'],
+                'email1' => $inputs['rep_email1'],
                 'email2' => $inputs['rep_email2'],
             ],
 
@@ -155,7 +155,7 @@ class UserManagement{
                 'mobile' => $inputs['org_mobile'],
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
-                'socials' => ',,',
+                'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
             ],
 
             'production' => [
@@ -169,7 +169,7 @@ class UserManagement{
                 'document_type_id' => $inputs['rep_doc_typ'],
                 'document_number' => $inputs['rep_doc_number'],
                 'mobile' => $inputs['rep_mobile'],
-                'email1' => $inputs['rep_email1'],
+                'email1' => $inputs['rep_email'],
                 'email2' => $inputs['rep_email2'],
             ],
 

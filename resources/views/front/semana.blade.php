@@ -59,7 +59,7 @@
                            value="{{old('org_name')}}"
                            @elseif(isset($award) && $award->file(8))
                            value="{{$award->file(8)->name}}"
-                            @endif >
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type8')}}</span>
@@ -94,33 +94,33 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type9')}}</span>
                 @endif
             </label>
-            <label class="col-10 small-10" for="type5">
+            <label class="col-10 small-10" for="type28">
                 <span>Dossier del grupo o compañía (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
+                        @if((session('Error') && old('type28')) || (isset($award) && $award->file(28)))
                             @if(session('Error'))
-                                {{old('type5')}}
+                                {{old('type28')}}
                             @else
-                                {{$award->file(5)->name}}
+                                {{$award->file(28)->name}}
                             @endif
                         @else
                             Trayectoria de la compañía, reseña de su director, integrantes y repertorio
                         @endif
                     </span>
-                    <input type="file" id="type5" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type5"
+                    <input type="file" id="type28" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type28"
                            @if(session('Error'))
-                           value="{{old('type5')}}"
-                           @elseif(isset($award) && $award->file(5))
-                           value="{{$award->file(5)->name}}"
-                            @endif >
+                           value="{{old('type28')}}"
+                           @elseif(isset($award) && $award->file(28))
+                           value="{{$award->file(28)->name}}"
+                           @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type28')}}</span>
                 @endif
             </label>
 
@@ -817,7 +817,7 @@
                                 <span class="Register-addFile">Añadir archivo</span>
                             </span>
                     <span class="Register-tooltip">
-                                @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
+                        @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
                             @if(session('Error'))
                                 {{old('type24')}}
                             @else

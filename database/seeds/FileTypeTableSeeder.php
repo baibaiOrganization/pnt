@@ -34,7 +34,7 @@ class FileTypeTableSeeder extends Seeder
 
         FileType::create([
             'id' => 5,
-            'name' => 'Dossier'
+            'name' => 'Dossier Espectaculo'
         ]);
 
         FileType::create([
@@ -145,6 +145,11 @@ class FileTypeTableSeeder extends Seeder
         FileType::create([
             'id' => 27,
             'name' => 'Bocetos de diseños (Mejor iluminación)'
+        ]);
+
+        FileType::create([
+            'id' => 28,
+            'name' => 'Dossier compania'
         ]);
     }
 }
