@@ -9,7 +9,7 @@
     <section class="row around Choose">
         @if(auth()->user()->role_id != 5)
             <article class="col-4 small-12">
-                <a href="{{route('semanaUsers')}}" style="color: black;background: #FFED00 "> Usuarios registrados <br> al Premio Semana </a>
+                <a href="{{route('semanaUsers')}}" style="color: black;background: #df2826 !important"> Usuarios registrados <br> al Premio Semana </a>
             </article>
             @if(auth()->user()->role_id == 1)
                 <article class="col-4 small-12">
