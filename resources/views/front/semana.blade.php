@@ -66,7 +66,7 @@
                 @endif
             </label>
             <label class="col-5  small-10" for="type9">
-                <span>Cámara de comercio (.pdf)</span>
+                <span>Certificado cámara de comercio (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -95,7 +95,7 @@
                 @endif
             </label>
             <label class="col-10 small-10" for="type5">
-                <span>Dossier del grupo o compañía (.pdf)</span>
+                <span>Portafolio del grupo(.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -196,7 +196,7 @@
             </label>
 
             <label class="col-5 small-10" for="org_email">
-                <span>Correo principal</span>
+                <span>Correo electrónico</span>
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
                        value="{{old('org_email')}}"
@@ -424,7 +424,7 @@
             </label>
 
             <label class="col-5 small-10" for="type5">
-                <span>Dossier del espectáculo (.pdf)</span>
+                <span>Portafolio del grupo (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
