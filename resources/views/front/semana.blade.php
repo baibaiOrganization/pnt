@@ -108,7 +108,7 @@
                                 {{$award->file(5)->name}}
                             @endif
                         @else
-                            Trayectoria de la compañía, reseña de su director, integrantes y repertorio
+                            Trayectoria de la compañía, mínimo 3 años de experiencia verificable
                         @endif
                     </span>
                     <input type="file" id="type5" types="pdf" accept="application/pdf">
