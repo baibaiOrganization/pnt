@@ -90,13 +90,19 @@
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
-                    <span class="Register-arrowSelect">▼</span>
+                    <input type="text" name="org_city" id="org_city"
+                           @if(session('Error'))
+                           value="{{old('org_city')}}"
+                           @elseif($organization)
+                           value="{{org_city}}"
+                            @endif >
+                    {{--<span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option data-region="0" value="">Selecciona una ciudad</option>
                         @foreach($cities as $city)
                             <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
                         @endforeach
-                    </select>
+                    </select>--}}
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>

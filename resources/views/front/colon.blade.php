@@ -104,7 +104,7 @@
                 @endif
             </label>
             <label class="col-5 small-10" for="org_email">
-                <span>Correo electrónico</span>
+                <span>Correo principal</span>
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
                        value="{{old('org_email')}}"
@@ -573,7 +573,7 @@
             <div class="col-5"></div>
 
             <label class=" col-5 small-10" for="rep_email">
-                <span>Correo electrónico institucional</span>
+                <span>Correo institucional</span>
                 <input type="email" name="rep_email" id="rep_email"
                        @if(session('Error'))
                        value="{{old('rep_email')}}"
@@ -587,7 +587,7 @@
             </label>
 
             <label class=" col-5 small-10" for="rep_email2">
-                <span>Correo electrónico personal</span>
+                <span>Correo personal</span>
                 <input type="email" name="rep_email2" id="rep_email2"
                        @if(session('Error'))
                        value="{{old('rep_email2')}}"
