@@ -423,31 +423,31 @@
                 @endif
             </label>
 
-            <label class="col-5 small-10" for="type5">
+            <label class="col-5 small-10" for="type28">
                 <span>Dossier del espectáculo (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
                     </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
+                        @if((session('Error') && old('type28')) || (isset($award) && $award->file(28)))
                             @if(session('Error'))
-                                {{old('type5')}}
+                                {{old('type28')}}
                             @else
-                                {{$award->file(5)->name}}
+                                {{$award->file(28)->name}}
                             @endif
                         @endif
                     </span>
-                    <input type="file" id="type5" types="pdf" accept="application/pdf">
-                    <input type="hidden" name="type5"
+                    <input type="file" id="type28" types="pdf" accept="application/pdf">
+                    <input type="hidden" name="type28"
                            @if(session('Error'))
-                           value="{{old('type5')}}"
-                           @elseif(isset($award) && $award->file(5))
-                           value="{{$award->file(5)->name}}"
+                           value="{{old('type28')}}"
+                           @elseif(isset($award) && $award->file(28))
+                           value="{{$award->file(28)->name}}"
                             @endif >
                 </div>
                 @if (count($errors) > 0)
-                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type28')}}</span>
                 @endif
             </label>
 
@@ -695,7 +695,7 @@
                         @endif
                             </span>
                     <input type="file" id="type30"  types="zip,rar">
-                    <input type="hidden" name="type29"
+                    <input type="hidden" name="type30"
                            @if(session('Error'))
                            value="{{old('type30')}}"
                            @elseif(isset($award) && $award->file(30))
@@ -733,7 +733,7 @@
                             Fotos ilustrativas (.zip .rar) 5 - 10
                         @endif
                             </span>
-                    <input type="file" id="type24"  types="zip,rar">
+                    <input type="file" id="type31"  types="zip,rar">
                     <input type="hidden" name="type31"
                            @if(session('Error'))
                            value="{{old('type31')}}"
