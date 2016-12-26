@@ -9,19 +9,19 @@
     <section class="row around Choose">
         @if(auth()->user()->role_id != 5)
             <article class="col-4 small-12">
-                <a href="{{route('semanaUsers')}}" style="color: black;background: #FFED00 "> Usuarios registrados <br> al Premio Semana </a>
+                <a style="background: #df2826;" href="{{route('semanaUsers')}}" > Usuarios registrados <br> al Premio Semana </a>
             </article>
             @if(auth()->user()->role_id == 1)
                 <article class="col-4 small-12">
-                    <a style="background: #df2826;" href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
+                    <a style="color: black;background: #FFED00 " href="{{route('colonUsers')}}"> Usuarios registrados <br> al Premio Teatro Colón</a>
                 </article>
             @endif
         @else
             <article class="col-4 small-12">
-                <a href="{{route('semanaSelectedUsers')}}" style="color: black;background: #FFED00 "> Usuarios seleccionados <br> al Premio Semana </a>
+                <a style="background: #df2826;" href="{{route('semanaSelectedUsers')}}" > Usuarios seleccionados <br> al Premio Semana </a>
             </article>
             <article class="col-4 small-12">
-                <a style="background: #df2826;" href="{{route('colonSelectedUsers')}}"> Usuarios seleccionados <br> al Premio Teatro Colón</a>
+                <a style="color: black;background: #FFED00 " href="{{route('colonSelectedUsers')}}"> Usuarios seleccionados <br> al Premio Teatro Colón</a>
             </article>
         @endif
     </section>
