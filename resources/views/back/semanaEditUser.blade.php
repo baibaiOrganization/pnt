@@ -37,7 +37,7 @@
                     </label>
                 @elseif($file->file_type_id == 9)
                     <label class="col-5  small-10" for="type9">
-                        <span>Cámara de comercio (.pdf)</span>
+                        <span>Certificado cámara de comercio (.pdf)</span>
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
@@ -53,7 +53,7 @@
                     </label>
                 @elseif($file->file_type_id == 5)
                     <label class="col-10 small-10" for="type5">
-                        <span>Dossier del grupo o compañía (.pdf)</span>
+                        <span>Portafolio del grupo (.pdf)</span>
                         <div class="Register-file">
                             <span class="Register-actions">
                                 <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
@@ -90,13 +90,19 @@
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
-                    <span class="Register-arrowSelect">▼</span>
+                    <input type="text" name="org_city" id="org_city"
+                           @if(session('Error'))
+                           value="{{old('org_city')}}"
+                           @elseif($organization)
+                           value="{{org_city}}"
+                            @endif >
+                    {{--<span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option data-region="0" value="">Selecciona una ciudad</option>
                         @foreach($cities as $city)
                             <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
                         @endforeach
-                    </select>
+                    </select>--}}
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
@@ -125,7 +131,7 @@
                 @endif
             </label>
             <label class="col-5 small-10" for="org_email">
-                <span>Correo principal</span>
+                <span>Correo electrónico</span>
                 <input type="email" name="org_email" id="org_email" value="{{$award->organization->email}}">
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_email')}}</span>

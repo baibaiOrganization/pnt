@@ -66,7 +66,7 @@
                 @endif
             </label>
             <label class="col-5  small-10" for="type9">
-                <span>Cámara de comercio (.pdf)</span>
+                <span>Certificado cámara de comercio (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -95,7 +95,7 @@
                 @endif
             </label>
             <label class="col-10 small-10" for="type5">
-                <span>Dossier del grupo o compañía (.pdf)</span>
+                <span>Portafolio del grupo(.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -108,7 +108,7 @@
                                 {{$award->file(5)->name}}
                             @endif
                         @else
-                            Trayectoria de la compañía, reseña de su director, integrantes y repertorio
+                            Trayectoria de la compañía, mínimo 3 años de experiencia verificable
                         @endif
                     </span>
                     <input type="file" id="type5" types="pdf" accept="application/pdf">
@@ -144,13 +144,19 @@
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
-                    <span class="Register-arrowSelect">▼</span>
+                    <input type="text" name="org_city" id="org_city"
+                           @if(session('Error'))
+                           value="{{old('org_city')}}"
+                           @elseif($organization)
+                           value="{{org_city}}"
+                            @endif >
+                    {{--<span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
                         <option data-region="0" value="">Selecciona una ciudad</option>
                         @foreach($cities as $city)
                             <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($organization && $organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
                         @endforeach
-                    </select>
+                    </select>--}}
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
@@ -196,7 +202,7 @@
             </label>
 
             <label class="col-5 small-10" for="org_email">
-                <span>Correo principal</span>
+                <span>Correo electrónico</span>
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
                        value="{{old('org_email')}}"
@@ -423,8 +429,13 @@
                 @endif
             </label>
 
+<<<<<<< HEAD
             <label class="col-5 small-10" for="type28">
                 <span>Dossier del espectáculo (.pdf)</span>
+=======
+            <label class="col-5 small-10" for="type5">
+                <span>Portafolio del grupo (.pdf)</span>
+>>>>>>> 76883fe24f82f2e6978706eab05fe72da2969472
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
