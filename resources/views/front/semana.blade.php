@@ -664,6 +664,7 @@
                             @endif >
                 </div>
             </label>
+            <label for="" style="display:none"><span class="Empty"></span></label>
 
             <!--
             *************************************
@@ -677,7 +678,7 @@
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
             </label>
-            <label class="CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) col-8 active @endif small-12" for="check2">
+            <label class=" @if(!(old('check2') || (isset($award) && $award->awardCategory(2)))) hidden @endif col-8 small-12" for="type30">
                 <div class="Register-file">
                             <span class="Register-actions">
                                 <span class="Register-addFile">Añadir archivo</span>
@@ -694,7 +695,7 @@
                         @endif
                             </span>
                     <input type="file" id="type30"  types="zip,rar">
-                    <input type="hidden" name="type30"
+                    <input type="hidden" name="type29"
                            @if(session('Error'))
                            value="{{old('type30')}}"
                            @elseif(isset($award) && $award->file(30))
@@ -702,6 +703,7 @@
                             @endif >
                 </div>
             </label>
+            <label for="" style="display:none"><span class="Empty"></span></label>
 
             <!--
             *************************************
@@ -740,6 +742,7 @@
                             @endif >
                 </div>
             </label>
+            <label for="" style="display:none"><span class="Empty"></span></label>
 
             <!--
             *************************************
@@ -880,13 +883,13 @@
                         <input type="checkbox" name="check6" id="check6" value="6" @if(old('check6') || (isset($award) && $award->awardCategory(6))) checked="checked" @endif>
                     </span>
             </label>
-            <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type24">
+            <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4  small-12" for="type24">
                 <div class="Register-file">
                             <span class="Register-actions">
                                 <span class="Register-addFile">Añadir archivo</span>
                             </span>
                     <span class="Register-tooltip">
-                        @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
+                                @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
                             @if(session('Error'))
                                 {{old('type24')}}
                             @else
@@ -1057,6 +1060,7 @@
                             @endif >
                 </div>
             </label>
+            <label for="" style="display:none"><span class="Empty"></span></label>
 
             <!--
             *************************************
@@ -1095,6 +1099,7 @@
                             @endif >
                 </div>
             </label>
+            <label for="" style="display:none"><span class="Empty"></span></label>
 
         </section>
 
