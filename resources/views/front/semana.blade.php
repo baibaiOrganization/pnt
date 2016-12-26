@@ -429,13 +429,8 @@
                 @endif
             </label>
 
-<<<<<<< HEAD
             <label class="col-5 small-10" for="type28">
                 <span>Dossier del espectáculo (.pdf)</span>
-=======
-            <label class="col-5 small-10" for="type5">
-                <span>Portafolio del grupo (.pdf)</span>
->>>>>>> 76883fe24f82f2e6978706eab05fe72da2969472
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
