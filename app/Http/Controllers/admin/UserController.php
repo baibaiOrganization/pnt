@@ -60,7 +60,7 @@ class UserController extends Controller
     }
     
     public function semanaEditUser($id){
-        $award = Award::with('organization')->find($id);
+        $award = Award::with(['organization', 'files'])->find($id);
         $regions = Region::where('id', '<>', 1)->orderBy('name')->get();
         $cities = City::orderBy('name')->get();
         return view('back.semanaEditUser', compact('award', 'regions', 'cities'));

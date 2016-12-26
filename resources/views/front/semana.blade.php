@@ -526,6 +526,7 @@
             </label>
 
         </div>
+
         <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
         <h2 class="col-12">DATOS DEL REPRESENTANTE LEGAL</h2>
 

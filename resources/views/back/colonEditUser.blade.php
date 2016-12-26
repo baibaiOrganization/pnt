@@ -18,27 +18,96 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_name')}}</span>
                 @endif
             </label>
+            @foreach($award->files as $file)
+                @if($file->file_type_id == 8)
+                    <label class="col-5 small-10" for="type8">
+                        <span>Logo, foto o imagen identificativa</span>
+                        <div class="Register-file">
+                            <span class="Register-actions">
+                                <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
+                            </span>
+                            <span class="Register-tooltip">{{$file->name}}</span>
+                            <!--<input type="file" id="type8">-->
+                            <input type="hidden" name="type8" value="{{$file->name}}">
+                        </div>
+                        @if (count($errors) > 0)
+                            <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type8')}}</span>
+                        @endif
+                    </label>
+                @elseif($file->file_type_id == 9)
+                    <label class="col-5  small-10" for="type9">
+                        <span>Certificado cámara de comercio (.pdf)</span>
+                        <div class="Register-file">
+                            <span class="Register-actions">
+                                <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
+                            </span>
+                            <span class="Register-tooltip">{{$file->name}}</span>
+                            <!--<input type="file" id="type9">-->
+                            <input type="hidden" name="type9" value="{{$file->name}}">
+                        </div>
+                        @if (count($errors) > 0)
+                            <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type9')}}</span>
+                        @endif
+                    </label>
+                @elseif($file->file_type_id == 5)
+                    <label class="col-10 small-10" for="type5">
+                        <span>Portafolio del grupo (.pdf)</span>
+                        <div class="Register-file">
+                            <span class="Register-actions">
+                                <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
+                            </span>
+                            <span class="Register-tooltip">{{$file->name}}</span>
+                            <!--<input type="file" id="type5">-->
+                            <input type="hidden" name="type5" value="{{$file->name}}">
+                        </div>
+                        @if (count($errors) > 0)
+                            <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type5')}}</span>
+                        @endif
+                    </label>
+                @endif
+            @endforeach
 
-            <!--<label for="org_region" class="col-5  small-10">
+            <label for="org_region" class="col-5 small-10">
                 <div class="Register-contentSelect">
                     <span>Región</span>
-                    <input type="text" name="org_region" id="org_region" value="{{$award->organization->region}}">
+                    @foreach($regions as $region)
+                        @if($region->id == $award->organization->city->region->id)
+                            <input type="text" name="org_city" id="org_city" value="{{$region->name}}" >
+                        @endif
+                    @endforeach
+                    {{--<span class="Register-arrowSelect">▼</span>
+                    <select name="org_region" id="org_region">
+                        <option value="">Selecciona una región</option>
+                        @foreach($regions as $region)
+                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($award->organization && $award->organization->city->region->id == $region->id)) selected @endif >{{$region->name}}</option>
+                        @endforeach
+                    </select>--}}
+
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
-            </label>-->
+            </label>
 
             <label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
-                    <span class="Register-arrowSelect">▼</span>
+                    @foreach($cities as $city)
+                        @if($city->id == $award->organization->city_id)
+                            <input type="text" name="org_city" id="org_city" value="{{$city->name}}" >
+                        @endif
+                    @endforeach
+
+                    {{--<span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
-                        <option value="">Selecciona una ciudad</option>
+                        <option data-region="0" value="">Selecciona una ciudad</option>
                         @foreach($cities as $city)
-                            <option value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                            <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($award->organization && $award->organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
                         @endforeach
-                    </select>
+                    </select>--}}
                 </div>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
@@ -81,20 +150,28 @@
                 @endif
             </label>
 
-            <label class="col-12 small-10 row Colon-social" for="group_name">
-                <span  class="col-12 ">Redes sociales (facebook, instagram, twitter)</span>
-                <?php $socials = explode(',', $award->organization->socials)?>
-                <input class="col-4" type="text" name="facebook" id="facebook" value="{{$socials[0]}}">
-                <input  class="col-4" type="text" name="instagram" id="instagram" value="{{$socials[1]}}">
-                <input class="col-4"  type="text" name="twitter" id="twitter" value="{{$socials[2]}}">
-                @if (count($errors) > 0)
-                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('facebook')}}</span>
-                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('instagram')}}</span>
-                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('twitter')}}</span>
+            @foreach($award->files as $file)
+                @if($file->file_type_id == 16)
+                    <label class="col-10 small-10" for="type16">
+                        <span>Hoja de vida de la agrupación, grupo constituido o de los integrantes de la unión temporal (.pdf)</span>
+                        <div class="Register-file">
+                            <span class="Register-actions">
+                                <a style="margin-right: 2px" href="{{asset('uploads/semana/' . $file->name)}}" target="_blank" class="Register-openFile">Abrir</a>
+                                <!--<span class="Register-addFile">Cambiar</span>-->
+                            </span>
+                            <span class="Register-tooltip">{{$file->name}} </span>
+                            <!--<input type="file" id="type16">-->
+                            <input type="hidden" name="type16" value="{{$file->name}}">
+                        </div>
+                        @if (count($errors) > 0)
+                            <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type16')}}</span>
+                        @endif
+                    </label>
+                    @break
                 @endif
-            </label>
-
+            @endforeach
         </div>
+
         <h2 class="col-12">DATOS DE LA PRODUCCIÓN ARTÍSTICA</h2>
         <div class=" row Register-contentLabel">
             <label class="col-10 small-10" for="prd_name">

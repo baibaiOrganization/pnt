@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="Register-header Colon">
+    <div class="Register-header Semana">
         <h1>USUARIOS INSCRITOS AL PREMIO SEMANA</h1>
     </div>
 
@@ -16,17 +16,17 @@
 
     <section class="ToolBar">
         <div id="SendExcel" class="Download-Excel" style="display: block; width: 50px">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" width="100%" height="auto">
+        <!--    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" width="100%" height="auto">
                 <g fill="#FFED00">
                     <path d="M25.162,3H16v2.984h3.031v2.031H16V10h3v2h-3v2h3v2h-3v2h3v2h-3v3h9.162   C25.623,23,26,22.609,26,22.13V3.87C26,3.391,25.623,3,25.162,3z M24,20h-4v-2h4V20z M24,16h-4v-2h4V16z M24,12h-4v-2h4V12z M24,8   h-4V6h4V8z"/>
                     <path d="M0,2.889v20.223L15,26V0L0,2.889z M9.488,18.08l-1.745-3.299c-0.066-0.123-0.134-0.349-0.205-0.678   H7.511C7.478,14.258,7.4,14.494,7.277,14.81l-1.751,3.27H2.807l3.228-5.064L3.082,7.951h2.776l1.448,3.037   c0.113,0.24,0.214,0.525,0.304,0.854h0.028c0.057-0.198,0.163-0.492,0.318-0.883l1.61-3.009h2.542l-3.037,5.022l3.122,5.107   L9.488,18.08L9.488,18.08z"/>
                 </g>
-            </svg>
+            </svg>-->
         </div>
         <form class="search" method="get" action="{{route('searchUser', 2)}}">
             <input type="hidden" id="token" value="{{csrf_token()}}">
             <input type="hidden" id="preselected_url" value="{{route('admin.curador.selectedUpdate')}}">
-            <button class="icon yellow">
+            <button class="icon red">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
                     <g fill="#fff">
                         <path d="M244.186,214.604l-54.379-54.378c-0.289-0.289-0.628-0.491-0.93-0.76 c10.7-16.231,16.945-35.66,16.945-56.554C205.822,46.075,159.747,0,102.911,0S0,46.075,0,102.911 c0,56.835,46.074,102.911,102.91,102.911c20.895,0,40.323-6.245,56.554-16.945c0.269,0.301,0.47,0.64,0.759,0.929l54.38,54.38 c8.169,8.168,21.413,8.168,29.583,0C252.354,236.017,252.354,222.773,244.186,214.604z M102.911,170.146 c-37.134,0-67.236-30.102-67.236-67.235c0-37.134,30.103-67.236,67.236-67.236c37.132,0,67.235,30.103,67.235,67.236 C170.146,140.044,140.043,170.146,102.911,170.146z"/>
@@ -37,7 +37,7 @@
         </form>
     </section>
 
-    <table class="Table yellow">
+    <table class="Table red">
         <thead>
             <tr>
                 <td>NOMBRE</td>
