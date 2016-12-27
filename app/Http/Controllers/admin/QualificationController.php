@@ -16,10 +16,13 @@ class QualificationController extends Controller
     /*************** JUEZ ***************/
 
     function judgeSelectedSemana(){
-        $awards = Award::where('isSelected', 1)->orderBy('region_id')->with('scores')->get();
+        $awards = Award::where('isSelected', 1)->orderBy('region_id')->with(['scores' => function($q){
+            $q->where('user_id', auth()->user()->id);
+        }])->get();
+
         $regions = Region::where('id', '<>', 1)->get();
         $categories = Category::all();
-        return view('admin.judgeSelectedSemana', compact('awards', 'regions', 'categories', 'scores'));
+        return view('admin.judgeSelectedSemana', compact('awards', 'regions', 'categories'));
     }
 
     function userSelectedList(){
@@ -41,11 +44,12 @@ class QualificationController extends Controller
         $award = $request->get('award');
         $user = auth()->user()->id;
 
-        if(in_array("", $scores))
+        if(in_array('', $scores))
             return ['error' => 'Antes de continuar debe llenar todos los campos'];
 
         foreach ($scores as $category => $score){
-            Score::whereRaw("category_id = {$category} and award_id = {$award} and user_id = {$user}")->delete();
+
+            Score::where('category_id', $category)->where('award_id', $award)->where('user_id', $user)->delete();
             Score::create([
                 'score' => $score,
                 'category_id' => $category,
