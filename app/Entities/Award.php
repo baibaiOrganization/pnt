@@ -52,4 +52,8 @@ class Award extends Model
     public function score($category){
         return $this->scores()->where('category_id', $category)->where('user_id', auth()->user()->id)->first();
     }
+
+    public function score2($category, $user){
+        return $this->scores()->where('category_id', $category)->where('user_id', $user)->first();
+    }
 }

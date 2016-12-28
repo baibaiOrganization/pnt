@@ -16,14 +16,63 @@ class QualificationController extends Controller
     /*************** JUEZ ***************/
 
     function judgeSelectedSemana(){
-        $awards = Award::where('isSelected', 1)->orderBy('region_id')->with(['scores' => function($q){
+        $awards = Award::where('isSelected', 1)
+        ->where('award_type_id', 2)
+        ->orderBy('region_id')
+        ->with(['scores' => function($q){
             $q->where('user_id', auth()->user()->id);
         }])->get();
 
         $regions = Region::where('id', '<>', 1)->get();
-        $categories = Category::all();
+        $categories = Category::where('id', '<>', 11)->get();
         return view('admin.judgeSelectedSemana', compact('awards', 'regions', 'categories'));
     }
+
+    function judgeSelectedColon(){
+
+        $awards = Award::whereHas('user', function($query){
+            $query->where('state', 1);
+        })->where('award_type_id', 1)
+        ->with('organization');
+
+        $isEditable = $awards->first()->isSelEdit;
+        $awards = $awards->paginate(20);
+        return view('admin.judgeSelectedColon', compact('awards', 'isEditable'));
+    }
+
+    function colonIsNotEditable(){
+
+        $awards = Award::where('award_type_id', 1)->get();
+
+        foreach($awards as $award){
+            $award->update(['isSelEdit' => 0]);
+        }
+
+        return ['success' => true];
+    }
+
+    function colonSaveScore(Request $request){
+        $flag = $request->get('isSelected') == 'true' ? 1 : 0;
+        $award = $request->get('award');
+        $user = $request->get('user');
+
+        $score = Score::where('category_id', 11)->where('award_id', $award)->where('user_id', $user);
+        if($score->first()){
+            $score->delete();
+        } else {
+            Score::create([
+                'score' => $flag,
+                'category_id' => 11,
+                'award_id' => $award,
+                'user_id' => $user,
+                'isEditable' => 1
+            ]);
+        }
+
+        return ['success' => true];
+    }
+
+
 
     function userSelectedList(){
         $awards = Award::where('isSelected', 1)->paginate(20);
@@ -35,7 +84,7 @@ class QualificationController extends Controller
     function getSelectedSemana(){
         $awards = Award::where('isSelected', 1)->orderBy('region_id')->get();
         $regions = Region::where('id', '<>', 1)->get();
-        $categories = Category::all();
+        $categories = Category::where('id', '<>', 11)->get();
         return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories'));
     }
 

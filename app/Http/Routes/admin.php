@@ -132,5 +132,15 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'colonSelectedUsers',
         'uses' => 'QualificationController@postUserSelectedList'
     ]);
+
+    Route::post('juez/colonSaveScore', [
+        'as' => 'colonSaveScore',
+        'uses' => 'QualificationController@colonSaveScore'
+    ]);
+
+    Route::post('juez/colonIsNotEditable', [
+        'as' => 'colonIsNotEditable',
+        'uses' => 'QualificationController@colonIsNotEditable'
+    ]);
 });
 

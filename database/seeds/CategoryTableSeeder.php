@@ -22,5 +22,6 @@ class CategoryTableSeeder extends Seeder
         Category::create(['name' => 'SONIDO']);
         Category::create(['name' => 'ACTOR']);
         Category::create(['name' => 'ACTRÍZ']);
+        Category::create(['id' => 11, 'name' => 'NINGUNA']);
     }
 }

@@ -41,8 +41,19 @@ class UserController extends Controller
     }
 
     public function colonUsers(){
-        $awards = $this->getUsers(1);
-        return view('back.colonUsers', compact('awards'));
+        if(auth()->user()->id != 1){
+            $awards = $this->getUsers(1);
+            return view('back.colonUsers', compact('awards'));
+        } else {
+            $awards = Award::whereHas('user', function($query){
+                $query->where('state', 1);
+            })->where('award_type_id', 1)
+            ->with('organization');
+
+            $isEditable = $awards->first()->isSelEdit;
+            $awards = $awards->paginate(20);
+            return view('admin.judgeSelectedColon', compact('awards', 'isEditable'));
+        }
     }
 
     public function semanaUsers(){
