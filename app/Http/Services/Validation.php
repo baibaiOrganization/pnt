@@ -17,7 +17,6 @@ class Validation {
 
             'prd_name' => 'required',
             'prd_date' => 'required',
-            'prd_genre' => 'required',
             'prd_video' => 'required',
 
             'rep_name' => 'required',
@@ -36,7 +35,6 @@ class Validation {
             'type7' => 'required',
             'type8' => 'required',
             'type9' => 'required',
-            'type16' => 'required',
             'type28' => 'required',
 
         ];
@@ -65,7 +63,7 @@ class Validation {
             'type1' => 'required',
             'type2' => 'required',
             'type3' => 'required',
-            'type7' => 'required',
+            //'type7' => 'required',
             'type10' => 'required',
             'type11' => 'required',
             'type12' => 'required',

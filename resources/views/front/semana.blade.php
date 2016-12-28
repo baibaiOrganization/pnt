@@ -131,7 +131,7 @@
                     <select name="org_region" id="org_region">
                         <option value="">Selecciona una región</option>
                         @foreach($regions as $region)
-                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($organization && $organization->city->region->id == $region->id)) selected @endif >{{$region->name}}</option>
+                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($organization && $organization->region->id == $region->id)) selected @endif >{{$region->name}}</option>
                         @endforeach
                     </select>
 
@@ -148,7 +148,7 @@
                            @if(session('Error'))
                            value="{{old('org_city')}}"
                            @elseif($organization)
-                           value="{{org_city}}"
+                           value="{{$organization->city}}"
                             @endif >
                     {{--<span class="Register-arrowSelect">▼</span>
                     <select name="org_city" id="org_city">
@@ -177,7 +177,7 @@
             </label>
 
             <label class="col-5 small-10" for="org_phone">
-                <span>Teléfono fijo</span>
+                <span>Teléfono fijo de contacto</span>
                 <input type="number" name="org_phone" id="org_phone"
                        @if(session('Error'))
                        value="{{old('org_phone')}}"
@@ -189,7 +189,7 @@
                 @endif
             </label>
             <label class="col-5 small-10" for="org_mobile">
-                <span>Teléfono Celular</span>
+                <span>Teléfono Celular de Contacto</span>
                 <input type="number" name="org_mobile" id="org_mobile"
                        @if(session('Error'))
                        value="{{old('org_mobile')}}"
@@ -202,7 +202,7 @@
             </label>
 
             <label class="col-5 small-10" for="org_email">
-                <span>Correo electrónico</span>
+                <span>Correo electrónico de contacto</span>
                 <input type="email" name="org_email" id="org_email"
                        @if(session('Error'))
                        value="{{old('org_email')}}"
@@ -227,7 +227,33 @@
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type16">
+            <label class="col-12 small-10 row Colon-social" for="group_name">
+                <span  class="col-12 ">Redes sociales (facebook, instagram, twitter)</span>
+                <input class="col-4" type="text" name="facebook" id="facebook"
+                       @if(session('Error'))
+                       value="{{old('facebook')}}"
+                       @elseif($organization)
+                       value="{{explode(',', $organization->socials)[0]}}"
+                        @endif >
+                <input  class="col-4" type="text" name="instagram" id="instagram"
+                        @if(session('Error'))
+                        value="{{old('instagram')}}"
+                        @elseif($organization)
+                        value="{{explode(',', $organization->socials)[1]}}"
+                        @endif >
+                <input class="col-4"  type="text" name="twitter" id="twitter"
+                       @if(session('Error'))
+                       value="{{old('twitter')}}"
+                       @elseif($organization)
+                       value="{{explode(',', $organization->socials)[2]}}"
+                        @endif >
+                @if (count($errors) > 0)
+                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('facebook')}}</span>
+                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('instagram')}}</span>
+                    <span class="col-4" style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('twitter')}}</span>
+                @endif
+            </label>
+            {{--<label class="col-10 small-10" for="type16">
                 <span>Hoja de vida de la agrupación, grupo constituido o de los integrantes de la unión temporal (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -255,7 +281,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type16')}}</span>
                 @endif
-            </label>
+            </label>--}}
         </div>
 
         <div class="center row">
@@ -292,7 +318,7 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_date')}}</span>
                 @endif
             </label>
-            <label for="prd_genre" class="col-5  small-10">
+            {{--<label for="prd_genre" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Género:</span>
                     <span class="Register-arrowSelect">▼</span>
@@ -307,7 +333,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_genre')}}</span>
                 @endif
-            </label>
+            </label>--}}
 
             <label class="col-5 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
@@ -458,7 +484,7 @@
             </label>
 
             <label class="col-5 small-10" for="type6">
-                <span>Soporte de 5 presentaciones realizadas hasta el 30 de Sept</span>
+                <span>Soporte de 5 presentaciones realizadas del 1 de Abr. de 2015 al 30 de Nov de 2016</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -488,7 +514,7 @@
             </label>
 
             <label class="col-5 small-10" for="type7">
-                <span>Hoja de Vida de c/u de los integrantes</span>
+                <span>Para uniones temporales, hoja de Vida de c/u de los integrantes</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -519,7 +545,8 @@
 
             <label class="col-10 small-10" for="prd_video">
                 <span>Registro audiovisual (vínculo a video del espectáculo)</span>
-                <textarea class="col-12" name="prd_video" id="prd_video" placeholder="Grabación completa del espectáculo en buena calidad de imagen (mínimo 1280x720 ) y audio. Deberá ser en plano general y sin edición.">@if(session('Error')){{old('prd_video')}}@elseif($production){{$production->link_video}}@endif</textarea>
+                {{--<textarea class="col-12" name="prd_video" id="prd_video" placeholder="Grabación completa del espectáculo en buena calidad de imagen (mínimo 1280x720 ) y audio. Deberá ser en plano general y sin edición.">@if(session('Error')){{old('prd_video')}}@elseif($production){{$production->link_video}}@endif</textarea>--}}
+                <textarea class="col-12" name="prd_video" id="prd_video" placeholder="Vínculo o enlace a plataformas de video: Youtube - Vimeo">@if(session('Error')){{old('prd_video')}}@elseif($production){{$production->link_video}}@endif</textarea>
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_video')}}</span>
                 @endif
@@ -588,7 +615,7 @@
             </label>
 
             <label class="col-5 small-10" for="rep_mobile">
-                <span>Teléfono celular</span>
+                <span>Teléfono Celular de Contacto</span>
                 <input type="number" name="rep_mobile" id="rep_mobile"
                        @if(session('Error'))
                        value="{{old('rep_mobile')}}"
@@ -604,7 +631,7 @@
             <div class="col-5"></div>
 
             <label class=" col-5 small-10" for="rep_email1">
-                <span>Correo electrónico</span>
+                <span>Correo electrónico de contacto</span>
                 <input type="email" name="rep_email1" id="rep_email1"
                        @if(session('Error'))
                        value="{{old('rep_email1')}}"
@@ -618,7 +645,7 @@
             </label>
 
             <label class=" col-5 small-10" for="rep_email2">
-                <span>Correo electrónico 2</span>
+                <span>Correo electrónico de contacto 2</span>
                 <input type="email" name="rep_email2" id="rep_email2"
                        @if(session('Error'))
                        value="{{old('rep_email2')}}"
@@ -633,7 +660,7 @@
         </div>
 
         <div style="margin-bottom: 20px" class="center row col-12"><button style="margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
-        <h2 class="small-12">CATEGORIA(S) DE POSTULACIÓN</h2>
+        <h2 class="small-12">DOCUMENTOS NECESARIOS</h2>
         <section class="row between small-12" id="Categories">
             <!--
             *************************************
@@ -642,7 +669,7 @@
             -->
             <label class="small-12 CheckboxContainer @if(old('check1') || (isset($award) && $award->awardCategory(1))) col-4 active @endif" for="check1">
                     <span class="Checkbox">
-                        <span>MEJOR OBRA</span>
+                        <span>OBRA</span>
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
                     </span>
             </label>
@@ -659,7 +686,7 @@
                                 {{$award->file(29)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                             </span>
                     <input type="file" id="type29"  types="zip,rar">
@@ -681,7 +708,7 @@
 
             <label class="small-12 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) col-4 active @endif" for="check2">
                     <span class="Checkbox">
-                        <span>MEJOR DIRECTOR</span>
+                        <span>DIRECTOR</span>
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
             </label>
@@ -698,10 +725,10 @@
                                 {{$award->file(30)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Hoja de vida director (.pdf) 5 - 10
                         @endif
                             </span>
-                    <input type="file" id="type30"  types="zip,rar">
+                    <input type="file" id="type30" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type30"
                            @if(session('Error'))
                            value="{{old('type30')}}"
@@ -718,9 +745,9 @@
             *************************************
             -->
 
-            <label class="small-12 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) col-4 active @endif" for="check3">
+           {{-- <label class="small-12 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) col-4 active @endif" for="check3">
                     <span class="Checkbox">
-                        <span>MEJOR DRAMATURGIA</span>
+                        <span>DRAMATURGIA</span>
                         <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
                     </span>
             </label>
@@ -737,7 +764,7 @@
                                 {{$award->file(31)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                             </span>
                     <input type="file" id="type31"  types="zip,rar">
@@ -749,7 +776,7 @@
                             @endif >
                 </div>
             </label>
-            <label for="" style="display:none"><span class="Empty"></span></label>
+            <label for="" style="display:none"><span class="Empty"></span></label>--}}
 
             <!--
             *************************************
@@ -759,7 +786,7 @@
 
             <label class="small-12 CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif" for="check4">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE ESCENOGRAFÍA</span>
+                        <span>DISEÑO DE ESCENOGRAFÍA</span>
                         <input type="checkbox" name="check4" id="check4" value="4" @if(old('check4') || (isset($award) && $award->awardCategory(4))) checked="checked" @endif>
                     </span>
             </label>
@@ -777,7 +804,7 @@
                                 {{$award->file(20)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                         </span>
                     <input type="file" id="type20" types="zip,rar">
@@ -823,7 +850,7 @@
 
             <label class="CheckboxContainer @if(old('check5') || (isset($award) && $award->awardCategory(5))) col-4 active @endif small-12" for="check5">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE MAQUILLAJE</span>
+                        <span>DISEÑO DE MAQUILLAJE</span>
                         <input type="checkbox" name="check5" id="check5" value="5" @if(old('check5') || (isset($award) && $award->awardCategory(5))) checked="checked" @endif>
                     </span>
             </label>
@@ -840,7 +867,7 @@
                                 {{$award->file(22)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                             </span>
                     <input type="file" id="type22" types="zip,rar">
@@ -886,7 +913,7 @@
 
             <label class="CheckboxContainer @if(old('check6') || (isset($award) && $award->awardCategory(6))) col-4 active @endif small-12" for="check6">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE VESTUARIO</span>
+                        <span>DISEÑO DE VESTUARIO</span>
                         <input type="checkbox" name="check6" id="check6" value="6" @if(old('check6') || (isset($award) && $award->awardCategory(6))) checked="checked" @endif>
                     </span>
             </label>
@@ -903,7 +930,7 @@
                                 {{$award->file(24)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                             </span>
                     <input type="file" id="type24"  types="zip,rar">
@@ -949,7 +976,7 @@
 
             <label class="CheckboxContainer @if(old('check7') || (isset($award) && (isset($award) && $award->awardCategory(7)))) col-4 active @endif small-12" for="check7">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE ILUMINACIÓN</span>
+                        <span>DISEÑO DE ILUMINACIÓN</span>
                         <input type="checkbox" name="check7" id="check7" value="7" @if(old('check7') || (isset($award) && $award->awardCategory(7))) checked="checked" @endif>
                     </span>
             </label>
@@ -966,7 +993,7 @@
                                 {{$award->file(26)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Fotos y textos o libreto  (.zip .rar) 5 - 10
                         @endif
                             </span>
                     <input type="file" id="type26"  types="zip,rar">
@@ -1012,7 +1039,7 @@
 
             <label class="CheckboxContainer @if(old('check8') || (isset($award) && $award->awardCategory(8))) col-4 active @endif small-12" for="check8">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE SONIDO</span>
+                        <span>DISEÑO DE SONIDO</span>
                         <input type="checkbox" name="check8" id="check8" value="8" @if(old('check8') || (isset($award) && $award->awardCategory(8))) checked="checked" @endif>
                     </span>
             </label>
@@ -1038,7 +1065,7 @@
 
             <label class="CheckboxContainer @if(old('check9') || (isset($award) && $award->awardCategory(9))) col-4 active @endif small-12" for="check9">
                     <span class="Checkbox">
-                        <span>MEJOR ACTOR</span>
+                        <span>ACTOR</span>
                         <input type="checkbox" name="check9" id="check9" value="9" @if(old('check9') || (isset($award) && $award->awardCategory(9))) checked="checked" @endif>
                     </span>
             </label>
@@ -1055,10 +1082,10 @@
                                 {{$award->file(32)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Hoja de vida actor(.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type32"  types="zip,rar">
+                    <input type="file" id="type32" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type32"
                            @if(session('Error'))
                            value="{{old('type32')}}"
@@ -1077,7 +1104,7 @@
 
             <label class="CheckboxContainer @if(old('check10') || (isset($award) && $award->awardCategory(10))) col-4 active @endif small-12" for="check10">
                     <span class="Checkbox">
-                        <span>MEJOR ACTRÍZ</span>
+                        <span>ACTRÍZ</span>
                         <input type="checkbox" name="check10" id="check10" value="10" @if(old('check10') || (isset($award) && $award->awardCategory(10))) checked="checked" @endif>
                     </span>
             </label>
@@ -1094,10 +1121,10 @@
                                 {{$award->file(33)->name}}
                             @endif
                         @else
-                            Fotos ilustrativas (.zip .rar) 5 - 10
+                            Hoja de vida actríz (.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type33"  types="zip,rar">
+                    <input type="file" id="type33" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type33"
                            @if(session('Error'))
                            value="{{old('type33')}}"

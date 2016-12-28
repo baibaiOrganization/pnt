@@ -154,7 +154,7 @@
 
             </label>
 
-            <label class="col-10 small-10" for="type16">
+            {{--<label class="col-10 small-10" for="type16">
                 <span>Hoja de vida de la agrupación, grupo constituido o de los integrantes de la unión temporal (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -182,7 +182,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type16')}}</span>
                 @endif
-            </label>
+            </label>--}}
         </div>
 
         <h2 class="col-12">DATOS DE LA PRODUCCIÓN ARTÍSTICA</h2>
@@ -429,7 +429,7 @@
                     -->
                     <label class="small-12 CheckboxContainer @if(old('check1') || (isset($award) && $award->awardCategory(1))) col-4 active @endif" for="check1">
                     <span class="Checkbox">
-                        <span>MEJOR OBRA</span>
+                        <span>OBRA</span>
                         <input type="checkbox" name="check1" id="check1" value="1" @if(old('check1') || (isset($award) && $award->awardCategory(1))) checked="checked" @endif >
                     </span>
                     </label>
@@ -468,7 +468,7 @@
 
                     <label class="small-12 CheckboxContainer @if(old('check2') || (isset($award) && $award->awardCategory(2))) col-4 active @endif" for="check2">
                     <span class="Checkbox">
-                        <span>MEJOR DIRECTOR</span>
+                        <span>DIRECTOR</span>
                         <input type="checkbox" name="check2" id="check2" value="2" @if(old('check2') || (isset($award) && $award->awardCategory(2))) checked="checked" @endif>
                     </span>
                     </label>
@@ -507,7 +507,7 @@
 
                     <label class="small-12 CheckboxContainer @if(old('check3') || (isset($award) && $award->awardCategory(3))) col-4 active @endif" for="check3">
                     <span class="Checkbox">
-                        <span>MEJOR DRAMATURGIA</span>
+                        <span>DRAMATURGIA</span>
                         <input type="checkbox" name="check3" id="check3" value="3" @if(old('check3') || (isset($award) && $award->awardCategory(3))) checked="checked" @endif>
                     </span>
                     </label>
@@ -546,7 +546,7 @@
 
                     <label class="small-12 CheckboxContainer @if(old('check4') || (isset($award) && $award->awardCategory(4))) col-4 active @endif" for="check4">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE ESCENOGRAFÍA</span>
+                        <span>DISEÑO DE ESCENOGRAFÍA</span>
                         <input type="checkbox" name="check4" id="check4" value="4" @if(old('check4') || (isset($award) && $award->awardCategory(4))) checked="checked" @endif>
                     </span>
                     </label>
@@ -610,7 +610,7 @@
 
                     <label class="CheckboxContainer @if(old('check5') || (isset($award) && $award->awardCategory(5))) col-4 active @endif small-12" for="check5">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE MAQUILLAJE</span>
+                        <span>DISEÑO DE MAQUILLAJE</span>
                         <input type="checkbox" name="check5" id="check5" value="5" @if(old('check5') || (isset($award) && $award->awardCategory(5))) checked="checked" @endif>
                     </span>
                     </label>
@@ -673,7 +673,7 @@
 
                     <label class="CheckboxContainer @if(old('check6') || (isset($award) && $award->awardCategory(6))) col-4 active @endif small-12" for="check6">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE VESTUARIO</span>
+                        <span>DISEÑO DE VESTUARIO</span>
                         <input type="checkbox" name="check6" id="check6" value="6" @if(old('check6') || (isset($award) && $award->awardCategory(6))) checked="checked" @endif>
                     </span>
                     </label>
@@ -736,7 +736,7 @@
 
                     <label class="CheckboxContainer @if(old('check7') || (isset($award) && (isset($award) && $award->awardCategory(7)))) col-4 active @endif small-12" for="check7">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE ILUMINACIÓN</span>
+                        <span>DISEÑO DE ILUMINACIÓN</span>
                         <input type="checkbox" name="check7" id="check7" value="7" @if(old('check7') || (isset($award) && $award->awardCategory(7))) checked="checked" @endif>
                     </span>
                     </label>
@@ -799,7 +799,7 @@
 
                     <label class="CheckboxContainer @if(old('check8') || (isset($award) && $award->awardCategory(8))) col-4 active @endif small-12" for="check8">
                     <span class="Checkbox">
-                        <span>MEJOR DISEÑO DE SONIDO</span>
+                        <span>DISEÑO DE SONIDO</span>
                         <input type="checkbox" name="check8" id="check8" value="8" @if(old('check8') || (isset($award) && $award->awardCategory(8))) checked="checked" @endif>
                     </span>
                     </label>
@@ -825,7 +825,7 @@
 
                     <label class="CheckboxContainer @if(old('check9') || (isset($award) && $award->awardCategory(9))) col-4 active @endif small-12" for="check9">
                     <span class="Checkbox">
-                        <span>MEJOR ACTOR</span>
+                        <span>ACTOR</span>
                         <input type="checkbox" name="check9" id="check9" value="9" @if(old('check9') || (isset($award) && $award->awardCategory(9))) checked="checked" @endif>
                     </span>
                     </label>
@@ -864,7 +864,7 @@
 
                     <label class="CheckboxContainer @if(old('check10') || (isset($award) && $award->awardCategory(10))) col-4 active @endif small-12" for="check10">
                     <span class="Checkbox">
-                        <span>MEJOR ACTRÍZ</span>
+                        <span>ACTRÍZ</span>
                         <input type="checkbox" name="check10" id="check10" value="10" @if(old('check10') || (isset($award) && $award->awardCategory(10))) checked="checked" @endif>
                     </span>
                     </label>

@@ -13,7 +13,7 @@ class Region extends Model
         return $this->hasMany(User::class);
     }
 
-    public function cities(){
-        return $this->hasMany(City::class);
+    public function organizations(){
+        return $this->hasMany(Organization::class);
     }
 }

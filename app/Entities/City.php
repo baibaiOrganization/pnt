@@ -8,11 +8,11 @@ class City extends Model
 {
     protected $fillable = ['name', 'region_id'];
 
-    public function region(){
+    /*public function region(){
         return $this->belongsTo(Region::class);
     }
 
     public function organizations(){
         return $this->hasMany(Organization::class);
-    }
+    }*/
 }

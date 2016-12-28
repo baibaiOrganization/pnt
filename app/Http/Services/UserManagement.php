@@ -53,6 +53,7 @@ class UserManagement{
         }
 
         if(!$isUpdate){
+
             $organization = Organization::create($data['organization']);
             $production = Production::create($data['production']);
             $propietor = Propietor::create($data['propietor']);
@@ -106,19 +107,19 @@ class UserManagement{
 
             'organization' => [
                 'name' => $inputs['org_name'],
-                'city_id' => $inputs['org_city'],
+                'city' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],
                 'mobile' => $inputs['org_mobile'],
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
-                'socials' => ',,',
+                'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
+                'region_id' => $inputs['org_region']
             ],
 
             'production' => [
                 'name' => $inputs['prd_name'],
                 'release_date' => $inputs['prd_date'],
-                'genre' => $inputs['prd_genre'],
                 'link_video' => $inputs['prd_video'],
             ],
 
@@ -149,7 +150,7 @@ class UserManagement{
         return [
             'organization' => [
                 'name' => $inputs['org_name'],
-                'city_id' => $inputs['org_city'],
+                'city' => $inputs['org_city'],
                 'address' => $inputs['org_address'],
                 'phone' => $inputs['org_phone'],
                 'mobile' => $inputs['org_mobile'],
