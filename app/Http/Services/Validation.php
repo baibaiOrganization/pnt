@@ -43,6 +43,7 @@ class Validation {
     public static function getColonRules(){
         return [
             'org_name' => 'required',
+            'org_region' => 'required',
             'org_city' => 'required',
             'org_address' => 'required',
             'org_phone' => 'numeric',
@@ -70,10 +71,11 @@ class Validation {
             'type13' => 'required',
             'type14' => 'required',
             'type15' => 'required',
-            'type17' => 'required',
+            //'type17' => 'required',
             'type18' => 'required',
-            'type19' => 'required'
+            'type19' => 'required',
 
+            'accept' => 'required',
         ];
     }
 

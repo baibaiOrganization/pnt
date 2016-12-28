@@ -9,7 +9,13 @@
     @if(session('Error'))
         <section class="Message">
             <div class="notification error">
-                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span> {{session('Error')}}<span class="close">X</span>
+                <span class="title">!&nbsp;&nbsp;&nbsp;&nbsp;Error</span>
+                @if($errors->first('accept'))
+                    {{$errors->first('accept')}}
+                @else
+                    {{session('Error')}}
+                @endif
+                <span class="close">X</span>
             </div>
         </section>
     @endif
@@ -34,21 +40,46 @@
                 @endif
             </label>
 
-        <!--<label class="col-5 small-10" for="org_region">
-                <span>Región</span>
-                <input type="text" name="org_region" id="org_region"
-                       @if(session('Error'))
-            value="{{old('org_region')}}"
-                       @elseif($organization)
-            value="{{$organization->region}}"
-                       @endif >
+            <label for="org_region" class="col-5 small-10">
+                <div class="Register-contentSelect">
+                    <span>Región</span>
+                    <span class="Register-arrowSelect">▼</span>
+                    <select name="org_region" id="org_region">
+                        <option value="">Selecciona una región</option>
+                        @foreach($regions as $region)
+                            <option value="{{$region->id}}" @if((session('Error') && old('org_region') == $region->id) || ($organization && $organization->region->id == $region->id)) selected @endif >{{$region->name}}</option>
+                        @endforeach
+                    </select>
 
+                </div>
                 @if (count($errors) > 0)
-            <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_region')}}</span>
                 @endif
-                </label>-->
+            </label>
 
             <label for="org_city" class="col-5  small-10">
+                <div class="Register-contentSelect">
+                    <span>Ciudad</span>
+                    <input type="text" name="org_city" id="org_city"
+                           @if(session('Error'))
+                           value="{{old('org_city')}}"
+                           @elseif($organization)
+                           value="{{$organization->city}}"
+                            @endif >
+                    {{--<span class="Register-arrowSelect">▼</span>
+                    <select name="org_city" id="org_city">
+                        <option data-region="0" value="">Selecciona una ciudad</option>
+                        @foreach($cities as $city)
+                            <option class="hidden" data-region="{{$city->region->id}}" value="{{$city->id}}" @if((session('Error') && old('org_city') == $city->id) || ($organization && $organization->city_id == $city->id)) selected @endif >{{$city->name}}</option>
+                        @endforeach
+                    </select>--}}
+                </div>
+                @if (count($errors) > 0)
+                    <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
+                @endif
+            </label>
+
+            {{--<label for="org_city" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Ciudad</span>
                     <span class="Register-arrowSelect">▼</span>
@@ -62,7 +93,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('org_city')}}</span>
                 @endif
-            </label>
+            </label> --}}
 
             <label class="col-5 small-10" for="org_address">
                 <span>Dirección física</span>
@@ -176,7 +207,7 @@
                 @endif
             </label>
             <label class="col-5 small-10" for="type10">
-                <span>Reseña Corta en Español (.pdf)</span>
+                <span>Reseña de la propuesta (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -189,7 +220,7 @@
                                 {{$award->file(10)->name}}
                             @endif
                         @else
-                            400 caracteres máx
+
                         @endif
                     </span>
                     <input type="file" id="type10" types="pdf" accept="application/pdf">
@@ -223,7 +254,7 @@
             </label>
 
             <label class="col-10 small-10" for="type3">
-                <span>Certificado de Registro de derechos de Autor o Autorización de uso de la obra (pdf.)</span>
+                <span>Certificado de obra (pdf.)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -236,7 +267,7 @@
                                 {{$award->file(3)->name}}
                             @endif
                         @else
-                            Si la obra contiene piezas musicales deben ser originales para la producción.
+                            <!--Si la obra contiene piezas musicales deben ser originales para la producción.-->
                         @endif
                     </span>
                     <input type="file" id="type3" types="pdf" accept="application/pdf">
@@ -252,8 +283,8 @@
                 @endif
             </label>
 
-            <h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
-            <p> La obra producto del premio deberá tener una duración mínima de cuarenta y cinco (45) minutos. </p>
+            <!--<h3 class="col-10" style="color:black">PROPUESTA DE PRODUCCIÓN.</h3>
+            <p> La obra producto del premio deberá tener una duración mínima de cuarenta y cinco (45) minutos. </p>-->
             <label class="col-10 small-10" for="type1">
                 <span>Sinópsis (.pdf)</span>
                 <div class="Register-file">
@@ -345,7 +376,7 @@
             </label>
 
             <label class="col-10 small-10" for="type12">
-                <span>Propuesta Estética (.pdf) <em>Enlace a condiciones y equipamiento técnico del Teatro Colón</em></span>
+                <span>Propuesta Estética (.pdf) <!--<em>Enlace a condiciones y equipamiento técnico del Teatro Colón</em>--></span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
@@ -358,7 +389,8 @@
                                 {{$award->file(12)->name}}
                             @endif
                         @else
-                            Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos
+                            <!--Bocetos de escenografía, maquillaje, utilería, vestuario, iluminación, material sonoro o musical, requerimientos de tramoya, iluminación, recursos técnicos-->
+                            Bocetos iniciales
                         @endif
                     </span>
                     <input type="file" id="type12" types="pdf" accept="application/pdf">
@@ -600,7 +632,7 @@
                 @endif
             </label>
 
-            <h3 style="color:black;" class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>
+            <!--<h3 style="color:black;" class="col-10">PROPUESTA DE PRODUCCIÓN.</h3>-->
 
             <label class="col-10 small-10" for="type18">
                 <span>Documento de delegación de representación (.pdf)</span>
@@ -632,7 +664,7 @@
                 @endif
             </label>
 
-            <label class="col-10 small-10" for="type17">
+            {{--<label class="col-10 small-10" for="type17">
                 <span>Carta de Compromiso</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -660,7 +692,9 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type17')}}</span>
                 @endif
-            </label>
+            </label>--}}
+
+
             <label class="col-10 small-10" for="type19">
                 <span>Fotocopia de la Cédula Representante Legal (.pdf)</span>
                 <div class="Register-file">
@@ -686,6 +720,18 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('type19')}}</span>
                 @endif
             </label>
+
+            <!-- CARTA DE COMPROMISO-->
+
+                <label class="small-12 CheckboxContainer @if(old('accept') || $award->acceptTerms) active @endif" for="accept">
+                        <span class="Checkbox yellow">
+                            <span style="background: none">He leido y acepto las reglas de coproducción. <a href="#">Ver condiciones</a></span>
+                            <input type="checkbox" name="accept" id="accept" value="1" @if(old('accept') || $award->acceptTerms) checked="checked" @endif >
+                        </span>
+                    @if (count($errors) > 0)
+                        <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('accept')}}</span>
+                    @endif
+                </label>
         </div>
 
         <div class="center row"><button style="color:black; margin: 20px 0 0 0;" class="saveForm"> GUARDAR FORMULARIO</button></div>
@@ -721,18 +767,17 @@
 
         }
 
-        $('#Categories label.CheckboxContainer .Checkbox').on('click', function(){
-            var flag = $(this).children('input').is(':checked');
-            flag ? $(this).parent().addClass('active') : $(this).parent().removeClass('active');
-            hasFiles($(this).parent(), flag);
-        });
-
         $('#sector').select2({
             closeOnSelect: false
         });
 
         $('.saveForm').on('click', function(){
             $(this).append('<input type="hidden" value="" name="isUpdate">');
+        });
+
+        $('label.CheckboxContainer .Checkbox').on('click', function(){
+            var flag = $(this).children('input').is(':checked');
+            flag ? $(this).parent().addClass('active') : $(this).parent().removeClass('active');
         });
     </script>
 @endsection

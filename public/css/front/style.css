@@ -729,6 +729,12 @@ span.red .pagination a {
 .CheckboxContainer.active .Checkbox:before {
   background: #df2826; }
 
+.CheckboxContainer.yellow.active .Checkbox:before {
+  background-color: #FFED00 !important; }
+
+.CheckboxContainer.yellow:before {
+  border-color: #FFED00 !important; }
+
 .Header {
   max-width: 65rem;
   margin: auto;

@@ -24,20 +24,21 @@ class ColonController extends Controller
         $organization = isset($award) ? $award->organization : null;
         $propietor = isset($award) ? $award->propietor : null;
         $production = isset($award) ? $award->production : null;
+        $regions = Region::where('id', '<>', 1)->orderBy('name')->get();
         $cities = City::orderBy('name')->get();
-        return view('front.colon', compact('organization', 'award', 'propietor', 'production', 'cities'));
+        return view('front.colon', compact('organization', 'award', 'propietor', 'production', 'cities', 'regions'));
     }
     
     public function create(Request $request){
         $inputs = $request->all();
         $validate = !isset($inputs['isUpdate'])
             ? Validator::make($inputs, Validation::getColonRules())
-            : Validator::make($inputs, ['org_city' => 'required']);
+            : Validator::make($inputs, ['accept' => 'required']);
 
         $message = isset($inputs['isUpdate']) 
                  ? 'El formulario se ha guardado con exito'
                  : 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.';
-        
+
         if($validate->fails())
             return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
         

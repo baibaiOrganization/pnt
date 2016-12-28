@@ -67,7 +67,8 @@ class UserManagement{
                 'categories' => $data['award']['categories'],
                 'sound' => $data['award']['sound'],
                 'isPreselected' => $data['award']['isPreselected'],
-                'region_id' => $data['award']['region_id']
+                'region_id' => $data['award']['region_id'],
+                'acceptTerms' => $data['award']['acceptTerms']
             ]);
         }
 
@@ -157,6 +158,7 @@ class UserManagement{
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
                 'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
+                'region_id' => $inputs['org_region']
             ],
 
             'production' => [
@@ -179,7 +181,8 @@ class UserManagement{
                 'sound' => '',
                 'categories' => '',
                 'isPreselected' => 1,
-                'region_id' => 1
+                'region_id' => $inputs['org_region'],
+                'acceptTerms' => $inputs['accept']
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1

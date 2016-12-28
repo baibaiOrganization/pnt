@@ -114,6 +114,9 @@ return [
         ],
         'rep_doc_typ' => [
             'not_in' => 'El campo "tipo de documento" es obligatorio'
+        ],
+        'accept' => [
+            'required' => 'Antes de continuar, debe aceptar términos y condiciones'
         ]
 
     ],

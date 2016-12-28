@@ -1103,7 +1103,7 @@
             -->
 
             <label class="CheckboxContainer @if(old('check10') || (isset($award) && $award->awardCategory(10))) col-4 active @endif small-12" for="check10">
-                    <span class="Checkbox">
+                    <span class="Checkbox yellow">
                         <span>ACTRÍZ</span>
                         <input type="checkbox" name="check10" id="check10" value="10" @if(old('check10') || (isset($award) && $award->awardCategory(10))) checked="checked" @endif>
                     </span>
