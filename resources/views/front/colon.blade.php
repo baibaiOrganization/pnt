@@ -355,7 +355,7 @@
                         @if((session('Error') && old('type11')) || (isset($award) && $award->file(11)))
                             @if(session('Error'))
                                 {{old('type11')}}
-                            @else
+                            <@else<
                                 {{$award->file(11)->name}}
                             @endif
                         @else
@@ -723,10 +723,10 @@
 
             <!-- CARTA DE COMPROMISO-->
 
-                <label class="small-12 CheckboxContainer @if(old('accept') || $award->acceptTerms) active @endif" for="accept">
-                        <span class="Checkbox yellow">
+                <label class="yellow small-12 CheckboxContainer @if(old('accept') || (isset($award) && $award->acceptTerms)) active @endif" for="accept">
+                        <span class="Checkbox">
                             <span style="background: none">He leido y acepto las reglas de coproducción. <a href="#">Ver condiciones</a></span>
-                            <input type="checkbox" name="accept" id="accept" value="1" @if(old('accept') || $award->acceptTerms) checked="checked" @endif >
+                            <input type="checkbox" name="accept" id="accept" value="1" @if(old('accept') || (isset($award) && $award->acceptTerms)) checked="checked" @endif >
                         </span>
                     @if (count($errors) > 0)
                         <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('accept')}}</span>

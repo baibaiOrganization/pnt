@@ -117,6 +117,12 @@ return [
         ],
         'accept' => [
             'required' => 'Antes de continuar, debe aceptar términos y condiciones'
+        ],
+        'type28' => [
+            'required' => 'El Dossier del espectáculo es requerido.'
+        ],
+        'type4' => [
+            'required' => 'Esta certificación es requerida.'
         ]
 
     ],

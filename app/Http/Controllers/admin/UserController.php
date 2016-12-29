@@ -112,9 +112,7 @@ class UserController extends Controller
         })->where('award_type_id', $type)
           ->whereHas('organization' , function($query) use($region){
               if($region > 1)
-              $query->whereHas('city', function($query) use($region){
                   $query->where('region_id', $region);
-              });
         })->with('organization')
           ->orderBy('isSelected', 'DESC')
           ->orderBy('isPreselected', 'DESC')

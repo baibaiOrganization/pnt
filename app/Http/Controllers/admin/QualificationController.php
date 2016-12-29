@@ -147,9 +147,7 @@ class QualificationController extends Controller
         })->whereRaw('award_type_id = 2 and ' . $column . ' = 1')
             ->whereHas('organization' , function($query) use($region){
                 if($region > 1)
-                    $query->whereHas('city', function($query) use($region){
-                        $query->where('region_id', $region);
-                    });
+                    $query->where('region_id', $region);
             })->count();
 
         if($nAwards >= $limit && $state == 1)

@@ -55,8 +55,8 @@
             <tr>
                 <td>{{$award->organization->name}}</td>
                 <td>{{$award->user->email}}</td>
-                <td>{{$award->organization->city->region->name}}</td>
-                <td>{{$award->organization->city->name}}</td>
+                <td>{{$award->organization->region->name}}</td>
+                <td>{{$award->organization->city}}</td>
 
                 @if(($isCurador = auth()->user()->role_id == 3) || auth()->user()->role_id == 4)
                     @if($isCurador)
@@ -93,7 +93,7 @@
             @if(auth()->user()->role_id == 3 && $isEditable)
                 <tr>
                     <td colspan="6">
-                        <a href="#" id="sendToJudge" data-url="{{route('sendToJudge')}}" class="Button" style="width:auto;margin:20px 0;padding: 0 10px;background: #FFED00;">ENVIAR RESULTADOS A LOS JUECES</a>
+                        <a href="#" id="sendToJudge" data-url="{{route('sendToJudge')}}" class="Button" style="width:auto;margin:20px 0;padding: 0 10px;background: #df2826; color:white">ENVIAR RESULTADOS A LOS JUECES</a>
                     </td>
                 </tr>
             @endif

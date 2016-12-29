@@ -150,6 +150,8 @@
                 @endif
             </label>
 
+
+
             @foreach($award->files as $file)
                 @if($file->file_type_id == 16)
                     <label class="col-10 small-10" for="type16">

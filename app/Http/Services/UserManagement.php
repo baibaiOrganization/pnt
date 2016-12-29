@@ -115,7 +115,7 @@ class UserManagement{
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
                 'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
-                'region_id' => $inputs['org_region']
+                'region_id' => $inputs['org_region'] ? $inputs['org_region'] : 1
             ],
 
             'production' => [
@@ -139,7 +139,8 @@ class UserManagement{
                 'categories' => $categories,
                 'sound' => isset($inputs['cat_sound']) ? $inputs['cat_sound'] : '',
                 'isPreselected' => $inputs['org_region'] == 2 ? 0 : 1,
-                'region_id' => $inputs['org_region']
+                'region_id' => $inputs['org_region'] ? $inputs['org_region'] : 1,
+                'acceptTerms' => 1
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1
@@ -158,7 +159,7 @@ class UserManagement{
                 'email' => $inputs['org_email'],
                 'website' => $inputs['org_website'],
                 'socials' => $inputs['facebook'] . ',' . $inputs['instagram'] . ',' . $inputs['twitter'],
-                'region_id' => $inputs['org_region']
+                'region_id' => $inputs['org_region'] ? $inputs['org_region'] : 1
             ],
 
             'production' => [
@@ -181,7 +182,7 @@ class UserManagement{
                 'sound' => '',
                 'categories' => '',
                 'isPreselected' => 1,
-                'region_id' => $inputs['org_region'],
+                'region_id' => $inputs['org_region'] ? $inputs['org_region'] : 1,
                 'acceptTerms' => $inputs['accept']
             ],
 
