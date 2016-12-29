@@ -79,8 +79,8 @@ class UserController extends Controller
 
     public function colonEditUser($id){
         $award = Award::with('organization')->find($id);
-        $cities = City::orderBy('name')->get();
-        return view('back.colonEditUser', compact('award', 'cities'));
+        $regions = Region::orderBy('name')->get();
+        return view('back.colonEditUser', compact('award', 'regions'));
     }
 
     public function semanaUpdate(Request $request, $id){
