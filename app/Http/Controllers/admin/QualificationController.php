@@ -118,9 +118,7 @@ class QualificationController extends Controller
         $region_id = auth()->user()->region_id;
         $limit = $region_id == 2 ? 6 : 3;
         $awards = Award::where('isSelected', 1)->whereHas('organization', function($query) use ($region_id){
-            $query->whereHas('city', function($query) use ($region_id){
-                $query->where('region_id', $region_id);
-            });
+            $query->where('region_id', $region_id);
         })->get();
 
         if(count($awards) != $limit)
