@@ -66,7 +66,7 @@
                                         {{$sum3}}
                                     </td>
                                     <td>
-                                        {{($sum3 + $sum2 + $sum1) / 3}}
+                                        {{round( ( ($sum3 + $sum2 + $sum1) / 3), 2 ) }}
                                     </td>
                                     <td class="row between">
                                         <a target="_blank" href="{{route('semanaEditUser', $award->id)}}" class="icon">

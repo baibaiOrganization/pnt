@@ -62,10 +62,33 @@ class UserController extends Controller
             $isEditable = $awards[0] ? $awards[0]->isSelEdit : 1;
             return view('back.semanaUsers', compact('awards', 'isEditable'));
         } else {
-            $awards = Award::where('isSelected', 1)->with(['scores'])->orderBy('region_id')->get();
+            $awards = Award::where('isSelected', 1)->where('award_type_id', 2)->with(['scores'])->get();
+            $categories = Category::all();
+            $arrayScores = [];
+
+            foreach ($categories as $category) {
+                foreach ($awards as $award) {
+                    $temp = [
+                        'category' => $category->id,
+                        'award' => $award->id
+                    ];
+
+                    $sum = 0;
+                    $scores = Score::where('category_id', $category->id)->where('award_id', $award->id)->get();
+                    foreach($scores as $score){
+                        $sum += $score->score;
+                        array_push($temp, ['user' => $score->user_id, 'value' => $score->score]);
+                    }
+
+                    $temp['total'] = $sum ? $sum / 3 : 0;
+                    array_push($arrayScores, $temp);
+                }
+            }
+
+            arsort($arrayScores);
+
             $regions = Region::where('id', '<>', 1)->get();
             $judges = User::where('role_id', 5)->get();
-            $categories = Category::all();
             return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories', 'judges'));
         }
     }

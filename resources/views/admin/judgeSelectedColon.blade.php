@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="Register-header">
-        <h1>LISTADO DE USUARIOS</h1>
+    <div class="Register-header Colon">
+        <h1>LISTADO DE USUARIOS COLON</h1>
     </div>
 
     @if(session('Success'))
@@ -19,7 +19,7 @@
             <a href="{{route('admin.userCreate')}}" class="ButtonForm"> CREAR USUARIO</a></div>
         </div>
         <form class="search" method="get" action="{{route('searchUser', 2)}}">
-            <input type="hidden" id="token" value="{{csrf_token()}}">
+
             <button class="icon red">
                 <svg width="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250.313 250.313">
                     <g fill="#fff">
@@ -30,8 +30,7 @@
             <input type="text" name="search" id="search">
         </form>-->
     </section>
-
-    <table class="Table red">
+    <table class="Table yellow">
         <thead>
         <tr>
             <td>NOMBRE</td>
@@ -46,24 +45,24 @@
 
             <tr>
                 <td>{{$award->organization->name}}</td>
-                <td @if(!$isEditable) class="locked" @endif>
-                    <label class="small-12 col-4 CheckboxContainer @if($award->score2(11, 10)) active @endif" for="check{{$award->id}}10">
+                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
+                    <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 10)) active @endif" for="check{{$award->id}}10">
                         <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="10" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
                             <input type="hidden" class="award_id" value="{{$award->id}}">
                             <input type="checkbox" id="check{{$award->id}}10" value="1" @if($award->score2(11, 10)) checked="checked" @endif>
                         </span>
                     </label>
                 </td>
-                <td @if(!$isEditable) class="locked" @endif>
-                    <label class="small-12 col-4 CheckboxContainer @if($award->score2(11, 11)) active @endif" for="check{{$award->id}}11">
+                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
+                    <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 11)) active @endif" for="check{{$award->id}}11">
                         <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="11" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
                             <input type="hidden" class="award_id" value="{{$award->id}}">
                             <input data-url="{{route('colonSaveScore')}}" type="checkbox" id="check{{$award->id}}11" value="2" @if($award->score2(11, 11)) checked="checked" @endif>
                         </span>
                     </label>
                 </td>
-                <td @if(!$isEditable) class="locked" @endif>
-                    <label class="small-12 col-4 CheckboxContainer @if($award->score2(11, 12)) active @endif" for="check{{$award->id}}12" >
+                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
+                    <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 12)) active @endif" for="check{{$award->id}}12" >
                         <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="12" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
                             <input type="hidden" class="award_id" value="{{$award->id}}">
                             <input data-url="{{route('colonSaveScore')}}" type="checkbox" id="check{{$award->id}}12" value="3" @if($award->score2(11, 12)) checked="checked" @endif>
@@ -82,15 +81,16 @@
             </tr>
         @endforeach
         @if($isEditable)
+            <input type="hidden" id="token" value="{{csrf_token()}}">
             <tr>
                 <td colspan="6">
-                    <a href="#" id="sendToJudge" data-url="{{route('colonIsNotEditable')}}" class="Button" style="color:white;width:auto;margin:20px 0;padding: 0 10px;background: #df2826;">FINALIZAR</a>
+                    <a href="#" id="sendToJudge" data-url="{{route('colonIsNotEditable')}}" class="Button" style=";width:auto;margin:20px 0;padding: 0 10px;background: #FFED00;">FINALIZAR</a>
                 </td>
             </tr>
         @endif
         </tbody>
     </table>
-    <span class="red">{!! $awards->render() !!}</span>
+    <span class="yellow">{!! $awards->render() !!}</span>
 @endsection
 @section('scripts')
     <script src="{{asset('js/images.js')}}"></script>
