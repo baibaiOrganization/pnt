@@ -110,7 +110,7 @@
             </label>
             <label class="col-5 small-10" for="org_phone">
                 <span>Teléfono fijo</span>
-                <input type="number" name="org_phone" id="org_phone"
+                <input type="text" name="org_phone" id="org_phone"
                        @if(session('Error'))
                        value="{{old('org_phone')}}"
                        @elseif($organization)
@@ -123,7 +123,7 @@
             </label>
             <label class="col-5 small-10" for="org_mobile">
                 <span>Teléfono Celular</span>
-                <input type="number" name="org_mobile" id="org_mobile"
+                <input type="text" name="org_mobile" id="org_mobile"
                        @if(session('Error'))
                        value="{{old('org_mobile')}}"
                        @elseif($organization)
@@ -577,7 +577,7 @@
 
             <label class="col-5 small-10" for="rep_doc_number">
                 <span>Número de documento</span>
-                <input type="number" name="rep_doc_number" id="rep_doc_number"
+                <input type="text" name="rep_doc_number" id="rep_doc_number"
                        @if(session('Error'))
                        value="{{old('rep_doc_number')}}"
                        @elseif($propietor)

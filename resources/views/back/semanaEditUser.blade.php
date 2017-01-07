@@ -136,11 +136,11 @@
 
             <label class="col-5 small-10" for="org_phone">
                 <span>Teléfono fijo de contacto</span>
-                <input type="number" name="org_phone" id="org_phone" value="{{$award->organization->phone}}">
+                <input type="text" name="org_phone" id="org_phone" value="{{$award->organization->phone}}">
             </label>
             <label class="col-5 small-10" for="org_mobile">
                 <span>Teléfono celular de contacto</span>
-                <input type="number" name="org_mobile" id="org_mobile" value="{{$award->organization->mobile}}">
+                <input type="text" name="org_mobile" id="org_mobile" value="{{$award->organization->mobile}}">
             </label>
 
             <label class="col-5 small-10" for="org_email">

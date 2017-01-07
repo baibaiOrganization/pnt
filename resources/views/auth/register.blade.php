@@ -38,7 +38,7 @@
                 {!!  $errors->first('role_id', '<p class="error">:message</p>')  !!}
             </label>
             <label>
-                <input class="{{($errors->has('mobile_phone'))?'error':''}}" type="number" name="mobile_phone"
+                <input class="{{($errors->has('mobile_phone'))?'error':''}}" type="text" name="mobile_phone"
                        value="{{ old('mobile_phone') }}">
                 <span>Número de teléfono</span>
                 {!!  $errors->first('mobile_phone', '<p class="error">:message</p>')  !!}

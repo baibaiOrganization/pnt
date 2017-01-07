@@ -951,7 +951,7 @@ main {
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
-    background: white; }
+    background: transparent; }
 
 .Register-contentLabel {
   padding: 0.9375rem 0; }
@@ -1001,7 +1001,8 @@ main {
   background: #df2826;
   font-size: 0.75rem;
   padding: 0.5625rem 0.5625rem 0.375rem;
-  top: 1.4375rem; }
+  top: 1.4375rem;
+  z-index: -1; }
 
 .Choose article {
   text-align: center;
