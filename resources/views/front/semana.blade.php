@@ -484,7 +484,7 @@
             </label>
 
             <label class="col-5 small-10" for="type6">
-                <span>Soporte de 5 presentaciones realizadas del 1 de Abr. de 2015 al 30 de Nov de 2016</span>
+                <span>Soporte de 5 presentaciones realizadas del 1 de Abril de 2015 al 30 de Noviembre de 2016</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
