@@ -686,7 +686,7 @@
                                 {{$award->file(29)->name}}
                             @endif
                         @else
-                            Fotos y textos o libreto  (.zip .rar) 5 - 10
+                            Fotos (min 5, max 10), textos o libreto (.zip .rar)
                         @endif
                             </span>
                     <input type="file" id="type29"  types="zip,rar">
@@ -804,7 +804,7 @@
                                 {{$award->file(20)->name}}
                             @endif
                         @else
-                            Fotos y textos o libreto  (.zip .rar) 5 - 10
+                            Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                         </span>
                     <input type="file" id="type20" types="zip,rar">
@@ -867,7 +867,7 @@
                                 {{$award->file(22)->name}}
                             @endif
                         @else
-                            Fotos y textos o libreto  (.zip .rar) 5 - 10
+                            Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
                     <input type="file" id="type22" types="zip,rar">
@@ -930,7 +930,7 @@
                                 {{$award->file(24)->name}}
                             @endif
                         @else
-                            Fotos y textos o libreto  (.zip .rar) 5 - 10
+                            Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
                     <input type="file" id="type24"  types="zip,rar">
@@ -993,7 +993,7 @@
                                 {{$award->file(26)->name}}
                             @endif
                         @else
-                            Fotos y textos o libreto  (.zip .rar) 5 - 10
+                            Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
                     <input type="file" id="type26"  types="zip,rar">
@@ -1018,7 +1018,7 @@
                                 {{$award->file(27)->name}}
                             @endif
                         @else
-                            Bocetos de diseños (.pdf)
+                            Plano de luces (.pdf)
                         @endif
                             </span>
                     <input type="file" id="type27" types="pdf" accept="application/pdf">

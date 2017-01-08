@@ -455,7 +455,7 @@
                                         {{$award->file(29)->name}}
                                     @endif
                                 @else
-                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                    Fotos (min 5, max 10), textos o libreto (.zip .rar)
                                 @endif
                             </span>
                             <input type="hidden" name="type29"
@@ -565,7 +565,7 @@
                                         {{$award->file(20)->name}}
                                     @endif
                                 @else
-                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                    Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                                 @endif
                             </span>
                         </div>
@@ -615,7 +615,7 @@
                                         {{$award->file(22)->name}}
                                     @endif
                                 @else
-                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                    Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                                 @endif
                             </span>
                         </div>
@@ -664,7 +664,7 @@
                                         {{$award->file(24)->name}}
                                     @endif
                                 @else
-                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                    Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                                 @endif
                             </span>
 
@@ -714,7 +714,7 @@
                                         {{$award->file(26)->name}}
                                     @endif
                                 @else
-                                    Fotos ilustrativas (.zip .rar) 5 - 10
+                                    Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                                 @endif
                             </span>
 
@@ -733,7 +733,7 @@
                                         {{$award->file(27)->name}}
                                     @endif
                                 @else
-                                    Bocetos de diseños (.pdf)
+                                    Plano de luces (.pdf)
                                 @endif
                             </span>
                         </div>
