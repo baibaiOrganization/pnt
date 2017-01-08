@@ -181,7 +181,7 @@
                 @endif
             </label>
 
-            <label class="col-5 small-10" for="type10">
+            <label class="small-10" for="type10">
                 <span>Reseña de la propuesta (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -201,19 +201,19 @@
                 </div>
             </label>
 
-            <label for="prd_genre" class="col-5  small-10">
+            {{--<label for="prd_genre" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Género:</span>
                     <input type="text" value="{{$award->production->genre}}">
-                    {{--<span class="Register-arrowSelect">▼</span>
+                    <span class="Register-arrowSelect">▼</span>
                     <select name="prd_genre" id="prd_genre">
                         <option value="Teatro">Teatro</option>
                         <option value="Circo - Teatro" @if($award->production->genre == 'Circo - Teatro') selected @endif >Circo - Teatro</option>
                         <option value="Danza - Teatro" @if($award->production->genre == 'Danza - Teatro') selected @endif >Danza - Teatro</option>
                         <option value="Teatro Musical" @if($award->production->genre == 'Teatro Musical') selected @endif >Teatro Musical</option>
-                    </select>--}}
+                    </select>
                 </div>
-            </label>
+            </label>--}}
 
             <label class="col-10 small-10" for="type3">
                 <span>Certificado de obra (pdf.)</span>

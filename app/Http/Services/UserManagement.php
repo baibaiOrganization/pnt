@@ -164,7 +164,7 @@ class UserManagement{
 
             'production' => [
                 'name' => $inputs['prd_name'],
-                'genre' => $inputs['prd_genre'],
+                'genre' => isset($inputs['prd_genre']) ? $inputs['prd_genre'] : '',
             ],
 
             'propietor' => [

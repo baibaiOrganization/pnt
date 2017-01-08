@@ -51,7 +51,7 @@ class Validation {
             'org_email' => 'required',
 
             'prd_name' => 'required',
-            'prd_genre' => 'required',
+            //'prd_genre' => 'required',
 
             'rep_name' => 'required',
             'rep_last_name' => 'required',

@@ -206,7 +206,7 @@
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_name')}}</span>
                 @endif
             </label>
-            <label class="col-5 small-10" for="type10">
+            <label class="small-10" for="type10">
                 <span>Reseña de la propuesta (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
@@ -236,7 +236,7 @@
                     @endif
                 </div>
             </label>
-            <label for="prd_genre" class="col-5  small-10">
+            {{--<label for="prd_genre" class="col-5  small-10">
                 <div class="Register-contentSelect">
                     <span>Género:</span>
                     <span class="Register-arrowSelect">▼</span>
@@ -251,7 +251,7 @@
                 @if (count($errors) > 0)
                     <span style="color: #ed6b6b; font-size: .85rem;">{{$errors->first('prd_genre')}}</span>
                 @endif
-            </label>
+            </label>--}}
 
             <label class="col-10 small-10" for="type3">
                 <span>Certificado de obra (pdf.)</span>
