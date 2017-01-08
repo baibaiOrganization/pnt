@@ -216,7 +216,7 @@
             </label>--}}
 
             <label class="col-10 small-10" for="type3">
-                <span>Certificado de obra (pdf.)</span>
+                <span>Certificado de autorización de uso de la obra (pdf.)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <a style="margin-right: 2px" href="{{asset('uploads/colon/' . $award->file(3)->name)}}" target="_blank" class="Register-openFile">Abrir</a>

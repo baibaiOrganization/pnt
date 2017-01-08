@@ -254,7 +254,7 @@
             </label>--}}
 
             <label class="col-10 small-10" for="type3">
-                <span>Certificado de obra (pdf.)</span>
+                <span>Certificado de autorización de uso de la obra (pdf.)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
                         <span class="Register-addFile">Añadir archivo</span>
