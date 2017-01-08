@@ -183,7 +183,7 @@ class UserManagement{
                 'categories' => '',
                 'isPreselected' => 1,
                 'region_id' => $inputs['org_region'] ? $inputs['org_region'] : 1,
-                'acceptTerms' => $inputs['accept']
+                'acceptTerms' => isset($inputs['accept']) ? $inputs['accept'] : 0
             ],
 
             'state' => isset($inputs['isUpdate']) ? 0 : 1

@@ -31,16 +31,17 @@ class ColonController extends Controller
     
     public function create(Request $request){
         $inputs = $request->all();
-        $validate = !isset($inputs['isUpdate'])
-            ? Validator::make($inputs, Validation::getColonRules())
-            : Validator::make($inputs, ['accept' => 'required']);
 
         $message = isset($inputs['isUpdate']) 
                  ? 'El formulario se ha guardado con exito'
                  : 'Se ha inscrito al PREMIO TEATRO COLÓN con exito.';
 
-        if($validate->fails())
-            return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
+        if(!isset($inputs['isUpdate'])){
+            $validate = Validator::make($inputs, Validation::getColonRules());
+            if($validate->fails())
+                return redirect()->back()->withErrors($validate)->withInput()->with(['Error' => 'Debe llenar los campos obligatorios']);
+        }
+
         
         UserManagement::insertColon(auth()->user(), $inputs);
         return redirect()->route('choose')->with(['Success' => $message]);
