@@ -50,7 +50,7 @@ class UserController extends Controller
             })->where('award_type_id', 1)
             ->with('organization');
 
-            $isEditable = $awards->first()->isSelEdit;
+            $isEditable = $awards->first() ? $awards->first()->isSelEdit : 0;
             $awards = $awards->paginate(20);
             return view('admin.judgeSelectedColon', compact('awards', 'isEditable'));
         }
