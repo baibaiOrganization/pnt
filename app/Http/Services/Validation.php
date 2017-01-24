@@ -34,7 +34,7 @@ class Validation {
             'type6' => 'required',
             //'type7' => 'required',
             'type8' => 'required',
-            'type9' => 'required',
+            //'type9' => 'required',
             'type28' => 'required',
 
         ];
