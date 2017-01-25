@@ -34,26 +34,35 @@
         <thead>
         <tr>
             <td>NOMBRE</td>
-            <td>JUEZ 1</td>
-            <td>JUEZ 2</td>
-            <td>JUEZ 3</td>
+            @if(auth()->user()->id == 10 || auth()->user()->role_id == 1)
+                <td>JUEZ 1</td>
+            @endif
+            @if(auth()->user()->id == 11 || auth()->user()->role_id == 1)
+                <td>JUEZ 2</td>
+            @endif
+            @if(auth()->user()->id == 12 || auth()->user()->role_id == 1)
+                <td>JUEZ 3</td>
+            @endif
             <td>ACCIONES</td>
         </tr>
         </thead>
         <tbody>
         @foreach($awards as $award)
-
             <tr>
+
                 <td>{{$award->organization->name}}</td>
-                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
-                    <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 10)) active @endif" for="check{{$award->id}}10">
-                        <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="10" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
-                            <input type="hidden" class="award_id" value="{{$award->id}}">
-                            <input type="checkbox" id="check{{$award->id}}10" value="1" @if($award->score2(11, 10)) checked="checked" @endif>
-                        </span>
-                    </label>
-                </td>
-                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
+                @if(auth()->user()->id == 10 || auth()->user()->role_id == 1)
+                    <td @if(!$isEditable || auth()->user()->role_id != 5 ) class="locked" @endif>
+                        <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 10)) active @endif" for="check{{$award->id}}10">
+                            <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="10" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
+                                <input type="hidden" class="award_id" value="{{$award->id}}">
+                                <input type="checkbox" id="check{{$award->id}}10" value="1" @if($award->score2(11, 10)) checked="checked" @endif>
+                            </span>
+                        </label>
+                    </td>
+                @endif
+                @if(auth()->user()->id == 11 || auth()->user()->role_id == 1)
+                <td @if(!$isEditable || auth()->user()->role_id != 5) class="locked" @endif>
                     <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 11)) active @endif" for="check{{$award->id}}11">
                         <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="11" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
                             <input type="hidden" class="award_id" value="{{$award->id}}">
@@ -61,7 +70,9 @@
                         </span>
                     </label>
                 </td>
-                <td @if(!$isEditable && auth()->user()->role_id != 1) class="locked" @endif>
+                @endif
+                @if(auth()->user()->id == 12 || auth()->user()->role_id == 1)
+                <td @if(!$isEditable || auth()->user()->role_id != 5) class="locked" @endif>
                     <label class="yellow small-12 col-4 CheckboxContainer @if($award->score2(11, 12)) active @endif" for="check{{$award->id}}12" >
                         <span class="row center Checkbox" data-url="{{route('colonSaveScore')}}" data-user="12" data-award="{{$award->id}}" data-editable="{{$isEditable}}">
                             <input type="hidden" class="award_id" value="{{$award->id}}">
@@ -69,6 +80,7 @@
                         </span>
                     </label>
                 </td>
+                @endif
                 <td>
                     <a target="_blank" href="{{route('colonEditUser', $award->id)}}" class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90">
@@ -80,13 +92,13 @@
                 </td>
             </tr>
         @endforeach
-        @if($isEditable)
+        @if($isEditable && auth()->user()->role_id == 5)
             <input type="hidden" id="token" value="{{csrf_token()}}">
-            <tr>
+            <!--<tr>
                 <td colspan="6">
                     <a href="#" id="sendToJudge" data-url="{{route('colonIsNotEditable')}}" class="Button" style=";width:auto;margin:20px 0;padding: 0 10px;background: #FFED00;">FINALIZAR</a>
                 </td>
-            </tr>
+            </tr>-->
         @endif
         </tbody>
     </table>

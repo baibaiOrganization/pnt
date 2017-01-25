@@ -20,8 +20,11 @@
                 <span>Logo, foto o imagen identificativa</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(8)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(8))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(8)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
+
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type8')) || (isset($award) && $award->file(8)))
                             @if(session('Error'))
@@ -50,7 +53,9 @@
                 <span>Certificado cámara de comercio (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(9)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(9))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(9)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type9')) || (isset($award) && $award->file(9)))
@@ -79,7 +84,9 @@
                 <span>Portafolio del grupo(.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(5)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(5))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(5)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type5')) || (isset($award) && $award->file(5)))
@@ -216,7 +223,9 @@
                 <span>Sinópsis (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(1)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(1))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(1)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type1')) || (isset($award) && $award->file(1)))
@@ -237,7 +246,9 @@
                 <span>Texto o libreto (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(2)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(2))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(2)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type2')) || (isset($award) && $award->file(2)))
@@ -257,7 +268,9 @@
                 <span>Certificado de registro de Derechos de Autor</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(3)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(3))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(3)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type3')) || (isset($award) && $award->file(3)))
@@ -277,7 +290,9 @@
                 <span>Certificación de música original en caso de tenerla</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(4)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(4))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(4)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type4')) || (isset($award) && $award->file(4)))
@@ -297,7 +312,9 @@
                 <span>Dossier del espectáculo (.pdf)</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(28)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(28))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(28)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type28')) || (isset($award) && $award->file(28)))
@@ -318,7 +335,9 @@
                 <span>Soporte de 5 presentaciones realizadas del 1 de Abril de 2015 al 30 de Noviembre de 2016</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(6)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(6))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(6)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip">
                         @if((session('Error') && old('type6')) || (isset($award) && $award->file(6)))
@@ -340,7 +359,9 @@
                 <span>Para uniones temporales, hoja de Vida de c/u de los integrantes</span>
                 <div class="Register-file">
                     <span class="Register-actions">
-                        <a target="_blank" href="{{url('uploads/semana/' . $award->file(7)->name)}}" class="Register-openFile">Abrir</a>
+                        @if(isset($award) && $award->file(7))
+                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(7)->name)}}" class="Register-openFile">Abrir</a>
+                        @endif
                     </span>
                     <span class="Register-tooltip" >
                         @if((session('Error') && old('type7')) || (isset($award) && $award->file(7)))
@@ -445,7 +466,9 @@
                     <label class=" @if(!(old('check1') || (isset($award) && $award->awardCategory(1)))) hidden @endif col-8 small-12" for="type29">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(29)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(29))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(29)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                         @if((session('Error') && old('type29')) || (isset($award) && $award->file(29)))
@@ -483,8 +506,11 @@
                     <label class=" @if(!(old('check2') || (isset($award) && $award->awardCategory(2)))) hidden @endif col-8 small-12" for="type30">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(30)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(30))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(30)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
+
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type30')) || (isset($award) && $award->file(30)))
                                     @if(session('Error'))
@@ -555,7 +581,9 @@
                     <label class="small-12 col-4 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type20">
                         <div class="Register-file">
                         <span class="Register-actions">
-                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(20)->name)}}" class="Register-openFile">Abrir</a>
+                            @if(isset($award) && $award->file(20))
+                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(20)->name)}}" class="Register-openFile">Abrir</a>
+                            @endif
                         </span>
                             <span class="Register-tooltip">
                             @if((session('Error') && old('type20')) || (isset($award) && $award->file(20)))
@@ -573,7 +601,9 @@
                     <label class="col-4 small-12 @if(!(old('check4') || (isset($award) && $award->awardCategory(4)))) hidden @endif" for="type21">
                         <div class="Register-file">
                         <span class="Register-actions">
-                            <a target="_blank" href="{{url('uploads/semana/' . $award->file(21)->name)}}" class="Register-openFile">Abrir</a>
+                            @if(isset($award) && $award->file(21))
+                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(21)->name)}}" class="Register-openFile">Abrir</a>
+                            @endif
                         </span>
                             <span class="Register-tooltip">
                             @if((session('Error') && old('type21')) || (isset($award) && $award->file(21)))
@@ -605,7 +635,9 @@
                     <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type22">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(22)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(22))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(22)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type22')) || (isset($award) && $award->file(22)))
@@ -623,7 +655,9 @@
                     <label class=" @if(!(old('check5') || (isset($award) && $award->awardCategory(5)))) hidden @endif col-4 small-12" for="type23">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(23)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(23))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(23)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type23')) || (isset($award) && $award->file(23)))
@@ -654,7 +688,9 @@
                     <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4  small-12" for="type24">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(24)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(24))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(24)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type24')) || (isset($award) && $award->file(24)))
@@ -673,8 +709,11 @@
                     <label class=" @if(!(old('check6') || (isset($award) && $award->awardCategory(6)))) hidden @endif col-4 small-12" for="type25">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(25)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(25))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(25)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
+
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type25')) || (isset($award) && $award->file(25)))
                                     @if(session('Error'))
@@ -704,7 +743,9 @@
                     <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4  small-12" for="type26">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(26)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(26))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(26)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type26')) || (isset($award) && $award->file(26)))
@@ -723,7 +764,9 @@
                     <label class=" @if(!(old('check7') || (isset($award) && $award->awardCategory(7)))) hidden @endif col-4 small-12" for="type27">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(27)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(27))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(27)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                                 @if((session('Error') && old('type27')) || (isset($award) && $award->file(27)))
@@ -780,7 +823,9 @@
                     <label class=" @if(!(old('check9') || (isset($award) && $award->awardCategory(9)))) hidden @endif col-8 small-12" for="type32">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(32)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(32))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(32)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                         @if((session('Error') && old('type32')) || (isset($award) && $award->file(32)))
@@ -812,7 +857,9 @@
                     <label class=" @if(!(old('check10') || (isset($award) && $award->awardCategory(10)))) hidden @endif col-8 small-12" for="type33">
                         <div class="Register-file">
                             <span class="Register-actions">
-                                <a target="_blank" href="{{url('uploads/semana/' . $award->file(33)->name)}}" class="Register-openFile">Abrir</a>
+                                @if(isset($award) && $award->file(33))
+                                    <a target="_blank" href="{{url('uploads/semana/' . $award->file(33)->name)}}" class="Register-openFile">Abrir</a>
+                                @endif
                             </span>
                             <span class="Register-tooltip">
                         @if((session('Error') && old('type33')) || (isset($award) && $award->file(33)))
