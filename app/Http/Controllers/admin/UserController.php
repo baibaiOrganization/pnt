@@ -63,6 +63,7 @@ class UserController extends Controller
             return view('back.semanaUsers', compact('awards', 'isEditable'));
         } else {
             $awards = Award::where('isSelected', 1)->where('award_type_id', 2)->with(['scores'])->get();
+            $awards2 = $this->getUsers(2);
             $categories = Category::all();
             $arrayScores = [];
 
@@ -89,7 +90,7 @@ class UserController extends Controller
 
             $regions = Region::where('id', '<>', 1)->get();
             $judges = User::where('role_id', 5)->get();
-            return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories', 'judges'));
+            return view('admin.getSelectedSemana', compact('awards', 'regions', 'categories', 'judges', 'awards2'));
         }
     }
     
