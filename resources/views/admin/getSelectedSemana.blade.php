@@ -72,6 +72,7 @@
     <br>
     <ul class="Categories">
         @foreach($categories as $category)
+            @if($category->name != 'NINGUNA')
             <li class="Category row" style="padding: 10px;">
                 <span class="title col-11 row">
                     <span class="closer red"></span>
@@ -140,6 +141,7 @@
                     </table>
                 </section>
             </li>
+            @endif
         @endforeach
     </ul>
 
