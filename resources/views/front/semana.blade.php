@@ -82,7 +82,7 @@
                             Solo para grupos constituídos
                         @endif
                     </span>
-                    <input type="file" id="type9" types="pdf" accept="application/pdf">
+                    <input type="file" id="type9" types="pdf" >
                     <input type="hidden" name="type9"
                            @if(session('Error'))
                            value="{{old('type9')}}"
@@ -111,7 +111,7 @@
                             Trayectoria de la compañía, mínimo 3 años de experiencia verificable
                         @endif
                     </span>
-                    <input type="file" id="type5" types="pdf" accept="application/pdf">
+                    <input type="file" id="type5" types="pdf" >
                     <input type="hidden" name="type5"
                            @if(session('Error'))
                            value="{{old('type5')}}"
@@ -270,7 +270,7 @@
                             Mínimo 3 años de experiencia verificable.
                         @endif
                     </span>
-                    <input type="file" id="type16" types="pdf" accept="application/pdf">
+                    <input type="file" id="type16" types="pdf" >
                     <input type="hidden" name="type16"
                            @if(session('Error'))
                            value="{{old('type16')}}"
@@ -352,7 +352,7 @@
                             Máximo 20 lineas
                         @endif
                     </span>
-                    <input type="file" id="type1" types="pdf" accept="application/pdf">
+                    <input type="file" id="type1" types="pdf" >
                     <input type="hidden" name="type1"
                            @if(session('Error'))
                            value="{{old('type1')}}"
@@ -382,7 +382,7 @@
                             Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores.
                         @endif
                     </span>
-                    <input type="file" id="type2" types="pdf" accept="application/pdf">
+                    <input type="file" id="type2" types="pdf" >
                     <input type="hidden" name="type2"
                            @if(session('Error'))
                            value="{{old('type2')}}"
@@ -412,7 +412,7 @@
                             Autorización de uso de la obra (.pdf)
                         @endif
                     </span>
-                    <input type="file" id="type3" types="pdf" accept="application/pdf">
+                    <input type="file" id="type3" types="pdf" >
                     <input type="hidden" name="type3"
                            @if(session('Error'))
                            value="{{old('type3')}}"
@@ -470,7 +470,7 @@
                             @endif
                         @endif
                     </span>
-                    <input type="file" id="type28" types="pdf" accept="application/pdf">
+                    <input type="file" id="type28" types="pdf" >
                     <input type="hidden" name="type28"
                            @if(session('Error'))
                            value="{{old('type28')}}"
@@ -500,7 +500,7 @@
                             Afiches, certificaciones, prensa, programas de mano, etc.) (.pdf)
                         @endif
                     </span>
-                    <input type="file" id="type6" types="pdf" accept="application/pdf">
+                    <input type="file" id="type6" types="pdf" >
                     <input type="hidden" name="type6"
                            @if(session('Error'))
                            value="{{old('type6')}}"
@@ -530,7 +530,7 @@
                             Hoja de vida del equipo artístico y creativo (.pdf)
                         @endif
                     </span>
-                    <input type="file" id="type7" types="pdf" accept="application/pdf">
+                    <input type="file" id="type7" types="pdf" >
                     <input type="hidden" name="type7"
                            @if(session('Error'))
                            value="{{old('type7')}}"
@@ -728,7 +728,7 @@
                             Hoja de vida director (.pdf) 5 - 10
                         @endif
                             </span>
-                    <input type="file" id="type30" types="pdf" accept="application/pdf">
+                    <input type="file" id="type30" types="pdf" >
                     <input type="hidden" name="type30"
                            @if(session('Error'))
                            value="{{old('type30')}}"
@@ -832,7 +832,7 @@
                             Bocetos de diseños (.pdf)
                         @endif
                         </span>
-                    <input type="file" id="type21" types="pdf" accept="application/pdf">
+                    <input type="file" id="type21" types="pdf" >
                     <input type="hidden" name="type21"
                            @if(session('Error'))
                            value="{{old('type21')}}"
@@ -895,7 +895,7 @@
                             Bocetos de diseños (.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type23" types="pdf" accept="application/pdf">
+                    <input type="file" id="type23" types="pdf" >
                     <input type="hidden" name="type23"
                            @if(session('Error'))
                            value="{{old('type23')}}"
@@ -958,7 +958,7 @@
                             Bocetos de diseños (.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type25" types="pdf" accept="application/pdf">
+                    <input type="file" id="type25" types="pdf" >
                     <input type="hidden" name="type25"
                            @if(session('Error'))
                            value="{{old('type25')}}"
@@ -1021,7 +1021,7 @@
                             Plano de luces (.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type27" types="pdf" accept="application/pdf">
+                    <input type="file" id="type27" types="pdf" >
                     <input type="hidden" name="type27"
                            @if(session('Error'))
                            value="{{old('type27')}}"
@@ -1085,7 +1085,7 @@
                             Hoja de vida actor(.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type32" types="pdf" accept="application/pdf">
+                    <input type="file" id="type32" types="pdf" >
                     <input type="hidden" name="type32"
                            @if(session('Error'))
                            value="{{old('type32')}}"
@@ -1124,7 +1124,7 @@
                             Hoja de vida actríz (.pdf)
                         @endif
                             </span>
-                    <input type="file" id="type33" types="pdf" accept="application/pdf">
+                    <input type="file" id="type33" types="pdf" >
                     <input type="hidden" name="type33"
                            @if(session('Error'))
                            value="{{old('type33')}}"
