@@ -45,7 +45,7 @@
             </tr>
         </thead>
         <tbody>
-        {{dd($awards)}}
+
             @foreach($awards as $award)
             <tr>
                 <td>{{$award->organization->name}}</td>
@@ -62,6 +62,7 @@
                 </td>
             </tr>
             @endforeach
+            {{dd($awards)}}
         </tbody>
     </table>
     {!! $awards->render() !!}
