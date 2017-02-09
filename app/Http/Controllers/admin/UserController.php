@@ -41,7 +41,7 @@ class UserController extends Controller
     }
 
     public function colonUsers(){
-        if(auth()->user()->id != 1){
+        if(auth()->user()->role != 1){
             $awards = $this->getUsers(1);
             return view('back.colonUsers', compact('awards'));
         } else {
