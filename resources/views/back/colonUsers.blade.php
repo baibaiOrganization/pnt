@@ -50,7 +50,7 @@
             <tr>
                 <td>{{$award->organization->name}}</td>
                 <td>{{$award->user->email}}</td>
-                <td>{{$award->organization->city->name}}</td>
+
                 <td>
                     <a href="{{route('colonEditUser', $award->id)}}" class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90">
@@ -62,7 +62,7 @@
                 </td>
             </tr>
             @endforeach
-            {{dd($awards)}}
+
         </tbody>
     </table>
     {!! $awards->render() !!}
