@@ -1,4 +1,4 @@
-@extends('layout.front')
+    @extends('layout.front')
 
 @section('content')
 
@@ -13,7 +13,7 @@
             </div>
         </section>
     @endif
-
+    {{dd(session('Success'))}}
     <section class="ToolBar">
         <div id="SendExcel" class="Download-Excel" style="width: 50px; cursor:pointer">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" width="100%" height="auto">
