@@ -689,7 +689,7 @@
                             Fotos (min 5, max 10), textos o libreto (.zip .rar)
                         @endif
                             </span>
-                    <input type="file" id="type29"  types="zip,rar">
+                    <input type="file" id="type29"  >
                     <input type="hidden" name="type29"
                            @if(session('Error'))
                            value="{{old('type29')}}"
@@ -807,7 +807,7 @@
                             Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                         </span>
-                    <input type="file" id="type20" types="zip,rar">
+                    <input type="file" id="type20" >
                     <input type="hidden" name="type20"
                            @if(session('Error'))
                            value="{{old('type20')}}"
@@ -870,7 +870,7 @@
                             Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
-                    <input type="file" id="type22" types="zip,rar">
+                    <input type="file" id="type22" >
                     <input type="hidden" name="type22"
                            @if(session('Error'))
                            value="{{old('type22')}}"
@@ -933,7 +933,7 @@
                             Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
-                    <input type="file" id="type24"  types="zip,rar">
+                    <input type="file" id="type24"  >
                     <input type="hidden" name="type24"
                            @if(session('Error'))
                            value="{{old('type24')}}"
@@ -996,7 +996,7 @@
                             Fotografía ilustrativa - min 5, max 10 (.zip .rar)
                         @endif
                             </span>
-                    <input type="file" id="type26"  types="zip,rar">
+                    <input type="file" id="type26"  >
                     <input type="hidden" name="type26"
                            @if(session('Error'))
                            value="{{old('type26')}}"
