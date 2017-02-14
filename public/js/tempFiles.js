@@ -1,4 +1,4 @@
-$('input[type="file"]').on('change', function(){
+$('input[type="file"]').on('change', function () {
 
     var element = document.getElementById($(this).attr('id'));
     var data = element.files;
@@ -8,13 +8,16 @@ $('input[type="file"]').on('change', function(){
     var types = $(this).attr('types');
 
     regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
-    console.log(data[0].type)
-     if (data[0].type ==  'application/x-zip-compressed'){
-         data[0].type =  'application/zip'
-     }
+    var typeFile = data[0].type;
 
 
-    if(regex.test(data[0].type)){
+    if (typeFile == 'application/x-zip-compressed') {
+        typeFile = 'application/zip'
+    }
+
+
+    if (regex.test(typeFile)) {
+
         file.append('file', data[0]);
         file.append('_token', $('#token').val());
 
@@ -32,7 +35,7 @@ $('input[type="file"]').on('change', function(){
                 console.log('Se sube archivo de manera exitosa.');
                 element.previousElementSibling.innerText = data.route;
                 element.nextElementSibling.value = data.route;
-                setTimeout(function(){
+                setTimeout(function () {
                     $('.preload').addClass("hidden");
                 }, 1000);
             },
@@ -43,7 +46,7 @@ $('input[type="file"]').on('change', function(){
             }
         });
     }
-    else{
+    else {
         alert('Tipo de archivo no permitido.');
     }
 });
