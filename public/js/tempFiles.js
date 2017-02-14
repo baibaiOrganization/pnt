@@ -9,7 +9,7 @@ $('input[type="file"]').on('change', function () {
 
     regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
     var typeFile = data[0].type;
-    console.log(data[0].type)
+    console.log(regex)
 
     if (typeFile == 'application/x-zip-compressed') {
         typeFile = 'application/zip';
