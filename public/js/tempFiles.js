@@ -8,7 +8,7 @@ $('input[type="file"]').on('change', function(){
     var types = $(this).attr('types');
 
     regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
-
+    console.log((data[0].type))
     if(regex.test(data[0].type)){
         file.append('file', data[0]);
         file.append('_token', $('#token').val());
