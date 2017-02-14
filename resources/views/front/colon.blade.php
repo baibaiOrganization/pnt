@@ -223,7 +223,7 @@
 
                         @endif
                     </span>
-                    <input type="file" id="type10"  >
+                    <input type="file" id="type10" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type10"
                            @if(session('Error'))
                            value="{{old('type10')}}"
@@ -270,7 +270,7 @@
                             <!--Si la obra contiene piezas musicales deben ser originales para la producción.-->
                         @endif
                     </span>
-                    <input type="file" id="type3" >
+                    <input type="file" id="type3" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type3"
                            @if(session('Error'))
                            value="{{old('type3')}}"
@@ -302,7 +302,7 @@
                             Máximo 20 lineas
                         @endif
                     </span>
-                    <input type="file" id="type1" >
+                    <input type="file" id="type1" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type1"
                            @if(session('Error'))
                            value="{{old('type1')}}"
@@ -332,7 +332,7 @@
                             Los textos dramáticos presentados deben ser en español. Para teatro musical, incluir las respectivas partituras y autorizaciones de los autores.
                         @endif
                     </span>
-                    <input type="file" id="type2"  >
+                    <input type="file" id="type2" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type2"
                            @if(session('Error'))
                            value="{{old('type2')}}"
@@ -362,7 +362,7 @@
                             Puesta en escena, metodología de trabajo y proceso de creación. 2 pag. Máx.
                         @endif
                     </span>
-                    <input type="file" id="type11"  >
+                    <input type="file" id="type11" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type11"
                            @if(session('Error'))
                            value="{{old('type11')}}"
@@ -393,7 +393,7 @@
                             Bocetos iniciales
                         @endif
                     </span>
-                    <input type="file" id="type12" >
+                    <input type="file" id="type12" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type12"
                            @if(session('Error'))
                            value="{{old('type12')}}"
@@ -423,7 +423,7 @@
                             Fases de desarrollo de la propuesta, los tiempos estimados para cada una de ellas y sus responsables.
                         @endif
                     </span>
-                    <input type="file" id="type13" >
+                    <input type="file" id="type13" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type13"
                            @if(session('Error'))
                            value="{{old('type13')}}"
@@ -453,7 +453,7 @@
                             Para montajes de compañías o uniones que vivan por fuera de Bogotá, incluir los costos de estadía, transporte y viáticos necesarios para montaje de la obra en el Teatro Colón
                         @endif
                     </span>
-                    <input type="file" id="type14" >
+                    <input type="file" id="type14" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type14"
                            @if(session('Error'))
                            value="{{old('type14')}}"
@@ -483,7 +483,7 @@
                             Si el valor total excede el monto de la cofinanciación explique las otras fuentes de financiación.
                         @endif
                     </span>
-                    <input type="file" id="type15" >
+                    <input type="file" id="type15" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type15"
                            @if(session('Error'))
                            value="{{old('type15')}}"
@@ -513,7 +513,7 @@
                             Actores, diseñadores, escenógrafos, etc.
                         @endif
                     </span>
-                    <input type="file" id="type7" >
+                    <input type="file" id="type7" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type7"
                            @if(session('Error'))
                            value="{{old('type7')}}"
@@ -651,7 +651,7 @@
                             Firmado por todos los miembros de la unión temporal, en el que delegan su representación a un integrante del grupo.
                         @endif
                     </span>
-                    <input type="file" id="type18" >
+                    <input type="file" id="type18" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type18" id="type18"
                            @if(session('Error'))
                            value="{{old('type18')}}"
@@ -681,7 +681,7 @@
                             Aceptación de las reglas del contrato de coproducción con El Teatro Colón.
                         @endif
                     </span>
-                    <input type="file" id="type17" types="pdf" >
+                    <input type="file" id="type17" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type17"
                            @if(session('Error'))
                            value="{{old('type17')}}"
@@ -708,7 +708,7 @@
                             {{$award->file(19)->name}}
                         @endif
                     </span>
-                    <input type="file" id="type19"  >
+                    <input type="file" id="type19" types="pdf" accept="application/pdf">
                     <input type="hidden" name="type19"
                            @if(session('Error'))
                            value="{{old('type19')}}"
