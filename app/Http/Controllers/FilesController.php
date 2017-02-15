@@ -3,6 +3,7 @@
 namespace Theater\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class FilesController extends Controller
 {
