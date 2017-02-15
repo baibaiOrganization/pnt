@@ -13,11 +13,11 @@ class FilesController extends Controller
 
         if ($request->ajax()) {
 
-            return  ['jk'=>$request->file()];
 
-            return ['jk' => $this->validation($request)->fails()];
+
+          /*  return ['jk' => $this->validation($request)->fails()];
             if ($this->validation($request)->fails())
-                return ['success' => 'error'];
+                return ['success' => 'error'];*/
 
             foreach ($request->file() as $file) {
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
