@@ -2,7 +2,7 @@ $('input[type="file"]').on('change', function () {
 
     var element = document.getElementById($(this).attr('id'));
 
-    console.log($(this))
+
     var data = element.files;
     var file = new FormData();
     var flag = false;
@@ -10,8 +10,8 @@ $('input[type="file"]').on('change', function () {
     var types = $(this).attr('types');
 
     regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
-
-
+    var typeFile = data[0].type;
+    console.log($('this'))
 
     file.append('file', data[0]);
     file.append('_token', $('#token').val());
@@ -29,7 +29,7 @@ $('input[type="file"]').on('change', function () {
         success: function (data) {
 
             console.log(data);
-            if(data['success'] == 'error'){
+            if(!data['success']){
                 console.log('error');
             }
             else{
