@@ -29,9 +29,10 @@ $('input[type="file"]').on('change', function () {
         success: function (data) {
 
             console.log(data);
+
             console.log('Se sube archivo de manera exitosa.');
-            element.previousElementSibling.innerText = data.route;
-            element.nextElementSibling.value = data.route;
+            /*element.previousElementSibling.innerText = data.route;
+            element.nextElementSibling.value = data.route;*/
             setTimeout(function () {
                 $('.preload').addClass("hidden");
             }, 1000);
