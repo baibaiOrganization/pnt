@@ -14,7 +14,7 @@ class FilesController extends Controller
         if ($request->ajax()) {
 
 
-            return $request->input('type29');
+
             if ($this->validation($request)->fails())
                 return ['success' => 'error'];
 
@@ -29,7 +29,7 @@ class FilesController extends Controller
     private function validation($request)
     {
         return Validator::make($request->all(), [
-            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed'
+            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed',
         ]);
     }
 
