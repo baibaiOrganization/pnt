@@ -15,15 +15,10 @@ Route::post('mi-perfil', [
     'as' => 'postProfile'
 ]);
 
-Route::post('ajaxTempFiles', function(\Illuminate\Http\Request $request){
-    if($request->ajax()){
-        foreach ($request->file() as $file) {
-            $fileName = str_random(15) . '-' . $file->getClientOriginalName();
-            $file->move(base_path() . '/public/temp/', $fileName);
-            return ['route' => '/temp/' . $fileName];
-        }
-    }
-});
+Route::post('ajaxTempFiles', [
+    'uses' => 'FilesController@filesTemp',
+    'as' => 'ajaxTempFiles'
+]);
 
 Route::group(['middleware' => ['userLogged']], function () {
     require __DIR__ . '/Routes/auth.php';

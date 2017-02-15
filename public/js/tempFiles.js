@@ -2,7 +2,7 @@ $('input[type="file"]').on('change', function () {
 
     var element = document.getElementById($(this).attr('id'));
 
-    console.log($(this.files))
+
     var data = element.files;
     var file = new FormData();
     var flag = false;
@@ -17,7 +17,7 @@ $('input[type="file"]').on('change', function () {
         typeFile = 'application/zip';
         console.log(typeFile)
         console.log('si')
-    }else{
+    } else {
         console.log(typeFile)
         console.log('no')
     }
