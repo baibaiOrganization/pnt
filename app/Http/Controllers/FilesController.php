@@ -13,6 +13,7 @@ class FilesController extends Controller
 
         if ($request->ajax()) {
 
+            return  $request->input('type29');
 
             return ['jk' => $this->validation($request)->fails()];
             if ($this->validation($request)->fails())
