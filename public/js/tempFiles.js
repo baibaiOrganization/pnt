@@ -29,7 +29,10 @@ $('input[type="file"]').on('change', function () {
         success: function (data) {
 
             console.log(data);
-
+            if(!data['success']){
+                console.log('error');
+                return;
+            }
             console.log('Se sube archivo de manera exitosa.');
             /*element.previousElementSibling.innerText = data.route;
             element.nextElementSibling.value = data.route;*/

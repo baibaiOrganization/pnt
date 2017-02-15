@@ -18,11 +18,6 @@ class FilesController extends Controller
             if ($this->validation($request)->fails())
                 return ['success' => 'false'];
 
-            $validator = Validator::make($request->all(), [
-                'person.*.email' => 'email|unique:users',
-                'person.*.first_name' => 'required_with:person.*.last_name',
-            ]);
-            return $validator;
             foreach ($request->file() as $file) {
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
                 $file->move(base_path() . '/public/temp/', $fileName);
@@ -34,16 +29,7 @@ class FilesController extends Controller
     private function validation($request)
     {
         return Validator::make($request->all(), [
-            'cantidad' => 'required',
-            "valor" => "required",
-            "id_ciudad_origen" => "required",
-            "id_ciudad_destino" => "required",
-            "peso_fisico" => "required",
-            "packing.largo" => "required",
-            "packing.ancho" => "required",
-            "packing.alto" => "required",
-            "packing.cantidad" => "required",
-            "cantidad" => "required"
+            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed',
         ]);
     }
 
