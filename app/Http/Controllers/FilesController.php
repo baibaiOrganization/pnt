@@ -20,6 +20,9 @@ class FilesController extends Controller
                 return ['success' => 'error'];*/
 
             foreach ($request->file() as $file) {
+
+                return ['route' => $file->getMimeType()];
+
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
                 $file->move(base_path() . '/public/temp/', $fileName);
                 return ['route' => '/temp/' . $fileName, 'success' => 1];
