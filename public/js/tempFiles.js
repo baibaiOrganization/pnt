@@ -31,11 +31,14 @@ $('input[type="file"]').on('change', function () {
             console.log(data);
             if(!data['success']){
                 console.log('error');
-                return;
+
+            }
+            else{
+                element.previousElementSibling.innerText = data.route;
+                 element.nextElementSibling.value = data.route;
             }
             console.log('Se sube archivo de manera exitosa.');
-            /*element.previousElementSibling.innerText = data.route;
-            element.nextElementSibling.value = data.route;*/
+
             setTimeout(function () {
                 $('.preload').addClass("hidden");
             }, 1000);
