@@ -29,7 +29,7 @@ $('input[type="file"]').on('change', function () {
         success: function (data) {
 
             console.log(data);
-            if(!data['success']){
+            if(data['success'] == 'error'){
                 console.log('error');
             }
             else{

@@ -16,7 +16,7 @@ class FilesController extends Controller
 
             return $request->input('type29');
             if ($this->validation($request)->fails())
-                return ['success' => 'false'];
+                return ['success' => 'error'];
 
             foreach ($request->file() as $file) {
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
@@ -29,7 +29,7 @@ class FilesController extends Controller
     private function validation($request)
     {
         return Validator::make($request->all(), [
-            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed',
+            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed'
         ]);
     }
 
