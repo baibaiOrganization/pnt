@@ -10,7 +10,7 @@ $('input[type="file"]').on('change', function () {
     var types = $(this).attr('types');
 
     regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
-    var typeFile = data[0].type;
+
 
 
     file.append('file', data[0]);
