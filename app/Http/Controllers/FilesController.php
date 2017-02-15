@@ -29,7 +29,7 @@ class FilesController extends Controller
     private function validation($request)
     {
         return Validator::make($request->all(), [
-            'type29' => 'mimes:application/epub+zip,application/zip,application/x-rar-compressed',
+            'type29' => ['required','mimes:application/epub+zip,application/zip,application/x-rar-compressed']
         ]);
     }
 
