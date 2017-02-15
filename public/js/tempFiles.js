@@ -31,7 +31,6 @@ $('input[type="file"]').on('change', function () {
             console.log(data);
             if(!data['success']){
                 console.log('error');
-
             }
             else{
                 element.previousElementSibling.innerText = data.route;
