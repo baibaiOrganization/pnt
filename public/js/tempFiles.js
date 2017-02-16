@@ -29,7 +29,6 @@ $('input[type="file"]').on('change', function () {
         },
         success: function (data) {
 
-            console.log(data);
             if(data['success'] == "error"){
                 alert('Tipo de archivo no permitido.');
                 console.log('error');
@@ -38,7 +37,6 @@ $('input[type="file"]').on('change', function () {
                 element.previousElementSibling.innerText = data.route;
                 element.nextElementSibling.value = data.route;
             }
-            console.log('Se sube archivo de manera exitosa.');
 
             setTimeout(function () {
                 $('.preload').addClass("hidden");
