@@ -20,12 +20,28 @@ class FilesController extends Controller
 
             $types = $request->input('types');
 
-            $arrayTypes  = explode('|',$types);
+            $arrayTypes = explode('|', $types);
+
+            $normalize = [
+                'application/pdf' => 'pdf',
+                'application/epub+zip' => 'pdf',
+                'application/epub+zip' => 'zip',
+                'application/x-bzip' => 'zip',
+                'application/zip' => 'zip',
+                'zip' => 'zip',
+                'application/x-zip-compressed' => 'zip',
+                'application/x-rar-compressed' => 'rar',
+                'rar' => 'rar',
+                'image/png' => 'png',
+                'image/jpeg' => 'jpg',
+                'image/png' => 'png',
+                'application/pdf' => 'pdf',
+            ];
 
 
             foreach ($request->file() as $file) {
 
-                if (!in_array($file->getMimeType(), $arrayTypes)) {
+                if (!in_array($normalize[$file->getMimeType()], $arrayTypes)) {
                     return ['success' => 'error', 'f' => $file->getMimeType(),
                         'At' => $arrayTypes
                     ];
