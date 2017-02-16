@@ -13,18 +13,25 @@ class FilesController extends Controller
 
         if ($request->ajax()) {
 
+            /*  return ['jk' => $this->validation($request)->fails()];
+              if ($this->validation($request)->fails())
+                  return ['success' => 'error'];*/
 
 
-          /*  return ['jk' => $this->validation($request)->fails()];
-            if ($this->validation($request)->fails())
-                return ['success' => 'error'];*/
+            $types = $request->input('types');
+
+            $arrayTypes  = explode('|',$types);
+
 
             foreach ($request->file() as $file) {
 
-                return ['route' => $file->getMimeType()];
+                if (!in_array($file->getMimeType(), $arrayTypes)) {
+                    return ['success' => 'error'];
+                }
 
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
                 $file->move(base_path() . '/public/temp/', $fileName);
+
                 return ['route' => '/temp/' . $fileName, 'success' => 1];
             }
         }
@@ -33,7 +40,7 @@ class FilesController extends Controller
     private function validation($request)
     {
         return Validator::make($request->all(), [
-            'type29' => ['required','mimes:application/epub+zip,application/zip,application/x-rar-compressed']
+            'type29' => ['required', 'mimes:application/epub+zip,application/zip,application/x-rar-compressed']
         ]);
     }
 

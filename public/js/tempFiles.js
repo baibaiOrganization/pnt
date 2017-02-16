@@ -9,12 +9,13 @@ $('input[type="file"]').on('change', function () {
     var regex;
     var types = $(this).attr('types');
 
-    regex = new RegExp("(.*?)\.(" + types.replace(',', '|') + ")$");
+    regex = new RegExp("(.*?)\.(jo)$");
     var typeFile = data[0].type;
     console.log($('this'))
 
     file.append('file', data[0]);
     file.append('_token', $('#token').val());
+    file.append('types', $(this).attr('types'));
 
     $.ajax({
         url: $('#url').val(),
