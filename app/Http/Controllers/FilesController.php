@@ -26,7 +26,9 @@ class FilesController extends Controller
             foreach ($request->file() as $file) {
 
                 if (!in_array($file->getMimeType(), $arrayTypes)) {
-                    return ['success' => 'error'];
+                    return ['success' => 'error', 'f' => $file->getMimeType(),
+                        'At' => $arrayTypes
+                    ];
                 }
 
                 $fileName = str_random(15) . '-' . $file->getClientOriginalName();
